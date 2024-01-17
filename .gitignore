@@ -1,0 +1,7 @@
+configstore/
+.luarc.json
+nvim/lua/local.lua
+github-copilot/
+~/
+onetool/local.py
+onetool/init.dev.py

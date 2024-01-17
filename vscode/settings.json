@@ -1,0 +1,130 @@
+{
+    "editor.lineNumbers": "relative",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "vim.normalModeKeyBindings": [
+      {
+        "before": ["g", "d"],
+        "commands": ["editor.action.goToDeclaration"]
+      },
+      {
+        "before": ["g", "D"],
+        "commands": ["editor.action.peekDefinition"]
+      },
+      {
+        "before": ["g", "i"],
+        "commands": ["editor.action.goToImplementation"]
+      },
+      {
+        "before": ["g", "r"],
+        "commands": ["editor.action.goToReferences"]
+      },
+      {
+        "before": ["g", "t"],
+        "commands": ["editor.action.goToTypeDefinition"]
+      },
+      {
+        "before": ["K"],
+        "commands": ["editor.action.showHover"]
+      },
+
+      {
+        "before": [" ", "r", "n"],
+        "commands": ["editor.action.rename"]
+      },
+      {
+        "before": [" ", "r", "r"],
+        "commands": ["editor.action.quickFix"]
+      },
+      {
+        "before": [" ", "e"],
+        "commands": ["editor.action.format"]
+      },
+
+      {
+        "before": [" ", "d", "b"],
+        "commands": ["editor.debug.action.toggleBreakpoint"]
+      },
+      {
+        "before": [" ", "u", "f"],
+        "commands": ["testing.runCurrentFile"]
+      },
+      {
+        "before": [" ", "u", "r"],
+        "commands": ["testing.runAll"]
+      },
+      {
+        "before": [" ", "u", "u"],
+        "commands": ["testing.runAtCursor"]
+      },
+      {
+        "before": [" ", "u", "d"],
+        "commands": ["testing.debugAtCursor"]
+      },
+
+      {
+        "before": [" ", "t", "s"],
+        "commands": ["workbench.files.action.showActiveFileInExplorer"]
+      },
+      {
+        "before": [" ", "t", "t"],
+        "commands": ["workbench.view.explorer"]
+      },
+      {
+        "before": [" ", "f", "f"],
+        "commands": ["workbench.action.quickOpen"]
+      },
+      {
+        "before": [" ", "f", "s"],
+        "commands": ["workbench.action.experimental.quickTextSearch"]
+      },
+      {
+        "before": [" ", "f", "p"],
+        "commands": ["workbench.action.showCommands"]
+      },
+      {
+        "before": [" ", "g", "s"],
+        "commands": ["workbench.view.scm"]
+      },
+
+      {
+        "before": [" ", "e", "f"],
+        "commands": ["workbench.actions.view.problems"]
+      },
+      {
+        "before": ["[", "e"],
+        "commands": ["editor.action.marker.prev"]
+      },
+      {
+        "before": ["]", "e"],
+        "commands": ["editor.action.marker.next"]
+      },
+
+      {
+        "before": [" ", "q", "q"],
+        "commands": ["workbench.action.closeActiveEditor"]
+      },
+      {
+        "before": [" ", "s", "s"],
+        "commands": ["workbench.action.splitEditor"]
+      },
+      {
+        "before": [" ", "s", "h"],
+        "commands": ["workbench.action.splitEditorDown"]
+      },
+
+      {
+        "before": ["ctrl+l"],
+        "commands": ["workbench.action.focusNextGroup"]
+      },
+      {
+        "before": ["ctrl+h"],
+        "commands": ["workbench.action.focusPreviousGroup"]
+      }
+  ],
+  "vim.statusBarColors.surroundinputmode": "",
+  "window.zoomLevel": -1,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 150
+}

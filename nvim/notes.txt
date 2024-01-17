@@ -1,0 +1,64 @@
+INSTALL
+Windows
+choco install neovim
+XDG_DATA_HOME = ~/stuff
+install https://github.com/junegunn/vim-plug
+treesitter
+choco install lua
+
+https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
+choco install zig
+//choco install mingw
+//install vs build tools
+lsp
+see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+//install omnisharp from https://github.com/OmniSharp/omnisharp-roslyn/releases (choco install omnisharp has old .net framework version)
+//npm i -g vscode-langservers-extracted
+//download https://github.com/sumneko/lua-language-server/releases, add bin to path
+//choco install graalvm-java11 and download native binary https://github.com/eclipse/lemminx and add it to the path
+
+debug
+install https://github.com/Samsung/netcoredbg
+install debugpy to virtualenv(pip install debugpy)
+
+install nerd font https://www.nerdfonts.com/font-downloads
+
+open nvim with admin permissions(needed for nvim-treesitter)
+:PlugInstall
+After :PlugInstall wait until nvim-treesitter update is done
+
+FAQ
+to fix  ^M during format: https://github.com/neovim/neovim/issues/17053(replace "\r\n" to "\n" in nvim installation folder)
+
+
+
+Ubuntu
+install neovim from github release
+install https://github.com/junegunn/vim-plug
+install lua
+install gcc
+install g++
+install unzip
+install ripgrep
+
+:PlugInstall
+After :PlugInstall wait until nvim-treesitter update is done
+
+
+
+Manjaro
+pacman -S neovim
+pacman -S lua
+pacman -S gcc
+pacman -S unzip
+pacman -S ripgrep
+
+add symlink(~/stuff/nvim) to ~/.config
+
+install https://github.com/junegunn/vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+:PlugInstall
+After :PlugInstall wait until nvim-treesitter update is done
+
