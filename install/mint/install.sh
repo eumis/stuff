@@ -1,8 +1,5 @@
 cd ~
 
-# config
-git clone git@github.com:eumis/stuff.git
-
 mkdir temp
 cd temp
 
@@ -12,6 +9,11 @@ sudo apt update -y
 sudo apt install fish -y
 chsh -s $(which fish)
 echo 'eval (ssh-agent -c)' >> ~/.config/fish/config.fish
+
+# nerd font
+mkdir ~/.local/share/fonts
+curl -fLo CodeNewRoman.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/CodeNewRoman.tar.xz
+tar -xf CodeNewRoman.tar.xz -C ~/.local/share/fonts/
 
 # kitty
 ln -s ~/stuff/kitty ~/.config
@@ -40,24 +42,30 @@ sudo apt install python3-wxgtk-webview4.0 -y
 # onetool
 ln -s ~/stuff/onetool ~/.config
 
+# python
+echo 'alias python=python3' >> ~/.bashrc
+echo 'alias python=python3' >> ~/.config/fish/config.fish
+
 # neovim
 ln -s ~/stuff/nvim ~/.config
+
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
 
 sudo apt install lua5.4 -y
 sudo apt install gcc -y
 sudo apt install unzip -y
 sudo apt install ripgrep -y
 sudo apt install fd-find -y
-sudo apt install npm -y
 sudo apt install xsel -y
 
 echo 'alias fd=fdfind' >> ~/.bashrc
 echo 'alias fd=fdfind' >> ~/.config/fish/config.fish
 
-flatpak install flathub io.neovim.nvim -y
-flatpak run io.neovim.nvim -y
-echo 'alias nvim="flatpak run io.neovim.nvim"' >> ~/.bashrc
-echo 'alias nvim="flatpak run io.neovim.nvim"' >> ~/.config/fish/config.fish
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+echo 'alias nvim=~/nvim.appimage' >> ~/.bashrc
+echo 'alias nvim=~/nvim.appimage' >> ~/.config/fish/config.fish
 
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -91,7 +99,10 @@ wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
 sudo apt install ./discord.deb -y
 
 # telegram
-flatpak install flathub org.telegram.desktop -y
+curl -o telegram.tar.xz https://td.telegram.org/tlinux/tsetup.4.14.6.tar.xz
+tar -xvf telegram.tar.xz
+mv Telegram ~/.local/telegram.app
+chmod u+x ~/.local/telegram.app/Telegram
 
 # tuxguitar
 flatpak install flathub ar.com.tuxguitar.TuxGuitar -y
