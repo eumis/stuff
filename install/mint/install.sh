@@ -1,9 +1,35 @@
+cd ~
+
+# config
+git clone git@github.com:eumis/stuff.git
+
 mkdir temp
 cd temp
 
-# tools
-sudo apt install git -y
+# fish
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt update -y
+sudo apt install fish -y
+chsh -s $(which fish)
+echo 'eval (ssh-agent -c)' >> ~/.config/fish/config.fish
+
+# kitty
+ln -s ~/stuff/kitty ~/.config
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+echo 'alias kitty=~/.local/kitty.app/bin/kitty' >> ~/.zshrc
+echo 'alias kitty=~/.local/kitty.app/bin/kitty' >> ~/.config/fish/config.fish
+mkdir ~/.local/share/applications
+cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+
+# bat
 sudo apt install bat -y
+echo 'alias bat=batcat' >> ~/.bashrc
+echo 'alias bat=batcat' >> ~/.config/fish/config.fish
+
+# docker
 sudo apt install docker -y
 
 # wx dependencies
@@ -14,45 +40,28 @@ sudo apt install python3-wxgtk-webview4.0 -y
 # onetool
 ln -s ~/stuff/onetool ~/.config
 
-# config
-git clone git@github.com:eumis/stuff.git
-
 # neovim
 ln -s ~/stuff/nvim ~/.config
 
-sudo apt install lua -y
+sudo apt install lua5.4 -y
 sudo apt install gcc -y
 sudo apt install unzip -y
 sudo apt install ripgrep -y
-sudo apt install fd -y
+sudo apt install fd-find -y
 sudo apt install npm -y
 sudo apt install xsel -y
 
+echo 'alias fd=fdfind' >> ~/.bashrc
+echo 'alias fd=fdfind' >> ~/.config/fish/config.fish
+
 flatpak install flathub io.neovim.nvim -y
 flatpak run io.neovim.nvim -y
+echo 'alias nvim="flatpak run io.neovim.nvim"' >> ~/.bashrc
+echo 'alias nvim="flatpak run io.neovim.nvim"' >> ~/.config/fish/config.fish
 
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim -c 'PlugInstall' -c 'TSUpdate' -c 'qall'
-
-# shell
-sudo apt-add-repository ppa:fish-shell/release-3
-sudo apt update -y
-sudo apt install fish -y
-chsh -s $(which fish)
-echo 'eval (ssh-agent -c)' >> ~/.config/fish/config.fish
-
-# terminal
-ln -s ~/stuff/kitty ~/.config
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-echo 'alias kitty=~/.local/kitty.app/bin/kitty' >> ~/.zshrc
-echo 'alias kitty=~/.local/kitty.app/bin/kitty' >> ~/.config/fish/config.fish
-
-mkdir ~/.local/share/applications
-cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
-cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
-sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
-sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
 
 # brave
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -102,7 +111,6 @@ cd ..
 
 # drawio
 flatpak install flathub com.jgraph.drawio.desktop
-
 
 sudo apt update -y
 cd ..
