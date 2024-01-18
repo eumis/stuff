@@ -63,9 +63,10 @@ echo 'alias fd=fdfind' >> ~/.bashrc
 echo 'alias fd=fdfind' >> ~/.config/fish/config.fish
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-echo 'alias nvim=~/nvim.appimage' >> ~/.bashrc
-echo 'alias nvim=~/nvim.appimage' >> ~/.config/fish/config.fish
+mv nvim.appimage ~/.local
+chmod u+x ~/.local/nvim.appimage
+echo 'alias nvim=~/.local/nvim.appimage' >> ~/.bashrc
+echo 'alias nvim=~/.local/nvim.appimage' >> ~/.config/fish/config.fish
 
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -122,6 +123,9 @@ cd ..
 
 # drawio
 flatpak install flathub com.jgraph.drawio.desktop
+
+# proton
+
 
 sudo apt update -y
 cd ..
