@@ -43,8 +43,10 @@ sudo apt install python3-wxgtk-webview4.0 -y
 ln -s ~/stuff/onetool ~/.config
 
 # python
-echo 'alias python=python3' >> ~/.bashrc
-echo 'alias python=python3' >> ~/.config/fish/config.fish
+sudo apt install python3.11 -y
+sudo apt install python3.11-full
+echo 'alias python=python3.11' >> ~/.bashrc
+echo 'alias python=python3.11' >> ~/.config/fish/config.fish
 
 # neovim
 ln -s ~/stuff/nvim ~/.config
@@ -125,7 +127,10 @@ cd ..
 flatpak install flathub com.jgraph.drawio.desktop
 
 # proton
-
+curl -LO https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-2_all.deb
+sudo dpkg --install protonvpn-stable-release_1.0.3-2_all.deb
+sudo apt update -y
+sudo apt install proton-vpn-gnome-desktop
 
 sudo apt update -y
 cd ..
