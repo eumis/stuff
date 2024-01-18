@@ -5,3 +5,4 @@ github-copilot/
 ~/
 onetool/local.py
 onetool/init.dev.py
+*.pyc
