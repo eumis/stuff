@@ -204,7 +204,7 @@ local setup_files = function()
     local telescope_builtin = require('telescope.builtin')
     local opts = { noremap = true, silent = true }
     vim.keymap.set('n', '<space>ff', function() telescope_builtin.find_files() end, opts)
-    vim.keymap.set('n', '<space>fh', function() telescope_builtin.find_files({ hidden = true }) end, opts)
+    vim.keymap.set('n', '<space>fh', function() telescope_builtin.find_files({ hidden = true, no_ignore = true }) end, opts)
     vim.keymap.set('n', '<space>fs', function() telescope_builtin.live_grep() end, opts)
     vim.keymap.set('n', '<space>fi', '<cmd>lua require("telescope.builtin").live_grep()<cr>interface ', opts)
     vim.keymap.set('n', '<space>fc', '<cmd>lua require("telescope.builtin").live_grep()<cr>class ')

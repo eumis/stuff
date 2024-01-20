@@ -7,7 +7,9 @@ try:
 except ImportError:
     local = None
 
+
 app = OnetoolRuntime.get()
+app.config.editor_cmd = ('kitty -e ~/.local/nvim.appimage', True)
 
 app.api.load_plugin('files')
 app.api.load_plugin('logs')
@@ -25,7 +27,7 @@ app.api.load_plugin('auto',
     data_root = '~/data/auto',
     local_data_root = '~/data/auto_local'
 )
-app.api.open('player')
+app.api.open('auto')
 
 app.api.add_statusline(app.state.get_key_sequence().pipe(
     op.map(lambda s: s.replace(' ', 'spc'))))
