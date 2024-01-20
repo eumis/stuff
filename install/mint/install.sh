@@ -132,6 +132,9 @@ sudo dpkg --install protonvpn-stable-release_1.0.3-2_all.deb
 sudo apt update -y
 sudo apt install proton-vpn-gnome-desktop
 
+# htop
+sudo apt install htop -y
+
 sudo apt update -y
 cd ..
 rm -rf temp
