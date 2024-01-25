@@ -69,6 +69,7 @@ mv nvim.appimage ~/.local
 chmod u+x ~/.local/nvim.appimage
 echo 'alias nvim=~/.local/nvim.appimage' >> ~/.bashrc
 echo 'alias nvim=~/.local/nvim.appimage' >> ~/.config/fish/config.fish
+git config --global core.editor ~/.local/nvim.appimage
 
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -109,6 +110,19 @@ chmod u+x ~/.local/telegram.app/Telegram
 
 # tuxguitar
 flatpak install flathub ar.com.tuxguitar.TuxGuitar -y
+
+# audacity
+curl -o audacity.appimage https://github.com/audacity/audacity/releases/download/Audacity-3.4.2/audacity-linux-3.4.2-x64.AppImage
+mv audacity.appimage ~/.local/audacity.appimage
+chmod u+x ~/.local/audacity.appimage
+cat >~/.local/share/applications/audacity.desktop <<EOL
+[Desktop Entry]
+Type=Application
+Name=Audacity
+TryExec=~/.local/audacity.appimage
+Exec=~/.local/audacity.appimage
+Terminal=false
+EOL
 
 # spotify
 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
