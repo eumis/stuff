@@ -1,7 +1,7 @@
 from reactivex import operators as op
 
 from onetool.app.runtime import OnetoolRuntime
-from onetool.core import environment, events
+from onetool.core import events
 
 try:
     import local
