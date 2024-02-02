@@ -1,6 +1,7 @@
 from reactivex import operators as op
 
 from onetool.app.runtime import OnetoolRuntime
+from onetool.core import environment, events
 
 try:
     import local
@@ -10,11 +11,20 @@ except ImportError:
 
 app = OnetoolRuntime.get()
 app.config.editor_cmd = ('kitty -e ~/.local/nvim.appimage', True)
+if environment.is_windows():
+    app.config.plugins_root_name = '_internal/plugins'
+    app.config.views_root = '_internal/onetool'
 
 app.api.load_plugin('files')
 app.api.load_plugin('logs')
 app.api.load_plugin('tables')
 app.api.load_plugin('rest')
+
+app.api.load_plugin('auto',
+    data_root = '~/data/auto',
+    local_data_root = '~/data/auto_local'
+)
+
 app.api.load_plugin('player',
     db_home = '~/data/playerdb',
     spot_client_id = local.spot_client_id if local else None,
@@ -23,12 +33,9 @@ app.api.load_plugin('player',
     spot_device_id = local.spot_device_id if local else None
 )
 
-app.api.load_plugin('auto',
-    data_root = '~/data/auto',
-    local_data_root = '~/data/auto_local'
-)
-app.api.open('auto')
-
 app.api.add_statusline(app.state.get_key_sequence().pipe(
-    op.map(lambda s: s.replace(' ', 'spc'))))
+    op.map(lambda s: s.replace(' ', 'spc'))
+))
+
+events.subscribe('app.enter', lambda _: app.api.open('player'))
 
