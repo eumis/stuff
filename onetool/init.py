@@ -11,9 +11,8 @@ except ImportError:
 
 app = OnetoolRuntime.get()
 app.config.editor_cmd = ('kitty -e ~/.local/nvim.appimage', True)
-if environment.is_windows():
-    app.config.plugins_root_name = '_internal/plugins'
-    app.config.views_root = '_internal/onetool'
+app.config.plugins_root_name = '_internal/plugins'
+app.config.views_root = '_internal/onetool'
 
 app.api.load_plugin('files')
 app.api.load_plugin('logs')
