@@ -1,4 +1,5 @@
-sudo pacman -Syu
+sudo apt update
+sudo apt upgrade
 
 ssh-keygen -t ed25519 -C "eumisdev@proton.me" -f ~/.ssh/github
 ssh-add ~/.ssh/github

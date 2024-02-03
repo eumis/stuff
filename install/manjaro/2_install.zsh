@@ -3,9 +3,10 @@ cd temp
 
 # tools
 sudo pacman -S git --noconfirm
-git clone git@github.com:eumis/stuff.git
 sudo pacman -S bat --noconfirm
 
+# configs
+git clone git@github.com:eumis/stuff.git
 
 # fish
 sudo pacman -S fish --noconfirm
@@ -90,6 +91,10 @@ flatpak install flathub com.spotify.Client -y
 
 # audacity
 sudo pacman -S audacity --noconfirm
+
+# proton vpn
+pamac update --force-refresh
+pamac build protonvpn-cli
 
 # steam
 sudo pacman -S steam --noconfirm
