@@ -1,7 +1,10 @@
 cd ~
 
-mkdir temp
-cd temp
+# git
+sudo apt install git -y
+
+# configs
+git clone git@github.com:eumis/stuff.git
 
 # fish
 sudo apt-add-repository ppa:fish-shell/release-3
@@ -9,6 +12,14 @@ sudo apt update -y
 sudo apt install fish -y
 chsh -s $(which fish)
 echo 'eval (ssh-agent -c)' >> ~/.config/fish/config.fish
+
+# bat
+sudo apt install bat -y
+echo 'alias bat=batcat' >> ~/.bashrc
+echo 'alias bat=batcat' >> ~/.config/fish/config.fish
+
+mkdir temp
+cd temp
 
 # nerd font
 mkdir ~/.local/share/fonts
@@ -26,27 +37,22 @@ cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/appli
 sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
 sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
 
-# bat
-sudo apt install bat -y
-echo 'alias bat=batcat' >> ~/.bashrc
-echo 'alias bat=batcat' >> ~/.config/fish/config.fish
-
-# docker
-sudo apt install docker -y
+# onetool
+ln -s ~/stuff/onetool ~/.config
 
 # wx dependencies
 sudo apt install libsdl2-2.0-0 -y
 sudo apt install python3-wxgtk4.0 -y
 sudo apt install python3-wxgtk-webview4.0 -y
 
-# onetool
-ln -s ~/stuff/onetool ~/.config
-
 # python
 sudo apt install python3.11 -y
 sudo apt install python3.11-full
 echo 'alias python=python3.11' >> ~/.bashrc
 echo 'alias python=python3.11' >> ~/.config/fish/config.fish
+
+# docker
+sudo apt install docker -y
 
 # neovim
 ln -s ~/stuff/nvim ~/.config
@@ -73,17 +79,13 @@ git config --global core.editor ~/.local/nvim.appimage
 
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim -c 'PlugInstall' -c 'TSUpdate' -c 'qall'
+~/.local/nvim.appimage -c 'PlugInstall' -c 'TSUpdateSync' -c 'qall'
 
 # brave
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 sudo apt update -y
 sudo apt install brave-browser -y
-
-# steam
-wget https://repo.steampowered.com/steam/archive/precise/steam_latest.deb
-sudo apt install ./steam_latest.deb -y
 
 # wine
 sudo dpkg --add-architecture i386 
@@ -92,6 +94,15 @@ sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-bui
 sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
 sudo apt update -y
 sudo apt install --install-recommends winehq-stable -y
+
+# proton
+curl -LO https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-2_all.deb
+sudo dpkg --install protonvpn-stable-release_1.0.3-2_all.deb
+sudo apt update -y
+sudo apt install proton-vpn-gnome-desktop
+
+# drawio
+flatpak install flathub com.jgraph.drawio.desktop -y
 
 # keepass
 sudo add-apt-repository ppa:ubuntuhandbook1/keepass2
@@ -125,10 +136,14 @@ Terminal=false
 EOL
 
 # spotify
-curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update -y
 sudo apt install spotify-client -y
+
+# steam
+wget https://repo.steampowered.com/steam/archive/precise/steam_latest.deb
+sudo apt install ./steam_latest.deb -y
 
 # gamepad
 git clone https://github.com/medusalix/xone
@@ -136,18 +151,6 @@ cd xone
 sudo ./install.sh --release
 sudo xone-get-firmware.sh --skip-disclaimer
 cd ..
-
-# drawio
-flatpak install flathub com.jgraph.drawio.desktop
-
-# proton
-curl -LO https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-2_all.deb
-sudo dpkg --install protonvpn-stable-release_1.0.3-2_all.deb
-sudo apt update -y
-sudo apt install proton-vpn-gnome-desktop
-
-# htop
-sudo apt install htop -y
 
 sudo apt update -y
 cd ..
