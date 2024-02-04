@@ -206,7 +206,7 @@ local ignore = {
 }
 
 function M.setup()
-    require 'nvim-treesitter.install'.compilers = { "zig", "clang", "gcc" }
+    require 'nvim-treesitter.install'.compilers = { "zig", "gcc", "clang" }
     require 'nvim-treesitter.configs'.setup {
         -- One of "all", "maintained" (parsers with maintainers), or a list of languages
         ensure_installed = "all",

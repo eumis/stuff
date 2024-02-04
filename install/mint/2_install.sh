@@ -60,8 +60,9 @@ ln -s ~/stuff/nvim ~/.config
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs
 
-sudo apt install lua5.4 -y
+sudo apt install build-essential -y
 sudo apt install gcc -y
+sudo apt install lua5.4 -y
 sudo apt install unzip -y
 sudo apt install ripgrep -y
 sudo apt install fd-find -y
