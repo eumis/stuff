@@ -100,13 +100,19 @@ pamac build protonvpn-cli
 sudo pacman -S steam --noconfirm
 
 # gamepad
-sudo pacman -S linux66-headers
+sudo pacman -S linux66-headers --noconfirm
 sudo pacman -S dkms --noconfirm
 sudo pacman -S cabextract --noconfirm
 git clone https://github.com/medusalix/xone
 cd xone
 sudo ./install.sh --release
 sudo xone-get-firmware.sh --skip-disclaimer
+
+# keyboard
+sudo pacman -S libusb --noconfirm
+sudo cp ~/stuff/install/50-zsa.rules /etc/udev/rules.d/
+sudo groupadd plugdev
+sudo usermod -aG plugdev $USER
 
 cd ~
 rm -rf temp

@@ -153,6 +153,12 @@ sudo ./install.sh --release
 sudo xone-get-firmware.sh --skip-disclaimer
 cd ..
 
+# keyboard
+sudo apt install libusb-1.0-0-dev
+sudo cp ~/stuff/install/50-zsa.rules /etc/udev/rules.d/
+sudo groupadd plugdev
+sudo usermod -aG plugdev $USER
+
 sudo apt update -y
 cd ..
 rm -rf temp
