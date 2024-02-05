@@ -36,5 +36,5 @@ app.api.add_statusline(app.state.get_key_sequence().pipe(
     op.map(lambda s: s.replace(' ', 'spc'))
 ))
 
-events.subscribe('app.enter', lambda _: app.api.open('files'))
+events.subscribe('app.enter', lambda _: app.api.open('player'))
 

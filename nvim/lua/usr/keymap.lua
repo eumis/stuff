@@ -161,6 +161,16 @@ local setup_windows = function()
     vim.keymap.set('n', '<space>sh', ':split<CR>')
 end
 
+local setup_terminal = function()
+    local opts = { noremap = true, silent = true }
+    vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts)
+    vim.keymap.set('n', '<space>ii', function()
+        vim.cmd('split')
+        vim.cmd('wincmd j')
+        vim.cmd('terminal')
+    end, opts)
+end
+
 local setup_buffers = function()
     vim.keymap.set('n', '<space>bd', ':bdelete<CR>')
     vim.keymap.set('n', '<C-s>', ':w<CR>')
@@ -254,6 +264,7 @@ function M.setup()
     vim.keymap.set('n', '<space>qa', '<cmd>:qa<cr>')
     vim.keymap.set('n', '<space>qn', '<cmd>:qa!<cr>')
     setup_windows()
+    setup_terminal()
     setup_buffers()
     setup_nvim_tree()
     setup_git()
