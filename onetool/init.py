@@ -1,7 +1,7 @@
 from reactivex import operators as op
 
 from onetool.app.runtime import OnetoolRuntime
-from onetool.core import events
+from onetool.core import events, environment
 
 try:
     import local
@@ -10,7 +10,7 @@ except ImportError:
 
 
 app = OnetoolRuntime.get()
-app.config.editor_cmd = ('kitty -e ~/.local/nvim.appimage', True)
+app.config.editor_cmd = ('kitty -e ~/.local/nvim.appimage', True) if environment.is_linux() else ('wt nvim', True)
 app.config.plugins_root_name = '_internal/plugins'
 app.config.views_root = '_internal/onetool'
 
