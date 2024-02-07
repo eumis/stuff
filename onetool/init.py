@@ -20,7 +20,7 @@ app.api.load_plugin('tables')
 app.api.load_plugin('rest')
 
 app.api.load_plugin('auto',
-    data_root = '~/data/auto',
+    data_root = '~/data/data/auto',
     local_data_root = '~/data/auto_local'
 )
 
