@@ -14,17 +14,16 @@ app.config.editor_cmd = ('kitty -e ~/.local/nvim.appimage', True) if environment
 app.config.plugins_root_name = '_internal/plugins'
 app.config.views_root = '_internal/onetool'
 
-app.api.load_plugin('files')
-app.api.load_plugin('logs')
-app.api.load_plugin('tables')
-app.api.load_plugin('rest')
+app.load_plugin('files')
+app.load_plugin('logs')
+app.load_plugin('tables')
 
-app.api.load_plugin('auto',
+app.load_plugin('auto',
     data_root = '~/data/data/auto',
     local_data_root = '~/data/auto_local'
 )
 
-app.api.load_plugin('player',
+app.load_plugin('player',
     db_home = '~/data/playerdb',
     spot_client_id = local.spot_client_id if local else None,
     spot_redirect_url = local.spot_redirect_url if local else None,
@@ -32,8 +31,8 @@ app.api.load_plugin('player',
     spot_device_id = local.spot_device_id if local else None
 )
 
-app.api.add_statusline(app.state.get_key_sequence().pipe(
+app.add_statusline(app.get_key_sequence().pipe(
     op.map(lambda s: s.replace(' ', 'spc'))
 ))
 
-events.subscribe('app.enter', lambda _: app.api.open('player'))
+events.subscribe('app.enter', lambda _: app.open('player'))
