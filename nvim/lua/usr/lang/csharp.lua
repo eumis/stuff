@@ -24,7 +24,7 @@ local setup_lsp = function()
             return util.root_pattern(root_patterns)(fname)
         end,
         enable_roslyn_analyzers = true,
-        analyze_open_documents_only = false,
+        analyze_open_documents_only = true,
         enable_import_completion = true,
         enable_editorconfig_support = true
     })
