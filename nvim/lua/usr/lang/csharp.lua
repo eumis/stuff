@@ -71,7 +71,7 @@ end
 function M.setup_omnisharp()
     setup_lsp()
     setup_debug()
-    setup_tests()
+    -- setup_tests()
 end
 
 return M
