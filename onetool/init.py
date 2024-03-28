@@ -49,4 +49,8 @@ keymap.bind(GLOBAL, ' -o-l', lambda: app.open('logs'))
 keymap.bind(GLOBAL, ' -o-n', lambda: app.open('notifications'))
 keymap.bind(GLOBAL, ' -o-f', lambda: app.open('files'))
 
-events.subscribe('app.enter', lambda _: app.open('player'))
+def enter():
+    app.open('auto')
+    app.open('player')
+
+events.subscribe('app.enter', lambda _: enter())
