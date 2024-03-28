@@ -12,7 +12,7 @@ except ImportError:
 app = OnetoolRuntime.get()
 app.config.editor_cmd = (
     '~/.local/kitty.app/bin/kitty -e ~/.local/nvim.appimage',
-    True) if environment.is_linux() else ('wt nvim', True)
+    True) if environment.is_linux() else ('start /wait nvim', True)
 app.config.plugins_root = '_internal/plugins'
 app.config.views_root = '_internal/onetool'
 
