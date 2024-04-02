@@ -12,6 +12,7 @@ function M.setup()
 
     --Common
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-neotest/nvim-nio'
 
     --git
     Plug 'tpope/vim-fugitive'
