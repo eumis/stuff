@@ -29,6 +29,7 @@ function M.setup()
     --editor
     Plug 'numToStr/Comment.nvim'
     Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'gregorias/coerce.nvim'
     --Plug 'windwp/nvim-ts-autotag'
 
     --files
