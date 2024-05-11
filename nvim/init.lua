@@ -3,7 +3,7 @@ require('usr.plugins').setup()
 require('usr.options').setup()
 require('usr.treesitter').setup()
 require('usr.cmp').setup()
-require('usr.copilot').setup()
+--require('usr.copilot').setup()
 
 require("mason").setup()
 require("mason-lspconfig").setup({

@@ -22,6 +22,7 @@ local setup_pyright = function()
             python = {
                 analysis = {
                     typeCheckingMode = "basic",
+                    enableTypeIgnoreComments = true,
                     diagnosticSeverityOverrides = {
                     -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md#type-check-diagnostics-settings
                         strictParameterNoneValue = false,
