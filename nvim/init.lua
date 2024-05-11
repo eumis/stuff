@@ -1,4 +1,4 @@
-require('usr.plugins').setup()
+require('usr.plugins').setup_lazy()
 
 require('usr.options').setup()
 require('usr.treesitter').setup()
