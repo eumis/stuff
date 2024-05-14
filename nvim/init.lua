@@ -27,7 +27,7 @@ require('usr.editor').setup()
 require('usr.style').setup()
 require('usr.statusline')
 require('usr.telescope').setup()
-require('nvim-tree').setup({ view = { width = 60 } })
+require('nvim-tree').setup({ view = { width = 60, relativenumber = true } })
 require('nvim-web-devicons').setup()
 
 require('usr.keymap').setup()
