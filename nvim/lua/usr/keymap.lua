@@ -169,6 +169,11 @@ local setup_terminal = function()
         vim.cmd('wincmd j')
         vim.cmd('terminal')
     end, opts)
+    vim.keymap.set('n', '<space>iv', function()
+        vim.cmd('vsplit')
+        vim.cmd('wincmd l')
+        vim.cmd('terminal')
+    end, opts)
 end
 
 local setup_buffers = function()
