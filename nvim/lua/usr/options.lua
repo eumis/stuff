@@ -28,6 +28,8 @@ function M.setup()
     vim.cmd('filetype plugin indent on')
     vim.cmd('syntax')
     vim.opt.completeopt = 'menu,menuone,noselect'
+    vim.opt.langmap =
+      "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 
     --let python_highlight_all=1
 end
