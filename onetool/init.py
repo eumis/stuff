@@ -2,7 +2,7 @@ from onetool.core.keyboard import GLOBAL, KeyMap
 from reactivex import operators as op
 
 from onetool.app.runtime import OnetoolRuntime
-from onetool.core import widgets
+from onetool.core import widgets, environment
 
 async def init():
     try:
@@ -11,7 +11,9 @@ async def init():
         local = None
 
     app = OnetoolRuntime.get()
-    app.config.editor_cmd = ('~/.local/kitty.app/bin/kitty -e ~/.local/nvim.appimage', True)
+    app.config.editor_cmd = (
+        '~/.local/kitty.app/bin/kitty -e ~/.local/nvim.appimage',
+        True) if environment.is_linux() else ('start /wait nvim', True)
 
     await app.load_plugin('logs')
     await app.load_plugin('notifications')
