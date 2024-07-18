@@ -48,8 +48,11 @@ sudo apt install python3-wxgtk-webview4.0 -y
 # python
 sudo apt install python3.11 -y
 sudo apt install python3.11-full
+sudo apt install python3-pip
 echo 'alias python=python3.11' >> ~/.bashrc
 echo 'alias python=python3.11' >> ~/.config/fish/config.fish
+echo 'alias pip=python3.11 -m pip' >> ~/.bashrc
+echo 'alias pip=python3.11 -m pip' >> ~/.config/fish/config.fish
 
 # docker
 sudo apt install docker -y
@@ -97,8 +100,8 @@ sudo apt update -y
 sudo apt install --install-recommends winehq-stable -y
 
 # proton
-curl -LO https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-2_all.deb
-sudo dpkg --install protonvpn-stable-release_1.0.3-2_all.deb
+curl -LO  https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
+sudo dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb
 sudo apt update -y
 sudo apt install proton-vpn-gnome-desktop
 
@@ -141,6 +144,9 @@ curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update -y
 sudo apt install spotify-client -y
+
+# vlc
+sudo apt install vlc
 
 # steam
 wget https://repo.steampowered.com/steam/archive/precise/steam_latest.deb

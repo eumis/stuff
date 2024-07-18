@@ -39,9 +39,6 @@ function M.setup()
             row = 0,
             col = 1
         },
-        yadm = {
-            enable = false
-        },
         on_attach = function(bufnr)
             keymap.setup_gitsigns(bufnr)
         end
