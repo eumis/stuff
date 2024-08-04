@@ -156,6 +156,9 @@ sudo apt install spotify-client -y
 # vlc
 sudo apt install vlc
 
+# ffmpeg
+sudo apt install ffmpeg
+
 # steam
 wget https://repo.steampowered.com/steam/archive/precise/steam_latest.deb
 sudo apt install ./steam_latest.deb -y

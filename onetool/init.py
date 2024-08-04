@@ -20,7 +20,7 @@ async def init():
 
     player = await app.load_plugin('player',
         db_home = '~/data/playerdb',
-        local_home = '~/data/music',
+        local_home = '/home/data/music',
         spot_client_id = local.spot_client_id if local else None,
         spot_redirect_url = local.spot_redirect_url if local else None,
         spot_api_url = 'https://api.spotify.com',
@@ -39,19 +39,20 @@ async def init():
     )
 
     keymap = KeyMap.get(GLOBAL)
-    keymap.bind(GLOBAL, ' -n-n', lambda: app.notify_info('info'))
+    keymap.bind(GLOBAL, ' -n-n', lambda _: app.notify_info('info'))
 
     keymap = KeyMap.get(GLOBAL)
-    keymap.bind(GLOBAL, ' -o-p', lambda: app.open('player'))
-    keymap.bind(GLOBAL, ' -o-a', lambda: app.open('auto'))
-    keymap.bind(GLOBAL, ' -o-l', lambda: app.open('logs'))
-    keymap.bind(GLOBAL, ' -o-n', lambda: app.open('notifications'))
-    keymap.bind(GLOBAL, ' -o-f', lambda: app.open('files'))
+    keymap.bind(GLOBAL, ' -o-p', lambda _: app.open('player'))
+    keymap.bind(GLOBAL, ' -o-a', lambda _: app.open('auto'))
+    keymap.bind(GLOBAL, ' -o-l', lambda _: app.open('logs'))
+    keymap.bind(GLOBAL, ' -o-n', lambda _: app.open('notifications'))
+    keymap.bind(GLOBAL, ' -o-f', lambda _: app.open('files'))
 
-    await app.open('player')
-
-    await app.load_plugin('files')
     await app.load_plugin('auto',
         data_root = '~/data/data/auto',
         local_data_root = '~/data/auto_local'
     )
+
+    await app.open('player')
+
+    await app.load_plugin('files')
