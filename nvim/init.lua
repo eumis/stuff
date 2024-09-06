@@ -7,14 +7,15 @@ require('usr.cmp').setup()
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "omnisharp", "lemminx", "jsonls" }
+    ensure_installed = { "lua_ls", "basedpyright", "omnisharp", "lemminx", "jsonls" }
 })
 
 require('usr.lsp').setup()
 require('usr.debug').setup()
 
 require('usr.lang.lua').setup()
-require('usr.lang.python').setup_pyright()
+--require('usr.lang.python').setup_pyright()
+require('usr.lang.python').setup_basedpyright()
 require('usr.lang.csharp').setup_omnisharp()
 require('usr.lang.json').setup_jsonls()
 require('usr.lang.xml').setup_lemminx()

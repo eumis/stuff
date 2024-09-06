@@ -3,6 +3,7 @@ from reactivex import operators as op
 
 from onetool.app.runtime import OnetoolRuntime
 from onetool.core import widgets, environment
+from onetool.core.widgets import VBox, HBox, W
 
 async def init():
     try:
@@ -15,9 +16,6 @@ async def init():
         '~/.local/kitty.app/bin/kitty -e ~/.local/nvim.appimage',
         True) if environment.is_linux() else ('start /wait nvim', True)
 
-    await app.load_plugin('logs')
-    await app.load_plugin('notifications')
-
     player = await app.load_plugin('player',
         db_home = '~/data/playerdb',
         local_home = '/home/data/music',
@@ -28,6 +26,9 @@ async def init():
         preload = True,
         preload_timeout = 20
     )
+    await app.open('player')
+
+    logs = await app.load_plugin('logs')
 
     keys_widget = widgets.TextWidget()
     app.get_key_sequence()\
@@ -35,7 +36,9 @@ async def init():
         .subscribe(on_next = keys_widget.set_text)
 
     app.use_widgets(
-        widgets.VBox([player.get_widget(), widgets.WBox(keys_widget, 0)])
+        VBox(
+            HBox(player.get_widget(), logs.get_widget()),
+            W(keys_widget, proportion=0))
     )
 
     keymap = KeyMap.get(GLOBAL)
@@ -47,12 +50,11 @@ async def init():
     keymap.bind(GLOBAL, ' -o-l', lambda _: app.open('logs'))
     keymap.bind(GLOBAL, ' -o-n', lambda _: app.open('notifications'))
     keymap.bind(GLOBAL, ' -o-f', lambda _: app.open('files'))
+    keymap.bind(GLOBAL, ' -s-s', lambda _: app.split())
 
+    await app.load_plugin('notifications')
     await app.load_plugin('auto',
         data_root = '~/data/data/auto',
         local_data_root = '~/data/auto_local'
     )
-
-    await app.open('player')
-
     await app.load_plugin('files')
