@@ -7,10 +7,12 @@ local setup_lsp = function()
     local pid = vim.fn.getpid()
 
     lspconfig.omnisharp.setup({
-        on_attach = function(client, bufnr)
-            client.server_capabilities.semanticTokensProvider = nil
-            lsp.on_attach(client, bufnr)
+        on_init = function(client, initialization_result)
+            if client.server_capabilities then
+                client.server_capabilities.semanticTokensProvider = false  -- turn off semantic tokens
+            end
         end,
+        on_attach = lsp.on_attach,
         capabilities = lsp.capabilities,
         handlers = {
             ["textDocument/definition"] = require('omnisharp_extended').handler,
