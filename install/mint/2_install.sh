@@ -70,6 +70,7 @@ sudo apt install unzip -y
 sudo apt install ripgrep -y
 sudo apt install fd-find -y
 sudo apt install xsel -y
+sudo apt install fzf
 
 echo 'alias fd=fdfind' >> ~/.bashrc
 echo 'alias fd=fdfind' >> ~/.config/fish/config.fish
@@ -92,6 +93,12 @@ sudo apt update
 sudo apt install fastfetch -y
 echo 'fastfetch' >> ~/.bashrc
 echo 'fastfetch' >> ~/.config/fish/config.fish
+
+# zoxide
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
+echo 'zoxide init fish | source' >> ~/.config/fish/config.fish
+
 
 # brave
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
