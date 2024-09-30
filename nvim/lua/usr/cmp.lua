@@ -8,9 +8,8 @@ function M.setup()
         mapping = keymap.get_cmp_mapping(),
         sources = {
             { name = 'nvim_lsp' },
-            { name = 'copilot' },
-            { name = 'path' },
-            { name = 'luasnip' }
+            { name = 'luasnip' },
+            { name = 'path' }
         }
     }
 end

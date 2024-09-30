@@ -41,13 +41,14 @@ sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/sha
 ln -s ~/stuff/onetool ~/.config
 
 # wx dependencies
+sudo apt install libgtk-3-dev
 sudo apt install libsdl2-2.0-0 -y
 sudo apt install python3-wxgtk4.0 -y
 sudo apt install python3-wxgtk-webview4.0 -y
 
 # python
-sudo apt install python3.11 -y
-sudo apt install python3.11-full
+sudo apt install python3.12 -y
+sudo apt install python3.12-full
 sudo apt install python3-pip
 echo 'alias python=python3.11' >> ~/.bashrc
 echo 'alias python=python3.11' >> ~/.config/fish/config.fish

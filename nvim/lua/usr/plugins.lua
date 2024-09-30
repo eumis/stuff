@@ -70,6 +70,7 @@ function M.setup_lazy()
         --
         --snippets
         'L3MON4D3/LuaSnip',
+        "rafamadriz/friendly-snippets",
 
         --autocomplete
         'hrsh7th/nvim-cmp',

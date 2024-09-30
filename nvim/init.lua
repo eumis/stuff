@@ -33,6 +33,8 @@ require('nvim-web-devicons').setup()
 
 require('usr.keymap').setup()
 
+require('usr.luasnip').setup()
+
 --[[require("neodev").setup({
     library = { plugins = { "nvim-dap-ui", "neotest" }, types = true }
 })]]
