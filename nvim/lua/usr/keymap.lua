@@ -257,7 +257,12 @@ local setup_harpoon = function()
     local harpoon_mark = require("harpoon.mark")
     vim.keymap.set('n', '<C-m>', harpoon_mark.add_file, opts)
     vim.keymap.set('n', '<C-c>', harpoon_mark.clear_all, opts)
+end
 
+local setup_snippets = function()
+    local ls = require("luasnip")
+    vim.keymap.set({"i", "s"}, "<C-w>", function() ls.jump( 1) end, {silent = true})
+    vim.keymap.set({"i", "s"}, "<C-r>", function() ls.jump(-1) end, {silent = true})
 end
 
 function M.setup()
@@ -279,6 +284,7 @@ function M.setup()
     setup_files()
     setup_marks()
     setup_harpoon()
+    setup_snippets()
 end
 
 return M

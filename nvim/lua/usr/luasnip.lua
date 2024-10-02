@@ -11,7 +11,6 @@ function M.setup()
 
     require('luasnip.loaders.from_vscode').load()
 
-    ls.add_snippets("all", { })
 end
 
 return M
