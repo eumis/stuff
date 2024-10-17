@@ -26,7 +26,7 @@ function M.setup()
     ls.setup()
     require('luasnip.loaders.from_vscode').load()
 
-    ls.add_snippets('py', {
+    ls.add_snippets('python', {
         s('pg',
             fmt(
             [[
