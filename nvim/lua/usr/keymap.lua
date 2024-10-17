@@ -24,8 +24,8 @@ end
 function M.get_cmp_mapping()
     local cmp = require('cmp')
     return {
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
+        --['<C-p>'] = cmp.mapping.select_prev_item(),
+        --['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete({}),
@@ -261,8 +261,8 @@ end
 
 local setup_snippets = function()
     local ls = require("luasnip")
-    vim.keymap.set({"i", "s"}, "<C-w>", function() ls.jump( 1) end, {silent = true})
-    vim.keymap.set({"i", "s"}, "<C-r>", function() ls.jump(-1) end, {silent = true})
+    vim.keymap.set({"i", "s"}, "<C-n>", function() ls.jump( 1) end, {silent = true})
+    vim.keymap.set({"i", "s"}, "<C-p>", function() ls.jump(-1) end, {silent = true})
 end
 
 function M.setup()
