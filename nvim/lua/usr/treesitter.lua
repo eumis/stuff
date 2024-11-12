@@ -86,7 +86,7 @@ local ensure = {
     --'janet_simple',
     'java',
     'javascript',
-    'jq',
+    --'jq',
     'jsdoc',
     'json',
     'json5',
@@ -217,7 +217,7 @@ function M.setup()
         auto_install = false,
 
         -- List of parsers to ignore installing
-        ignore_install = {"all"},
+        ignore_install = {},
 
         highlight = {
             -- `false` will disable the whole extension

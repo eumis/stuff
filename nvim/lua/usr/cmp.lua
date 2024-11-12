@@ -7,8 +7,8 @@ function M.setup()
         snippet = { expand = function() end },
         mapping = keymap.get_cmp_mapping(),
         sources = {
-            { name = 'nvim_lsp' },
             { name = 'luasnip' },
+            { name = 'nvim_lsp' },
             { name = 'path' }
         }
     }

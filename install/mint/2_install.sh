@@ -178,6 +178,12 @@ sudo ./install.sh --release
 sudo xone-get-firmware.sh --skip-disclaimer
 cd ..
 
+# noisetorch
+curl -o https://github.com/noisetorch/NoiseTorch/releases/download/v0.12.2/NoiseTorch_x64_v0.12.2.tgz
+tar -C $HOME -h -xzf NoiseTorch_x64_v0.12.2.tgz
+gtk-update-icon-cache
+sudo setcap 'CAP_SYS_RESOURCE=+ep' ~/.local/bin/noisetorch
+
 # keyboard
 sudo apt install libusb-1.0-0-dev
 sudo cp ~/stuff/install/50-zsa.rules /etc/udev/rules.d/

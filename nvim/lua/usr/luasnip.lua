@@ -27,7 +27,7 @@ function M.setup()
     require('luasnip.loaders.from_vscode').load()
 
     ls.add_snippets('python', {
-        s('pg',
+        s('property getter',
             fmt(
             [[
                 @property
@@ -36,10 +36,17 @@ function M.setup()
             ]], {
                 name = i(1, 'name'),
                 type = i(2),
-                value = i(3)
+                value = d(3,
+                    function(args)
+                        return sn(nil, {
+                            i(1, args[1])
+                        })
+                    end,
+                    {1}
+                )
             })
         ),
-        s('ps',
+        s('property setter',
             fmt(
             [[
                 @{name}.setter
@@ -52,7 +59,7 @@ function M.setup()
                 setter = i(3)
             })
         ),
-        s('pgs',
+        s('property',
             fmt(
             [[
                 @property
@@ -71,7 +78,72 @@ function M.setup()
                 type1 = rep(2),
                 setter = i(4)
             })
-        )
+        ),
+        s('test class',
+            fmt(
+            [[
+                @mark.usefixtures('async_test')
+                class {name}Tests:
+            ]], {
+                name = i(1)
+            })
+        ),
+        s('test method',
+            fmt(
+            [[
+                @mark.parametrize('{parameters}', [
+                ])
+                {async}def test_{method}(self, {parameters1}):
+                    """{description}"""
+            ]], {
+                async = i(1, 'async '),
+                parameters = i(2),
+                method = i(3),
+                parameters1 = rep(2),
+                description = i(4)
+            })
+        ),
+        s('next',
+            fmt('next({entry} for {entry1} in {collection} if {condition})', {
+                entry = i(1),
+                entry1 = rep(1),
+                collection = i(2),
+                condition = i(3)
+            })
+        ),
+        s('next try',
+            fmt(
+            [[
+                try:
+                    next({entry} for {entry1} in {collection} if {condition})
+                except StopIteration:
+                    pass
+            ]], {
+                entry = i(1),
+                entry1 = rep(1),
+                collection = i(2),
+                condition = i(3)
+            })
+        ),
+        s('fixture',
+            fmt(
+            [[
+                @fixture
+                def {name}_fixture(request, {yield_parameter}):
+                    {yield_return}
+            ]], {
+                name = i(1),
+                yield_parameter = i(2, '_yield = In'),
+                yield_return = i(3, 'yield _yield')
+            })
+        ),
+        s('patched',
+            fmt("@patched(f'{{{module}.__name__}}.{target}', '{target1}_mock')", {
+                module = i(1),
+                target = i(2),
+                target1 = rep(2)
+            })
+        ),
     })
 
     ls.add_snippets('cs', {

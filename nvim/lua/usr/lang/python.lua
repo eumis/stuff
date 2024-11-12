@@ -29,7 +29,9 @@ local setup_pyright = function()
         -- _ variable is client
         lsp.on_attach(_, bufnr)
         local opts = { noremap = true, silent = true, buffer = bufnr }
-        vim.keymap.set('n', '<space>e', '<cmd>silent !yapf % -i && isort %<CR>', opts)
+        local file_name = vim.api.nvim_buf_get_name(bufnr)
+        file_name = vim.fn.fnamemodify(file_name, ':p')
+        vim.keymap.set('n', '<space>e', ':!yapf '..file_name..' -i && isort '..file_name..'<CR>', opts)
         vim.keymap.set('n', '<space>ud', function() require("dap-python").test_method() end, opts)
     end
 
@@ -73,7 +75,7 @@ local setup_basedpyright = function()
         -- _ variable is client
         lsp.on_attach(_, bufnr)
         local opts = { noremap = true, silent = true, buffer = bufnr }
-        vim.keymap.set('n', '<space>e', '<cmd>silent !yapf % -i && isort %<CR>', opts)
+        vim.keymap.set('n', '<space>e', "<cmd>silent !yapf '%' -i && isort '%'<CR>", opts)
         vim.keymap.set('n', '<space>ud', function() require("dap-python").test_method() end, opts)
     end
 
@@ -86,10 +88,18 @@ local setup_basedpyright = function()
         settings = {
             basedpyright = {
                 analysis = {
-                    autoImportCompletions = true,
                     autoSearchPaths = true,
                     --diagnosticMode = 'workspace',
+                    enableTypeIgnoreComments = true,
                     typeCheckingMode = 'standard', -- standard, strict, all, off, basic
+                    diagnosticSeverityOverrides = {
+                        strictParameterNoneValue = false,
+                        autoImportCompletions = true,
+                        reportOptionalSubscript = "warning",
+                        reportOptionalMemberAccess = "warning",
+                        reportOptionalIterable = "warning",
+                        reportGeneralTypeIssues = "warning"
+                    }
                 },
             }
         }
