@@ -15,7 +15,7 @@ def init():
     app.config.editor_cmd = (
         #'~/.local/kitty.app/bin/kitty -e ~/.local/nvim.appimage',
             '/usr/bin/wezterm start --new-tab ~/.local/nvim.appimage',
-        True) if environment.is_linux() else ('start /wait nvim', True)
+        True) if environment.is_linux() else ('wezterm start --new-tab nvim', True)
 
     player = app.load_plugin('player',
         db_home = '~/data/playerdb',
