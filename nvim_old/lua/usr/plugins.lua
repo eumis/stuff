@@ -49,9 +49,9 @@ function M.setup_lazy()
         --lsp
         'neovim/nvim-lspconfig',
         'folke/neodev.nvim', --notsure shouldbe lazydev
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        'williamboman/mason.nvim', --done
+        'williamboman/mason-lspconfig.nvim', --done
+        'WhoIsSethDaniel/mason-tool-installer.nvim', --done
         'ray-x/lsp_signature.nvim',
         'Hoffs/omnisharp-extended-lsp.nvim',
         'gbrlsnchs/telescope-lsp-handlers.nvim',
@@ -70,7 +70,7 @@ function M.setup_lazy()
         'Issafalcon/neotest-dotnet',
         --
         --snippets
-        'L3MON4D3/LuaSnip',
+        'L3MON4D3/LuaSnip', --done
         --"rafamadriz/friendly-snippets",
 
         --autocomplete
