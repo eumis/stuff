@@ -54,4 +54,5 @@ return {
             }
         }
     },
+    { 'kyazdani42/nvim-tree.lua', lazy = false, opts = { view = { width = 60, relativenumber = true } } }
 }

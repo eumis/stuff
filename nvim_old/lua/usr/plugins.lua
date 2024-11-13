@@ -25,16 +25,16 @@ function M.setup_lazy()
         'nvim-neotest/nvim-nio', --done
 
         --git
-        'tpope/vim-fugitive',
-        'lewis6991/gitsigns.nvim',
+        'tpope/vim-fugitive', --done
+        'lewis6991/gitsigns.nvim', --done
 
         --search
         'nvim-telescope/telescope.nvim', --done
         'nvim-telescope/telescope-fzy-native.nvim', --done
-        'ThePrimeagen/harpoon',
+        'ThePrimeagen/harpoon', --done
 
         --treesitter
-        {'nvim-treesitter/nvim-treesitter', build = ":TSUpdate"},
+        {'nvim-treesitter/nvim-treesitter', build = ":TSUpdate"}, --done
 
         --editor
         'numToStr/Comment.nvim', --done
@@ -43,12 +43,12 @@ function M.setup_lazy()
         --Plug 'windwp/nvim-ts-autotag'
 
         --files
-        'kyazdani42/nvim-tree.lua',
+        'kyazdani42/nvim-tree.lua', --done
         'Pocco81/auto-save.nvim', --done
 
         --lsp
         'neovim/nvim-lspconfig',
-        'folke/neodev.nvim',
+        'folke/neodev.nvim', --notsure shouldbe lazydev
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -74,31 +74,31 @@ function M.setup_lazy()
         --"rafamadriz/friendly-snippets",
 
         --autocomplete
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/nvim-cmp', --done
+        'hrsh7th/cmp-nvim-lsp', --done
+        'hrsh7th/cmp-buffer', --done
+        'hrsh7th/cmp-path', --done
+        'hrsh7th/cmp-cmdline', --done
+        'saadparwaiz1/cmp_luasnip', --done
         'windwp/nvim-autopairs', --done
 
         --Plug 'puremourning/vimspector'
 
         --visual
-        'mhinz/vim-startify',
-        'nvim-lualine/lualine.nvim',
+        'mhinz/vim-startify', --done
+        'nvim-lualine/lualine.nvim', --done
         --Plug 'feline-nvim/feline.nvim', { 'branch': 'develop' }
 
         --themes
         'rktjmp/lush.nvim',
         'xiyaowong/nvim-transparent', -- done
         'Mofiqul/vscode.nvim', -- done
-        'ellisonleao/gruvbox.nvim',
+        'ellisonleao/gruvbox.nvim', --notsure
 
         'kyazdani42/nvim-web-devicons', -- done
         'norcalli/nvim-colorizer.lua', -- done
         'karb94/neoscroll.nvim', --done
-        'nvim-lua/popup.nvim',
+        'nvim-lua/popup.nvim', --notsure
 
         --org mode
         --Plug 'nvim-neorg/neorg'
