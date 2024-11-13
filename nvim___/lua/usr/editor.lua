@@ -28,6 +28,15 @@ function M.setup()
       cases = require('coerce').default_cases,
       modes = require('coerce').default_modes
     })
+
+    vim.opt.list = true
+    --vim.opt.listchars:append("eol:↴")
+    require("ibl").setup({
+        scope = {
+            show_start = false,
+            show_end = false
+        }
+    })
 end
 
 return M

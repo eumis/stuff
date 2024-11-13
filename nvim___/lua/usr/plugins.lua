@@ -37,14 +37,14 @@ function M.setup_lazy()
         {'nvim-treesitter/nvim-treesitter', build = ":TSUpdate"},
 
         --editor
-        'numToStr/Comment.nvim',
+        'numToStr/Comment.nvim', --done
         'lukas-reineke/indent-blankline.nvim',
         'gregorias/coerce.nvim',
         --Plug 'windwp/nvim-ts-autotag'
 
         --files
         'kyazdani42/nvim-tree.lua',
-        'Pocco81/auto-save.nvim',
+        'Pocco81/auto-save.nvim', --done
 
         --lsp
         'neovim/nvim-lspconfig',
@@ -80,7 +80,7 @@ function M.setup_lazy()
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-cmdline',
         'saadparwaiz1/cmp_luasnip',
-        'windwp/nvim-autopairs',
+        'windwp/nvim-autopairs', --done
 
         --Plug 'puremourning/vimspector'
 
@@ -91,13 +91,13 @@ function M.setup_lazy()
 
         --themes
         'rktjmp/lush.nvim',
-        'xiyaowong/nvim-transparent',
-        'Mofiqul/vscode.nvim',
+        'xiyaowong/nvim-transparent', -- done
+        'Mofiqul/vscode.nvim', -- done
         'ellisonleao/gruvbox.nvim',
 
-        'kyazdani42/nvim-web-devicons',
-        'norcalli/nvim-colorizer.lua',
-        'karb94/neoscroll.nvim',
+        'kyazdani42/nvim-web-devicons', -- done
+        'norcalli/nvim-colorizer.lua', -- done
+        'karb94/neoscroll.nvim', --done
         'nvim-lua/popup.nvim',
 
         --org mode

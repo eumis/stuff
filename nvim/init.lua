@@ -1,66 +1,67 @@
-require('usr.plugins').setup_lazy()
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
 
-require('usr.options').setup()
-require('usr.treesitter').setup()
-require('usr.cmp').setup()
---require('usr.copilot').setup()
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
+vim.g.mapspace = ' '
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.wrap = false
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 10
+vim.opt.guicursor =
+'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
+vim.opt.encoding = 'UTF-8'
+vim.opt.hidden = true
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.updatetime = 300
+vim.opt.shortmess:append('c')
+vim.opt.autoread = true
+vim.opt.clipboard:append('unnamedplus')
+vim.opt.termguicolors = true
+vim.opt.guifont = 'CodeNewRoman\\ NF:h9'
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = {
-        "lua_ls",
-        "basedpyright",
-        "omnisharp",
-        "lemminx",
-        "jsonls",
-        "marksman",
-        "html"
-    }
+vim.cmd('filetype plugin indent on')
+vim.cmd('syntax')
+vim.opt.completeopt = 'menu,menuone,noselect'
+vim.opt.langmap =
+  "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+
+--let python_highlight_all=1
+
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    -- import your plugins
+    { import = "plugins" },
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = false },
 })
-
-require('mason-tool-installer').setup({
-    ensure_installed = {
-        'prettier',
-        'yapf',
-        'isort'
-    },
-    integrations = {
-        ['mason-lspconfig'] = false,
-        ['mason-null-ls'] = false,
-        ['mason-nvim-dap'] = false,
-    }
-})
-
-require('usr.lsp').setup()
-require('usr.debug').setup()
-
-require('usr.lang.lua').setup()
---require('usr.lang.python').setup_pyright()
-require('usr.lang.python').setup_basedpyright()
-require('usr.lang.csharp').setup_omnisharp()
-require('usr.lang.json').setup_jsonls()
-require('usr.lang.xml').setup_lemminx()
-require('usr.lang.markdown').setup()
-require('usr.lang.html').setup()
-require('usr.lang.js').setup_ts_ls()
-
-require('usr.testing').setup()
-
-require('usr.git').setup()
--- require('files')
-require('usr.editor').setup()
-require('usr.style').setup()
-require('usr.statusline')
-require('usr.telescope').setup()
-require('nvim-tree').setup({ view = { width = 60, relativenumber = true } })
-require('nvim-web-devicons').setup()
-
-require('usr.keymap').setup()
-
-require('usr.luasnip').setup()
-
---[[require("neodev").setup({
-    library = { plugins = { "nvim-dap-ui", "neotest" }, types = true }
-})]]
-
-pcall(require, "local")
