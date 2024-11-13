@@ -21,10 +21,17 @@ echo 'alias bat=batcat' >> ~/.config/fish/config.fish
 mkdir temp
 cd temp
 
-# nerd font
+# nerd fonts
 mkdir ~/.local/share/fonts
-curl -fLo CodeNewRoman.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/CodeNewRoman.tar.xz
+
+## Code new roman
+curl -fLo CodeNewRoman.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CodeNewRoman.tar.xz
 tar -xf CodeNewRoman.tar.xz -C ~/.local/share/fonts/
+
+## Hack
+curl -fLo Hack.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.tar.xz
+tar -xf Hack.tar.xz -C ~/.local/share/fonts/
+
 
 # kitty
 ln -s ~/stuff/kitty ~/.config
