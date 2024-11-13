@@ -21,16 +21,16 @@ function M.setup_lazy()
         --Plug 'zbirenbaum/copilot-cmp'
 
         --Common
-        'nvim-lua/plenary.nvim',
-        'nvim-neotest/nvim-nio',
+        'nvim-lua/plenary.nvim', --done
+        'nvim-neotest/nvim-nio', --done
 
         --git
         'tpope/vim-fugitive',
         'lewis6991/gitsigns.nvim',
 
         --search
-        'nvim-telescope/telescope.nvim',
-        'nvim-telescope/telescope-fzy-native.nvim',
+        'nvim-telescope/telescope.nvim', --done
+        'nvim-telescope/telescope-fzy-native.nvim', --done
         'ThePrimeagen/harpoon',
 
         --treesitter
@@ -38,8 +38,8 @@ function M.setup_lazy()
 
         --editor
         'numToStr/Comment.nvim', --done
-        'lukas-reineke/indent-blankline.nvim',
-        'gregorias/coerce.nvim',
+        'lukas-reineke/indent-blankline.nvim', --done
+        'gregorias/coerce.nvim', --done
         --Plug 'windwp/nvim-ts-autotag'
 
         --files

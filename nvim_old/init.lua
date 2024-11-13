@@ -48,7 +48,7 @@ require('usr.testing').setup()
 
 require('usr.git').setup()
 -- require('files')
-require('usr.editor').setup()
+require('usr.editor').setup() --done
 require('usr.style').setup() -- done
 require('usr.statusline')
 require('usr.telescope').setup()
