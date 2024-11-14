@@ -33,7 +33,8 @@ return {
             ensure_installed = {
                 'prettier',
                 'yapf',
-                'isort'
+                'isort',
+                'debugpy'
             },
             integrations = {
                 ['mason-lspconfig'] = false,

@@ -64,10 +64,10 @@ function M.setup_lazy()
         'rcarriga/nvim-dap-ui',
 
         --tests
-        'antoinemadec/FixCursorHold.nvim',
-        'nvim-neotest/neotest',
-        'nvim-neotest/neotest-python',
-        'Issafalcon/neotest-dotnet',
+        'antoinemadec/FixCursorHold.nvim', --not needed anymore
+        'nvim-neotest/neotest', --done
+        'nvim-neotest/neotest-python', --done
+        'Issafalcon/neotest-dotnet', --done
         --
         --snippets
         'L3MON4D3/LuaSnip', --done
