@@ -10,9 +10,14 @@ return {
             'hrsh7th/cmp-nvim-lsp',
         },
         config = function()
-            require('cmp').setup({
-                --snippet = { expand = function() end },
-                mapping = require('usr.keymap').get_cmp_mapping(),
+            local cmp = require('cmp')
+            cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body)
+                    end,
+                },
+                mapping = cmp.mapping.preset.insert(require('usr.keymap').get_cmp_mapping()),
                 sources = {
                     { name = 'lazydev' },
                     { name = 'luasnip' },

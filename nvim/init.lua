@@ -18,9 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = '\\'
-vim.g.mapspace = ' '
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -51,6 +48,10 @@ vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.langmap =
   "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
+vim.g.mapspace = ' '
+
 --let python_highlight_all=1
 
 -- Setup lazy.nvim
@@ -65,3 +66,5 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = false },
 })
+
+require('usr.keymap').remap()
