@@ -1,5 +1,17 @@
 return {
     {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        dependencies = {
+            { "justinsgithub/wezterm-types", lazy = true },
+        },
+        opts = {
+            library = {
+                { path = "wezterm-types", mods = { "wezterm" } },
+            }
+        }
+    },
+    {
         'neovim/nvim-lspconfig',
         lazy = false,
         dependencies = {
@@ -19,6 +31,8 @@ return {
                 },
                 update_in_insert = true
             })
+
+            require('lsp_signature').setup()
 
             local servers = {
                 html = {},

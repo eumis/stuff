@@ -14,6 +14,7 @@ return {
                 --snippet = { expand = function() end },
                 mapping = require('usr.keymap').get_cmp_mapping(),
                 sources = {
+                    { name = 'lazydev' },
                     { name = 'luasnip' },
                     { name = 'nvim_lsp' },
                     { name = 'path' }

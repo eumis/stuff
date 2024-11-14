@@ -47,13 +47,13 @@ function M.setup_lazy()
         'Pocco81/auto-save.nvim', --done
 
         --lsp
-        'neovim/nvim-lspconfig',
-        'folke/neodev.nvim', --notsure shouldbe lazydev
+        'neovim/nvim-lspconfig', --done
+        'folke/neodev.nvim', --done replaced by lazydev.nvim
         'williamboman/mason.nvim', --done
         'williamboman/mason-lspconfig.nvim', --done
         'WhoIsSethDaniel/mason-tool-installer.nvim', --done
-        'ray-x/lsp_signature.nvim', --notsure should be set up
-        'Hoffs/omnisharp-extended-lsp.nvim', --notsure should be set up
+        'ray-x/lsp_signature.nvim', --done
+        'Hoffs/omnisharp-extended-lsp.nvim', --done
         'gbrlsnchs/telescope-lsp-handlers.nvim', --done
         'nvim-lua/lsp-status.nvim', --done
         --Plug 'onsails/lspkind-nvim'
