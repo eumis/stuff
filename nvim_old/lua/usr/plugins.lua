@@ -52,10 +52,10 @@ function M.setup_lazy()
         'williamboman/mason.nvim', --done
         'williamboman/mason-lspconfig.nvim', --done
         'WhoIsSethDaniel/mason-tool-installer.nvim', --done
-        'ray-x/lsp_signature.nvim',
-        'Hoffs/omnisharp-extended-lsp.nvim',
-        'gbrlsnchs/telescope-lsp-handlers.nvim',
-        'nvim-lua/lsp-status.nvim',
+        'ray-x/lsp_signature.nvim', --notsure should be set up
+        'Hoffs/omnisharp-extended-lsp.nvim', --notsure should be set up
+        'gbrlsnchs/telescope-lsp-handlers.nvim', --done
+        'nvim-lua/lsp-status.nvim', --done
         --Plug 'onsails/lspkind-nvim'
 
         --debug

@@ -10,7 +10,6 @@ return {
             'hrsh7th/cmp-nvim-lsp',
         },
         config = function()
-            local cmp = require('cmp')
             require('cmp').setup({
                 --snippet = { expand = function() end },
                 mapping = require('usr.keymap').get_cmp_mapping(),
