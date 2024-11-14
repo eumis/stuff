@@ -8,7 +8,7 @@ config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 
 config.font = wezterm.font_with_fallback({
-    { family = "Hack Nerd Font", weight = "Regular", stretch = "Normal", style = "Normal" },
+    { family = "Hack Nerd Font Mono", weight = "Regular", stretch = "Normal", style = "Normal" },
     'CodeNewRoman Nerd Font',
     'FiraCode'
 })

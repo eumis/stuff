@@ -11,7 +11,7 @@ function M.setup_jsonls()
 
     require('lspconfig').jsonls.setup({
         capabilities = lsp.capabilities,
-        on_attach = on_attach
+        on_attach = lsp.on_attach
     })
 end
 
