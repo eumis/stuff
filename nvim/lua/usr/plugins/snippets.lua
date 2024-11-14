@@ -1,7 +1,7 @@
 return {
     {
         'L3MON4D3/LuaSnip',
-        lazy = false,
+        lazy = true,
         config = function()
             require('usr.snippets')
         end
