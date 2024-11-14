@@ -3,7 +3,7 @@ return {
         {
             'nvim-treesitter/nvim-treesitter',
             build = ":TSUpdate",
-            lazy = false,
+            event = 'VeryLazy',
             config = function()
                 require 'nvim-treesitter.install'.compilers = { "zig", "gcc", "clang" }
                 require 'nvim-treesitter.configs'.setup {
@@ -53,7 +53,7 @@ return {
     {
         'lukas-reineke/indent-blankline.nvim',
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        lazy = false,
+        event = 'BufReadPre',
         main = "ibl",
         opts = {
             scope = {
@@ -65,12 +65,18 @@ return {
             vim.opt.list = true
         end
     },
-    { 'windwp/nvim-autopairs', lazy = false },
-    { 'numToStr/Comment.nvim', lazy = false },
-    { 'karb94/neoscroll.nvim', lazy = false },
+    { 'windwp/nvim-autopairs', event = 'BufReadPre' },
+    { 'numToStr/Comment.nvim', event = 'BufReadPre' },
+    {
+        'karb94/neoscroll.nvim',
+        event = 'BufReadPre',
+        config = function()
+            require('neoscroll').setup({})
+        end
+    },
     {
         'Pocco81/auto-save.nvim',
-        lazy = false,
+        event = 'BufReadPre',
         opts = {
             enabled = true,
             write_all_buffers = false,
@@ -81,7 +87,7 @@ return {
     },
     {
         'gregorias/coerce.nvim',
-        lazy = true,
+        event = 'BufReadPre',
         keys = { { 'cr' }, { 'gcr' } },
         config = function()
             require('coerce').setup({
