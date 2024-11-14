@@ -52,6 +52,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 vim.g.mapspace = ' '
 
+require('usr.keymap')
+
 --let python_highlight_all=1
 
 -- Setup lazy.nvim
@@ -66,5 +68,3 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = false },
 })
-
-require('usr.keymap').remap()

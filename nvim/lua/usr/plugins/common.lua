@@ -1,5 +1,5 @@
 
 return {
-    { 'nvim-lua/plenary.nvim', lazy = true },
-    { 'nvim-neotest/nvim-nio', lazy = true }
+    { 'nvim-lua/plenary.nvim', lazy = false },
+    { 'nvim-neotest/nvim-nio', lazy = false }
 }

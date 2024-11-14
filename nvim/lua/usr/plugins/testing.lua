@@ -3,8 +3,8 @@ return {
         'nvim-neotest/neotest',
         lazy = true,
         dependencies = {
-            'nvim-neotest/neotest-python',
-            'Issafalcon/neotest-dotnet'
+            {'nvim-neotest/neotest-python', lazy = true},
+            {'Issafalcon/neotest-dotnet', lazy = true},
         },
         config = function()
             require("neotest").setup({
