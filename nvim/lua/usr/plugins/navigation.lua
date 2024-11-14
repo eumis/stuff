@@ -1,7 +1,7 @@
 return {
     {
         'nvim-telescope/telescope.nvim',
-        lazy = false,
+        lazy = true,
         opts = {
             defaults = {
                 results_title = false,
@@ -38,8 +38,8 @@ return {
         },
     },
     {
-        'nvim-telescope/telescope-fzy-native.nvim',
-        lazy = false,
+        'nvim-telescope/telescope-fzy-native.nvim', -- check setup
+        lazy = true,
         dependencies = { 'nvim-telescope/telescope.nvim' },
         config = function()
             require('telescope').load_extension('fzy_native')
@@ -47,7 +47,7 @@ return {
     },
     {
         'harpoon',
-        lazy = false,
+        lazy = true,
         opts = {
             menu = {
                 width = vim.api.nvim_win_get_width(0) - 20

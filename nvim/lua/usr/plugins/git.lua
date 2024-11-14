@@ -1,8 +1,12 @@
 return {
-    { 'tpope/vim-fugitive', lazy = false },
+    {
+        'tpope/vim-fugitive',
+        cmd = {'G'}
+    },
     {
         'lewis6991/gitsigns.nvim',
-        lazy = false,
+        event = 'VeryLazy',
+        cond = false,
         opts = {
             signs = {
                 add = { text = '│' },

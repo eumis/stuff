@@ -13,14 +13,14 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
-        lazy = false,
+        event = 'VeryLazy',
         dependencies = {
             'hrsh7th/nvim-cmp',
             'ray-x/lsp_signature.nvim',
             'Hoffs/omnisharp-extended-lsp.nvim',
             'gbrlsnchs/telescope-lsp-handlers.nvim',
             'nvim-lua/lsp-status.nvim',
-            'j-hui/fidget.nvim'
+            'j-hui/fidget.nvim',
         },
         config = function()
             vim.diagnostic.config({
