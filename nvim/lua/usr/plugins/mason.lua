@@ -44,8 +44,7 @@ return {
                 -- tools
                 'prettier',
                 'yapf',
-                'isort',
-                'debugpy'
+                'isort'
             },
             integrations = {
                 ['mason-lspconfig'] = false,
