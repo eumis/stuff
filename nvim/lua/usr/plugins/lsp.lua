@@ -3,13 +3,21 @@ return {
         "folke/lazydev.nvim",
         ft = "lua",
         dependencies = {
-            { "justinsgithub/wezterm-types", lazy = true },
+            --'justinsgithub/wezterm-types',
         },
         opts = {
             library = {
-                { path = "wezterm-types", mods = { "wezterm" } },
+                --{ path = "wezterm-types", mods = { "wezterm" } },
             }
         }
+    },
+    {
+        'gbrlsnchs/telescope-lsp-handlers.nvim',
+        lazy = true,
+        dependencies = { 'nvim-telescope/telescope.nvim' },
+        config = function()
+            require('telescope').load_extension('lsp_handlers')
+        end
     },
     {
         'neovim/nvim-lspconfig',
@@ -170,6 +178,7 @@ return {
                     if server_config.semanticTokensProvider ~= nil then
                         client.server_capabilities.semanticTokensProvider = server_config.semanticTokensProvider
                     end
+                    vim.api.nvim_buf_set_option(args.buf, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
                     require('usr.keymap').setup_lsp_keys(args.buf)
                     if server_config.remap ~= nil then
                         server_config.remap(args.buf)
