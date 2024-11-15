@@ -57,15 +57,15 @@ vim.keymap.set('n', '<space>gg', ':Gpull<CR>')
 -- tests
 vim.keymap.set('n', '<space>ur', function() require("neotest").run.run() end, silent_opts)
 vim.keymap.set('n', '<space>uf', function() require("neotest").run.run(vim.fn.expand("%")) end, silent_opts)
---vim.keymap.set('n', '<space>ud', function() require("neotest").run.run({ strategy = "dap" }) end, opts)
+vim.keymap.set('n', '<space>ud', function() require("neotest").run.run({ strategy = "dap" }) end, silent_opts)
 vim.keymap.set('n', '<space>ut', function() require("neotest").summary.toggle() end, silent_opts)
 vim.keymap.set('n', '<space>uo', function() require("neotest").output.open({ enter = true }) end, silent_opts)
 
 -- diagnostic
-vim.keymap.set('n', '<space>ef', function() vim.diagnostic.open_float() end, silent_ops)
-vim.keymap.set('n', '<space>el', function() vim.diagnostic.setloclist() end, silent_ops)
-vim.keymap.set('n', '[e', function() vim.diagnostic.goto_prev() end, silent_ops)
-vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next() end, silent_ops)
+vim.keymap.set('n', '<space>ef', function() vim.diagnostic.open_float() end, silent_opts)
+vim.keymap.set('n', '<space>el', function() vim.diagnostic.setloclist() end, silent_opts)
+vim.keymap.set('n', '[e', function() vim.diagnostic.goto_prev() end, silent_opts)
+vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next() end, silent_opts)
 
 
 -- marks
@@ -106,6 +106,17 @@ vim.keymap.set('n', '<C-c>', function() require('harpoon.mark').clear_all() end,
 vim.keymap.set({"i", "s"}, "<C-n>", function() require('luasnip').jump( 1) end, silent_opts)
 vim.keymap.set({"i", "s"}, "<C-p>", function() require('luasnip').jump(-1) end, silent_opts)
 
+-- debug
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+vim.keymap.set('n', '<F4>', function() require('dap').run_last() end)
+vim.keymap.set('n', '<F6>', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+vim.keymap.set({ 'n', 'v' }, '<F7>', function() require('dap.ui.widgets').hover() end)
+vim.keymap.set({ 'n', 'v' }, '<F8>', function() require('dap.ui.widgets').preview() end)
+vim.keymap.set('n', '<F9>', function() require('dapui').toggle() end)
+
 local M = {}
 
 function M.get_cmp_mapping()
@@ -114,23 +125,23 @@ function M.get_cmp_mapping()
         --['<C-p>'] = cmp.mapping.select_prev_item(),
         --['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-u>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete({}),
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
+            behavior = cmp.ConfirmBehavior.Insert,
             select = true,
         },
         ['<Tab>'] = function(fallback)
             if cmp.visible() then
-                cmp.select_next_item()
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             else
                 fallback()
             end
         end,
         ['<S-Tab>'] = function(fallback)
             if cmp.visible() then
-                cmp.select_prev_item()
+                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
             else
                 fallback()
             end
@@ -197,53 +208,6 @@ function M.setup_lsp_keys(bufnr)
     vim.keymap.set('v', '<space>rr', function() vim.lsp.buf.range_code_action({}) end, opts)
     vim.keymap.set('n', '<space>e', function() vim.lsp.buf.format({ async = true }) end, opts)
     vim.keymap.set('v', '<space>e', function() vim.lsp.buf.format({ async = true, range = { vim.api.nvim_buf_get_mark(0, "<"), vim.api.nvim_buf_get_mark(0, ">")} }) end, opts)
-end
-
--- debug
-vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
-vim.keymap.set('n', '<space>db', function() require('dap').toggle_breakpoint() end)
-vim.keymap.set('n', '<space>ds', function() require('dap').set_breakpoint() end)
-vim.keymap.set('n', '<space>dp',
-    function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-vim.keymap.set('n', '<space>dr', function() require('dap').repl.open() end)
-vim.keymap.set('n', '<space>dl', function() require('dap').run_last() end)
-vim.keymap.set({ 'n', 'v' }, '<space>dh', function()
-    require('dap.ui.widgets').hover()
-end)
-vim.keymap.set({ 'n', 'v' }, '<space>dp', function()
-    require('dap.ui.widgets').preview()
-end)
-vim.keymap.set('n', '<space>df', function()
-    require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)
-end)
-vim.keymap.set('n', '<space>ds', function()
-    require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)
-end)
-
-vim.keymap.set('n', '<space>dt', function() require('dapui').toggle() end)
-
-function M.get_copilot_suggestion_keymap()
-    return {
-        accept = "<C-a>",
-        accept_word = false,
-        accept_line = false,
-        next = "<C-q>",
-        prev = "<C-z>",
-        dismiss = "<C-x>",
-    }
-end
-
-function M.get_copilot_panel_keymap()
-    return {
-        jump_prev = "[[",
-        jump_next = "]]",
-        accept = "<CR>",
-        refresh = "gr",
-        open = "<M-CR>"
-    }
 end
 
 return M
