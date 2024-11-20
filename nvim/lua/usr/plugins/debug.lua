@@ -3,8 +3,8 @@ return {
         'mfussenegger/nvim-dap',
         lazy = true,
         dependencies = {
-            'mfussenegger/nvim-dap-python',
-            'rcarriga/nvim-dap-ui'
+            {'mfussenegger/nvim-dap-python', lazy = true},
+            {'rcarriga/nvim-dap-ui', lazy = true}
         },
         config = function()
             local dap  = require("dap")
