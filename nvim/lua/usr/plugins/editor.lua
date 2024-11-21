@@ -65,7 +65,13 @@ return {
             vim.opt.list = true
         end
     },
-    { 'windwp/nvim-autopairs', event = 'BufReadPre' },
+    {
+        'windwp/nvim-autopairs',
+        event = 'BufReadPre',
+        config = function()
+            require('nvim-autopairs').setup()
+        end
+    },
     { 'numToStr/Comment.nvim', event = 'BufReadPre' },
     {
         'karb94/neoscroll.nvim',

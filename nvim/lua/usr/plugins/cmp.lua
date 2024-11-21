@@ -20,8 +20,8 @@ return {
                 mapping = cmp.mapping.preset.insert(require('usr.keymap').get_cmp_mapping()),
                 sources = {
                     { name = 'lazydev' },
-                    { name = 'luasnip' },
                     { name = 'nvim_lsp' },
+                    { name = 'luasnip' },
                     { name = 'path' }
                 }
             })
