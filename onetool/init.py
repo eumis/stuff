@@ -14,7 +14,7 @@ def init():
     app = OnetoolRuntime.get()
     app.config.editor_cmd = (
         '~/.local/kitty.app/bin/kitty ~/.local/nvim.appimage',
-        True) if environment.is_linux() else ('wezterm start --new-tab nvim', True)
+        True) if environment.is_linux() else ('start /wait nvim', True)
 
     player = app.load_plugin('player',
         db_home = '~/data/playerdb',
