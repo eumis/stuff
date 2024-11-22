@@ -54,9 +54,6 @@ def init():
     keymap.bind(GLOBAL, ' -s-s', lambda _: app.split())
 
     app.load_plugin('notifications')
-    app.load_plugin('auto',
-        data_root = '~/data/data/auto',
-        local_data_root = '~/data/auto_local'
-    )
+    app.load_plugin('auto', workspaces_root = '~/data/auto/')
     app.load_plugin('files')
     app.load_plugin('docs', workspaces_root = '~/data/docs/')
