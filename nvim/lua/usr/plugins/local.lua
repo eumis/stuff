@@ -2,10 +2,10 @@ return {
     {
         'nvwd',
         event = 'VeryLazy',
-        dir = '~/stuff_local/plugins/nvwd',
+        dir = '~/data/plugins/nvwd',
         cond = function()
             local Path = require('plenary.path')
-            return Path:new(Path.path.home .. '/stuff_local/plugins/nvwd'):exists()
+            return Path:new(Path.path.home .. '/data/plugins/nvwd'):exists()
         end,
         config = function()
             require('nvwd')
