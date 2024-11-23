@@ -40,6 +40,7 @@ return {
                 'json-lsp',
                 'marksman',
                 'html-lsp',
+                'bash-language-server',
 
                 -- tools
                 'prettier',

@@ -46,6 +46,7 @@ return {
                 html = {},
                 ts_ls = {},
                 marksman = {},
+                bashls = {},
                 omnisharp = { {
                     on_init = function(client, _)
                         if client.server_capabilities then

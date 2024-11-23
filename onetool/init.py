@@ -53,6 +53,7 @@ keymap.bind(GLOBAL, ' -o-d', lambda _: app.open('docs'))
 keymap.bind(GLOBAL, ' -s-s', lambda _: app.split())
 
 app.load_plugin('notifications')
-app.load_plugin('auto', workspaces_root = '~/data/auto/')
+auto = app.load_plugin('auto', workspaces_root = '~/data/auto/')
+auto.run_by_path('github', 'updates/check onetool update')
 app.load_plugin('files')
 app.load_plugin('docs', workspaces_root = '~/data/docs/')
