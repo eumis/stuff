@@ -41,6 +41,7 @@ return {
                 'marksman',
                 'html-lsp',
                 'bash-language-server',
+                'typescript-language-server',
 
                 -- tools
                 'prettier',

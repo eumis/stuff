@@ -1,5 +1,14 @@
 return {
     {
+        'kyazdani42/nvim-tree.lua',
+        lazy = false,
+        opts = {
+            view = {
+                width = 60, relativenumber = true
+            }
+        }
+    },
+    {
         'nvim-telescope/telescope.nvim',
         lazy = true,
         opts = {
@@ -53,6 +62,5 @@ return {
                 width = vim.api.nvim_win_get_width(0) - 20
             }
         }
-    },
-    { 'kyazdani42/nvim-tree.lua', lazy = false, opts = { view = { width = 60, relativenumber = true } } }
+    }
 }
