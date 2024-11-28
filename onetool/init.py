@@ -50,6 +50,7 @@ keymap.bind(GLOBAL, ' -o-a', lambda _: app.open('auto'))
 keymap.bind(GLOBAL, ' -o-l', lambda _: app.open('logs'))
 keymap.bind(GLOBAL, ' -o-f', lambda _: app.open('files'))
 keymap.bind(GLOBAL, ' -o-d', lambda _: app.open('docs'))
+keymap.bind(GLOBAL, ' -o-r', lambda _: app.open('repos'))
 keymap.bind(GLOBAL, ' -s-s', lambda _: app.split())
 
 app.load_plugin('notifications')
