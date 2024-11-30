@@ -53,9 +53,12 @@ keymap.bind(GLOBAL, ' -o-d', lambda _: app.open('docs'))
 keymap.bind(GLOBAL, ' -o-r', lambda _: app.open('repos'))
 keymap.bind(GLOBAL, ' -s-s', lambda _: app.split())
 
-app.load_plugin('notifications')
 auto = app.load_plugin('auto', workspaces_root = '~/data/auto/')
 auto.run_by_path('github', 'updates/check onetool update')
+
+app.load_plugin('notifications')
 app.load_plugin('files')
 app.load_plugin('docs', workspaces_root = '~/data/docs/')
-app.load_plugin('repos')
+
+repos = app.load_plugin('repos', push_delay_s = 600)
+repos.sync_all()
