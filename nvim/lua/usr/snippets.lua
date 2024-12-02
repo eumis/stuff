@@ -21,7 +21,7 @@ local conds = require("luasnip.extras.conditions")
 local conds_expand = require("luasnip.extras.conditions.expand")
 
 ls.setup()
-require('luasnip.loaders.from_vscode').load()
+--require('luasnip.loaders.from_vscode').load()
 
 ls.add_snippets('python', {
     s('property getter',
