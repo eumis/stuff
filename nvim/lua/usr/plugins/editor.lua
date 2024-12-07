@@ -43,7 +43,10 @@ return {
             require('nvim-autopairs').setup()
         end
     },
-    { 'numToStr/Comment.nvim', event = 'BufReadPre' },
+    {
+        'numToStr/Comment.nvim',
+        event = 'BufReadPre'
+    },
     {
         'karb94/neoscroll.nvim',
         event = 'BufReadPre',

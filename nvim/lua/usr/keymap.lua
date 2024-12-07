@@ -1,7 +1,6 @@
 local silent_opts = { noremap = true, silent = true }
 
 vim.keymap.set('n', '<space>/', ':noh<CR>')
-vim.keymap.set('n', '<space>cc', '<cmd>:LspInfo<cr>')
 vim.keymap.set('n', '<space>qq', '<cmd>:q<cr>')
 vim.keymap.set('n', '<space>qf', '<cmd>:q!<cr>')
 vim.keymap.set('n', '<space>qa', '<cmd>:qa<cr>')
@@ -87,7 +86,8 @@ end
 
 -- navigation
 vim.keymap.set('n', '<space>ff', function() require('telescope.builtin').find_files() end, silent_opts)
-vim.keymap.set('n', '<space>fh', function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end, silent_opts)
+vim.keymap.set('n', '<space>fh',
+    function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end, silent_opts)
 vim.keymap.set('n', '<space>fs', function() require('telescope.builtin').live_grep() end, silent_opts)
 vim.keymap.set('n', '<space>fi', '<cmd>lua require("telescope.builtin").live_grep()<cr>interface ', silent_opts)
 vim.keymap.set('n', '<space>fc', '<cmd>lua require("telescope.builtin").live_grep()<cr>class ')
@@ -103,8 +103,23 @@ vim.keymap.set('n', '<C-m>', function() require('harpoon.mark').add_file() end, 
 vim.keymap.set('n', '<C-c>', function() require('harpoon.mark').clear_all() end, silent_opts)
 
 -- snippets
-vim.keymap.set({"i", "s"}, "<C-n>", function() require('luasnip').jump( 1) end, silent_opts)
-vim.keymap.set({"i", "s"}, "<C-p>", function() require('luasnip').jump(-1) end, silent_opts)
+vim.keymap.set({ "i", "s" }, "<C-n>", function() require('luasnip').jump(1) end, silent_opts)
+vim.keymap.set({ "i", "s" }, "<C-p>", function() require('luasnip').jump(-1) end, silent_opts)
+
+-- comments
+vim.keymap.set('n', 'CC', function() require('Comment.api').toggle.linewise.current() end, silent_opts)
+vim.keymap.set('n', 'CB', function() require('Comment.api').toggle.blockwise.current() end, silent_opts)
+local esc = vim.api.nvim_replace_termcodes(
+    '<ESC>', true, false, true
+)
+vim.keymap.set('x', 'CC', function()
+    vim.api.nvim_feedkeys(esc, 'nx', false)
+    require('Comment.api').toggle.linewise(vim.fn.visualmode())
+end)
+vim.keymap.set('x', 'CB', function()
+    vim.api.nvim_feedkeys(esc, 'nx', false)
+    require('Comment.api').toggle.blockwise(vim.fn.visualmode())
+end)
 
 -- debug
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
@@ -116,6 +131,16 @@ vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
 vim.keymap.set({ 'n', 'v' }, '<F7>', function() require('dap.ui.widgets').hover() end)
 vim.keymap.set({ 'n', 'v' }, '<F8>', function() require('dap.ui.widgets').preview() end)
 vim.keymap.set('n', '<F9>', function() require('dapui').toggle() end)
+
+-- lsp
+vim.keymap.set('n', '<space>li', ':LspInfo<cr>')
+vim.keymap.set('n', '<space>ls', ':LspStart<cr>')
+vim.keymap.set('n', '<space>lq', ':LspStop<cr>')
+vim.keymap.set('n', '<space>lr', ':LspRestart<cr>')
+
+-- packages
+vim.keymap.set('n', '<space>pp', ':Lazy<cr>')
+vim.keymap.set('n', '<space>pm', ':Mason<cr>')
 
 local M = {}
 
@@ -207,7 +232,9 @@ function M.setup_lsp_keys(bufnr)
     vim.keymap.set('n', '<space>rr', vim.lsp.buf.code_action, opts)
     vim.keymap.set('v', '<space>rr', function() vim.lsp.buf.range_code_action({}) end, opts)
     vim.keymap.set('n', '<space>e', function() vim.lsp.buf.format({ async = true }) end, opts)
-    vim.keymap.set('v', '<space>e', function() vim.lsp.buf.format({ async = true, range = { vim.api.nvim_buf_get_mark(0, "<"), vim.api.nvim_buf_get_mark(0, ">")} }) end, opts)
+    vim.keymap.set('v', '<space>e',
+        function() vim.lsp.buf.format({ async = true, range = { vim.api.nvim_buf_get_mark(0, "<"), vim.api.nvim_buf_get_mark(0, ">") } }) end,
+        opts)
 end
 
 return M
