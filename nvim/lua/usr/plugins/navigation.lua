@@ -10,6 +10,11 @@ return {
     },
     {
         'nvim-telescope/telescope.nvim',
+        tag = '0.1.8',
+        dependencies = {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'make'
+        },
         lazy = true,
         opts = {
             defaults = {
@@ -45,14 +50,6 @@ return {
             extensions = {
             }
         },
-    },
-    {
-        'nvim-telescope/telescope-fzy-native.nvim', -- check setup
-        lazy = true,
-        dependencies = { 'nvim-telescope/telescope.nvim' },
-        config = function()
-            require('telescope').load_extension('fzy_native')
-        end
     },
     {
         "ThePrimeagen/harpoon",
