@@ -16,40 +16,44 @@ return {
             build = 'make'
         },
         lazy = true,
-        opts = {
-            defaults = {
-                results_title = false,
-                sorting_strategy = "ascending",
-                layout_strategy = "center",
-                layout_config = {
-                    preview_cutoff = 1, -- Preview should always show (unless previewer = false)
-                    anchor = "N",
-                    width = 0.8,
-                    height = 0.3,
-                },
-                border = true,
-                borderchars = {
-                    prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
-                    results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
-                    preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-                },
-                path_display = function(_, path)
-                    local tail = require("telescope.utils").path_tail(path)
-                    return string.format("%s (%s)", tail, path)
-                end,
+        config = function()
+            require('telescope').setup {
+                defaults = {
+                    results_title = false,
+                    sorting_strategy = "ascending",
+                    layout_strategy = "center",
+                    layout_config = {
+                        preview_cutoff = 1, -- Preview should always show (unless previewer = false)
+                        anchor = "N",
+                        width = 0.8,
+                        height = 0.3,
+                    },
+                    border = true,
+                    borderchars = {
+                        prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
+                        results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+                        preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                    },
+                    path_display = function(_, path)
+                        local tail = require("telescope.utils").path_tail(path)
+                        return string.format("%s (%s)", tail, path)
+                    end,
 
-                mappings = {
-                    i = {
-                        ['<esc>'] = require('telescope.actions').close,
-                        ['<C-c>'] = require('telescope.actions').delete_buffer
+                    mappings = {
+                        i = {
+                            ['<esc>'] = require('telescope.actions').close,
+                            ['<C-c>'] = require('telescope.actions').delete_buffer
+                        }
                     }
+                },
+                pickers = {
+                },
+                extensions = {
+                    fzf = {}
                 }
-            },
-            pickers = {
-            },
-            extensions = {
             }
-        },
+            require('telescope').load_extension('fzf')
+        end
     },
     {
         "ThePrimeagen/harpoon",
