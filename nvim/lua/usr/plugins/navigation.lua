@@ -4,7 +4,11 @@ return {
         lazy = false,
         opts = {
             view = {
-                width = 60, relativenumber = true
+                width = 60,
+                relativenumber = true,
+                float = {
+                    enable = true
+                }
             },
             actions = {
                 open_file = {
