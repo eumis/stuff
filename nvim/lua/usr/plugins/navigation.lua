@@ -4,10 +4,27 @@ return {
         lazy = false,
         opts = {
             view = {
-                width = 60,
                 relativenumber = true,
                 float = {
-                    enable = true
+                    enable = true,
+                    quit_on_focus_loss = true,
+                    open_win_config = function()
+                        local win_id = vim.api.nvim_get_current_win()
+                        local row, col = unpack(vim.api.nvim_win_get_position(win_id))
+                        local screen_w = vim.api.nvim_win_get_width(win_id)
+                        local screen_h = vim.api.nvim_win_get_height(win_id)
+                        local tree_width = 70
+                        local center_x = col + (screen_w - tree_width) / 2
+                        local center_y = row + 5
+                        return {
+                            border = "rounded",
+                            relative = "editor",
+                            row = center_y,
+                            col = center_x,
+                            width = tree_width,
+                            height = screen_h - 10
+                        }
+                    end
                 }
             },
             actions = {
@@ -63,10 +80,10 @@ return {
                 },
                 extensions = {
                     fzf = {
-                        fuzzy = true, -- false will only do exact matching
+                        fuzzy = true,                   -- false will only do exact matching
                         override_generic_sorter = true, -- override the generic sorter
-                        override_file_sorter = true, -- override the file sorter
-                        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                        override_file_sorter = true,    -- override the file sorter
+                        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
                         -- the default case_mode is "smart_case"
                     }
                 }
