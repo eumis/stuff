@@ -96,11 +96,11 @@ vim.keymap.set('n', '<space>ft', function() require('telescope.builtin').help_ta
 vim.keymap.set('n', '<space>fm', function() require('telescope.builtin').marks() end, silent_opts)
 vim.keymap.set('n', '<space>fb', function() require('telescope.builtin').buffers() end, silent_opts)
 
-vim.keymap.set('n', '<C-f>', function() require('harpoon.ui').toggle_quick_menu() end, silent_opts)
-vim.keymap.set('n', '<C-n>', function() require('harpoon.ui').nav_next() end, silent_opts)
-vim.keymap.set('n', '<C-p>', function() require('harpoon.ui').nav_prev() end, silent_opts)
-vim.keymap.set('n', '<C-m>', function() require('harpoon.mark').add_file() end, silent_opts)
-vim.keymap.set('n', '<C-c>', function() require('harpoon.mark').clear_all() end, silent_opts)
+-- vim.keymap.set('n', '<C-f>', function() require('harpoon.ui').toggle_quick_menu() end, silent_opts)
+-- vim.keymap.set('n', '<C-n>', function() require('harpoon.ui').nav_next() end, silent_opts)
+-- vim.keymap.set('n', '<C-p>', function() require('harpoon.ui').nav_prev() end, silent_opts)
+-- vim.keymap.set('n', '<C-m>', function() require('harpoon.mark').add_file() end, silent_opts)
+-- vim.keymap.set('n', '<C-c>', function() require('harpoon.mark').clear_all() end, silent_opts)
 
 -- snippets
 vim.keymap.set({ "i", "s" }, "<C-n>", function() require('luasnip').jump(1) end, silent_opts)

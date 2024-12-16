@@ -94,6 +94,7 @@ return {
     {
         "ThePrimeagen/harpoon",
         lazy = true,
+        enabled = false,
         opts = {
             menu = {
                 width = vim.api.nvim_win_get_width(0) - 20
