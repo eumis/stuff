@@ -1,5 +1,7 @@
 local silent_opts = { noremap = true, silent = true }
 
+vim.keymap.set('n', '<space>xx', ':source %<CR>')
+
 vim.keymap.set('n', '<space>/', ':noh<CR>')
 vim.keymap.set('n', '<space>qq', '<cmd>:q<cr>')
 vim.keymap.set('n', '<space>qf', '<cmd>:q!<cr>')

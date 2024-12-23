@@ -107,10 +107,10 @@ return {
                 } },
                 jsonls = {
                     {},
-                    remap = function(bufnr)
-                        local opts = { noremap = true, silent = true, buffer = bufnr }
-                        vim.keymap.set('n', '<space>e', ":silent !prettier '%' --write<CR>", opts)
-                    end
+                    -- remap = function(bufnr)
+                    --     local opts = { noremap = true, silent = true, buffer = bufnr }
+                    --     vim.keymap.set('n', '<space>e', ":silent !prettier '%' --write<CR>", opts)
+                    -- end
                 },
                 lua_ls = {},
                 basedpyright = {
