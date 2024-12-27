@@ -14,6 +14,15 @@ app = OnetoolRuntime.get()
 app.config.editor_cmd = (
     '~/.local/kitty.app/bin/kitty ~/.local/nvim.appimage',
     True) if environment.is_linux() else ('start /wait nvim', True)
+app.config.use_neovim = True
+if environment.is_linux():
+    app.config.neovim_cmd = '~/.local/nvim.appimage'
+    app.config.neovim_connection_type = 'socket'
+    app.config.neovim_socket = '~/.local/onetool_nvim_socket'
+else:
+    app.config.neovim_cmd = 'nvim'
+    # app.config.neovim_connection_type = 'port'
+    # app.config.neovim_socket = '~/.local/onetool_nvim_socket'
 
 player = app.load_plugin('player',
     db_home = '~/data/playerdb',
