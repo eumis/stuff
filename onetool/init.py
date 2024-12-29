@@ -18,11 +18,10 @@ app.config.use_neovim = True
 if environment.is_linux():
     app.config.neovim_cmd = '~/.local/nvim.appimage'
     app.config.neovim_connection_type = 'socket'
-    app.config.neovim_socket = '~/.local/onetool_nvim_socket'
 else:
     app.config.neovim_cmd = 'nvim'
-    # app.config.neovim_connection_type = 'port'
-    # app.config.neovim_socket = '~/.local/onetool_nvim_socket'
+    app.config.neovim_connection_type = 'tcp'
+    app.config.neovim_tcp_port = 3849
 
 player = app.load_plugin('player',
     db_home = '~/data/playerdb',
@@ -69,5 +68,5 @@ app.load_plugin('notifications')
 app.load_plugin('files')
 app.load_plugin('docs', workspaces_root = '~/data/docs/')
 
-repos = app.load_plugin('repos', push_delay_s = 600)
+repos = app.load_plugin('repos')
 repos.sync_all()
