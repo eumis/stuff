@@ -14,7 +14,7 @@ app = OnetoolRuntime.get()
 app.config.editor_cmd = (
     '~/.local/kitty.app/bin/kitty ~/.local/nvim.appimage',
     True) if environment.is_linux() else ('start /wait nvim', True)
-app.config.use_neovim = True
+app.config.use_neovim = False
 if environment.is_linux():
     app.config.neovim_cmd = '~/.local/nvim.appimage'
     app.config.neovim_connection_type = 'socket'

@@ -20,7 +20,6 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
-        event = 'VeryLazy',
         dependencies = {
             'hrsh7th/nvim-cmp',
             'ray-x/lsp_signature.nvim',
@@ -44,7 +43,13 @@ return {
             local servers = {
                 html = {},
                 ts_ls = {},
-                marksman = {},
+                marksman = {
+                    {},
+                    remap = function(bufnr)
+                        local opts = { noremap = true, silent = true, buffer = bufnr }
+                        vim.keymap.set('n', '<space>e', ":silent !prettier '%' --write<CR>", opts)
+                    end
+                },
                 bashls = {},
                 omnisharp = { {
                     on_init = function(client, _)
