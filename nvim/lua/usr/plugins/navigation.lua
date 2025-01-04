@@ -1,6 +1,6 @@
 return {
     {
-        'kyazdani42/nvim-tree.lua',
+        'nvim-tree/nvim-tree.lua',
         lazy = false,
         opts = {
             view = {
@@ -35,7 +35,12 @@ return {
                         picker = "default"
                     }
                 }
-            }
+            },
+            on_attach = function(bufnr)
+                local api = require "nvim-tree.api"
+                api.config.mappings.default_on_attach(bufnr)
+                vim.keymap.set("n", '<C-t><C-t>', function() require('usr.terminal').float_terminal() end)
+            end
         }
     },
     {

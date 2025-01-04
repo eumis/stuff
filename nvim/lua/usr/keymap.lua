@@ -4,7 +4,7 @@ local silent_opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>xx', ':source %<CR>')
 
 vim.keymap.set('n', '<space>/', ':noh<CR>')
-vim.keymap.set('n', '<space>qq', '<cmd>:q<cr>')
+vim.keymap.set('n', '<C-q>', '<cmd>:q<cr>')
 vim.keymap.set('n', '<space>qf', '<cmd>:q!<cr>')
 vim.keymap.set('n', '<space>qa', '<cmd>:qa<cr>')
 vim.keymap.set('n', '<space>qn', '<cmd>:qa!<cr>')
@@ -33,17 +33,11 @@ vim.keymap.set('n', '<C-s>', ':w<CR>')
 vim.keymap.set('n', '<C-s>a', ':wa<CR>')
 
 -- terminal
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', silent_opts)
-vim.keymap.set('n', '<space>ii', function()
-    vim.cmd('split')
-    vim.cmd('wincmd j')
-    vim.cmd('terminal')
-end, silent_opts)
-vim.keymap.set('n', '<space>iv', function()
-    vim.cmd('vsplit')
-    vim.cmd('wincmd l')
-    vim.cmd('terminal')
-end, silent_opts)
+vim.keymap.set("t", '<esc><esc>', '<c-\\><c-n>')
+vim.keymap.set("n", '<C-t><C-t>', function() require('usr.terminal').float_terminal() end)
+vim.keymap.set("n", '<C-t><C-s>', function() require('usr.terminal').split_terminal() end)
+vim.keymap.set("n", '<C-t><C-m>', function() require('usr.terminal').bottom_terminal() end)
+vim.api.nvim_create_user_command('Term', function() require('usr.terminal').float_terminal() end, {})
 
 -- nvim tree
 vim.keymap.set('n', '<C-f><C-f>', ':NvimTreeToggle<CR>')
