@@ -1,3 +1,4 @@
+local M = {}
 local silent_opts = { noremap = true, silent = true }
 
 vim.keymap.set('n', '<space>xx', ':source %<CR>')
@@ -45,15 +46,23 @@ vim.keymap.set('n', '<space>iv', function()
 end, silent_opts)
 
 -- nvim tree
-vim.keymap.set('n', '<space>tt', ':NvimTreeToggle<CR>')
-vim.keymap.set('n', '<space>ts', ':NvimTreeFindFile<CR>')
-vim.keymap.set('n', '<space>tf', ':NvimTreeFocus<CR>')
+vim.keymap.set('n', '<C-f><C-f>', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<C-f><C-s>', ':NvimTreeFindFile<CR>')
 
 -- git
-vim.keymap.set('n', '<space>gs', ':G<CR>')
-vim.keymap.set('n', '<space>gc', ':Gcommit<CR>')
-vim.keymap.set('n', '<space>gp', ':Gpush<CR>')
-vim.keymap.set('n', '<space>gg', ':Gpull<CR>')
+vim.keymap.set('n', '<C-g><C-s>', function() require('neogit').open() end, silent_opts)
+
+function M.get_diffview_keymaps()
+    local close_map = { 'n', '<C-q>', '<Cmd>DiffviewClose<CR>', { silent = true } }
+    return {
+        view = {
+            close_map
+        },
+        file_panel = {
+            close_map
+        }
+    }
+end
 
 -- tests
 vim.keymap.set('n', '<space>ur', function() require("neotest").run.run() end, silent_opts)
@@ -67,7 +76,6 @@ vim.keymap.set('n', '<space>ef', function() vim.diagnostic.open_float() end, sil
 vim.keymap.set('n', '<space>el', function() vim.diagnostic.setloclist() end, silent_opts)
 vim.keymap.set('n', '[e', function() vim.diagnostic.goto_prev() end, silent_opts)
 vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next() end, silent_opts)
-
 
 -- marks
 local letters = {
@@ -141,16 +149,15 @@ vim.keymap.set('n', '<space>lq', ':LspStop<cr>')
 vim.keymap.set('n', '<space>lr', ':LspRestart<cr>')
 
 -- packages
-vim.keymap.set('n', '<space>pp', ':Lazy<cr>')
-vim.keymap.set('n', '<space>pm', ':Mason<cr>')
+vim.keymap.set('n', '<C-p><C-p>', ':Lazy<cr>')
+vim.keymap.set('n', '<C-p><C-m>', ':Mason<cr>')
 
-local M = {}
-
+-- cmp
 function M.get_cmp_mapping()
     local cmp = require('cmp')
     return {
-        --['<C-p>'] = cmp.mapping.select_prev_item(),
-        --['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete({}),
@@ -176,47 +183,7 @@ function M.get_cmp_mapping()
     }
 end
 
-function M.setup_gitsigns(bufnr)
-    local gs = package.loaded.gitsigns
-
-    local function map(mode, l, r, opts)
-        opts = opts or {}
-        opts.buffer = bufnr
-        vim.keymap.set(mode, l, r, opts)
-    end
-
-    -- Navigation
-    map('n', ']c', function()
-        if vim.wo.diff then return ']c' end
-        vim.schedule(function() gs.next_hunk() end)
-        return '<Ignore>'
-    end, { expr = true })
-
-    map('n', '[c', function()
-        if vim.wo.diff then return '[c' end
-        vim.schedule(function() gs.prev_hunk() end)
-        return '<Ignore>'
-    end, { expr = true })
-
-    -- Actions
-    map('n', '<space>hs', gs.stage_hunk)
-    map('n', '<space>hr', gs.reset_hunk)
-    map('v', '<space>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-    map('v', '<space>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-    map('n', '<space>hS', gs.stage_buffer)
-    map('n', '<space>hu', gs.undo_stage_hunk)
-    map('n', '<space>hR', gs.reset_buffer)
-    map('n', '<space>hp', gs.preview_hunk)
-    map('n', '<space>hb', function() gs.blame_line { full = true } end)
-    map('n', '<space>tb', gs.toggle_current_line_blame)
-    map('n', '<space>hd', gs.diffthis)
-    map('n', '<space>hD', function() gs.diffthis('~') end)
-    map('n', '<space>td', gs.toggle_deleted)
-
-    -- Text object
-    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-end
-
+-- lsp
 function M.setup_lsp_keys(bufnr)
     local telescope_builtin = require('telescope.builtin')
     local opts = { noremap = true, silent = true, buffer = bufnr }
