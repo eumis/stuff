@@ -20,6 +20,7 @@ return {
     },
     {
         'neovim/nvim-lspconfig',
+        event = 'BufReadPre',
         dependencies = {
             'hrsh7th/nvim-cmp',
             'ray-x/lsp_signature.nvim',
@@ -217,7 +218,7 @@ return {
                     if server_config.semanticTokensProvider ~= nil then
                         client.server_capabilities.semanticTokensProvider = server_config.semanticTokensProvider
                     end
-                    vim.api.nvim_buf_set_option(args.buf, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+                    vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = args.buf })
                     require('usr.keymap').setup_lsp_keys(args.buf)
                     if server_config.remap ~= nil then
                         server_config.remap(args.buf)
