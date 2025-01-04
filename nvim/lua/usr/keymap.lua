@@ -113,8 +113,8 @@ vim.keymap.set('n', '<space>fb', function() require('telescope.builtin').buffers
 -- vim.keymap.set('n', '<C-c>', function() require('harpoon.mark').clear_all() end, silent_opts)
 
 -- snippets
-vim.keymap.set({ "i", "s" }, "<C-n>", function() require('luasnip').jump(1) end, silent_opts)
-vim.keymap.set({ "i", "s" }, "<C-p>", function() require('luasnip').jump(-1) end, silent_opts)
+vim.keymap.set({ "i", "s" }, "<C-m>", function() require('luasnip').jump(1) end, silent_opts)
+vim.keymap.set({ "i", "s" }, "<C-b>", function() require('luasnip').jump(-1) end, silent_opts)
 
 -- comments
 vim.keymap.set('n', 'CC', function() require('Comment.api').toggle.linewise.current() end, silent_opts)
@@ -156,8 +156,8 @@ vim.keymap.set('n', '<C-p><C-m>', ':Mason<cr>')
 function M.get_cmp_mapping()
     local cmp = require('cmp')
     return {
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
+        -- ['<C-p>'] = cmp.mapping.select_prev_item(),
+        -- ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete({}),
