@@ -10,7 +10,10 @@ return {
                 transparent = true,
                 italic_comments = false,
                 disable_nvimtree_bg = true,
-                color_overrides = {},
+                color_overrides = {
+                    vscBack = '#282C34',
+                    vscPopupBack = '#282C34'
+                },
                 group_overrides = {
                     Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
                 }
