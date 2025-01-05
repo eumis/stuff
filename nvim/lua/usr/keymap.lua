@@ -1,7 +1,9 @@
 local M = {}
 local silent_opts = { noremap = true, silent = true }
 
-vim.keymap.set('n', '<space>xx', ':source %<CR>')
+-- source
+vim.keymap.set('n', '<C-r><C-r>', '<cmd>.lua<CR>')
+vim.keymap.set('n', '<C-r><C-f>', '<cmd>source %<CR>')
 
 vim.keymap.set('n', '<space>/', ':noh<CR>')
 vim.keymap.set('n', '<C-q>', '<cmd>:q<cr>')
@@ -45,6 +47,12 @@ vim.keymap.set('n', '<C-f><C-s>', ':NvimTreeFindFile<CR>')
 
 -- git
 vim.keymap.set('n', '<C-g><C-s>', function() require('neogit').open() end, silent_opts)
+vim.keymap.set('n', '<C-g><C-a>', function() require('gitsigns').blame() end, silent_opts)
+vim.keymap.set('n', '<C-g><C-b>', function() require('gitsigns').blame_line({full = true}) end, silent_opts)
+vim.keymap.set('n', '<C-g><C-d>', function() require('gitsigns').toggle_deleted() end, silent_opts)
+vim.keymap.set('n', '<C-g><C-g>', function() require('gitsigns').preview_hunk() end, silent_opts)
+vim.keymap.set('n', ']c', function() require('gitsigns').nav_hunk('next') end, silent_opts)
+vim.keymap.set('n', '[c', function() require('gitsigns').nav_hunk('prev') end, silent_opts)
 
 function M.get_diffview_keymaps()
     local close_map = { 'n', '<C-q>', '<Cmd>DiffviewClose<CR>', { silent = true } }
