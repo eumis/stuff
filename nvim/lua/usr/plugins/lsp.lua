@@ -1,6 +1,7 @@
 return {
     {
         "folke/lazydev.nvim",
+        event = 'BufReadPre',
         ft = "lua",
         dependencies = {
             --'justinsgithub/wezterm-types',

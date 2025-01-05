@@ -45,7 +45,8 @@ return {
     },
     {
         'numToStr/Comment.nvim',
-        event = 'BufReadPre'
+        lazy = true,
+        opts = {}
     },
     {
         'karb94/neoscroll.nvim',
@@ -68,16 +69,8 @@ return {
     {
         'gregorias/coerce.nvim',
         event = 'BufReadPre',
-        keys = { { 'cr' }, { 'gcr' } },
-        config = function()
-            require('coerce').setup({
-                keymap_registry = require('coerce.keymap').keymap_registry(),
-                -- The notification function used during error conditions.
-                notify = function(...) return vim.notify(...) end,
-                -- If you don’t like the default cases and modes, you can override them.
-                cases = require('coerce').default_cases,
-                modes = require('coerce').default_modes
-            })
-        end
+        opts = {
+            default_mode_keymap_prefixes = require('usr.keymap').get_coerce_prefices(),
+        },
     },
 }

@@ -48,7 +48,7 @@ vim.keymap.set('n', '<C-f><C-s>', ':NvimTreeFindFile<CR>')
 -- git
 vim.keymap.set('n', '<C-g><C-s>', function() require('neogit').open() end, silent_opts)
 vim.keymap.set('n', '<C-g><C-a>', function() require('gitsigns').blame() end, silent_opts)
-vim.keymap.set('n', '<C-g><C-b>', function() require('gitsigns').blame_line({full = true}) end, silent_opts)
+vim.keymap.set('n', '<C-g><C-b>', function() require('gitsigns').blame_line({ full = true }) end, silent_opts)
 vim.keymap.set('n', '<C-g><C-d>', function() require('gitsigns').toggle_deleted() end, silent_opts)
 vim.keymap.set('n', '<C-g><C-g>', function() require('gitsigns').preview_hunk() end, silent_opts)
 vim.keymap.set('n', ']c', function() require('gitsigns').nav_hunk('next') end, silent_opts)
@@ -132,6 +132,15 @@ vim.keymap.set('x', 'CB', function()
     vim.api.nvim_feedkeys(esc, 'nx', false)
     require('Comment.api').toggle.blockwise(vim.fn.visualmode())
 end)
+
+-- coerce
+function M.get_coerce_prefices()
+    return {
+        normal_mode = "cr",
+        motion_mode = "gcr",
+        visual_mode = "gcr",
+    }
+end
 
 -- debug
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end)

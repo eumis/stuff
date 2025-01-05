@@ -25,33 +25,31 @@ return {
         'xiyaowong/nvim-transparent',
         lazy = false,
         priority = 999,
-        config = function()
-            require('transparent').setup({
-                extra_groups = {
-                    "BufferLineTabClose",
-                    "BufferlineBufferSelected",
-                    "BufferLineFill",
-                    "BufferLineBackground",
-                    "BufferLineSeparator",
-                    "BufferLineIndicatorSelected",
-                    "NvimTreeRootFolder",
-                    "NvimTreeEmptyFoldername",
-                    "NvimTreeTreeFolderName",
-                    "NvimTreeNormal",
-                    "NvimTreeNormalFloat",
-                    "NvimTreeNormalPopup",
-                    "NvimTreeWindowPicker",
-                    "NvimTreeEndOfBuffer",
-                    "NvimTreeOpenedFolderName",
-                    "NvimTreeVertSplit",
-                    "VertSplit"
-                },
-                exclude_groups = {},
-            })
-        end
+        opts = {
+            extra_groups = {
+                "BufferLineTabClose",
+                "BufferlineBufferSelected",
+                "BufferLineFill",
+                "BufferLineBackground",
+                "BufferLineSeparator",
+                "BufferLineIndicatorSelected",
+                "NvimTreeRootFolder",
+                "NvimTreeEmptyFoldername",
+                "NvimTreeTreeFolderName",
+                "NvimTreeNormal",
+                "NvimTreeNormalFloat",
+                "NvimTreeNormalPopup",
+                "NvimTreeWindowPicker",
+                "NvimTreeEndOfBuffer",
+                "NvimTreeOpenedFolderName",
+                "NvimTreeVertSplit",
+                "VertSplit"
+            },
+            exclude_groups = {},
+        }
     },
-    { 'norcalli/nvim-colorizer.lua',  lazy = false },
-    { 'kyazdani42/nvim-web-devicons', lazy = false },
+    { 'norcalli/nvim-colorizer.lua',  lazy = false, config = function() require('colorizer').setup() end },
+    { 'kyazdani42/nvim-web-devicons', lazy = false, opts = {} },
     { 'mhinz/vim-startify',           lazy = false },
     {
         'nvim-lualine/lualine.nvim',
