@@ -7,4 +7,3 @@ onetool/local.py
 onetool/init.dev.py
 onetool/pyrightconfig.json
 *.pyc
-nvim/lazy-lock.json
