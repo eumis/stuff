@@ -69,4 +69,3 @@ app.load_plugin('files')
 app.load_plugin('docs', workspaces_root = '~/data/docs/')
 
 repos = app.load_plugin('repos')
-repos.sync_all()
