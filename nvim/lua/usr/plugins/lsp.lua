@@ -94,6 +94,7 @@ return {
                         RoslynExtensionsOptions = {
                             -- Enables support for roslyn analyzers, code fixes and rulesets.
                             EnableAnalyzersSupport = true,
+                            EnableDecompilationSupport = true,
                             -- Enables support for showing unimported types and unimported extension
                             -- methods in completion lists. When committed, the appropriate using
                             -- directive will be added at the top of the current file. This option can
