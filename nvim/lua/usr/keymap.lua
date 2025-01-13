@@ -39,7 +39,7 @@ vim.keymap.set("t", '<esc><esc>', '<c-\\><c-n>')
 vim.keymap.set("n", '<C-t><C-t>', function() require('usr.terminal').float_terminal() end)
 vim.keymap.set("t", '<C-t><C-t>', function() require('usr.terminal').float_terminal() end)
 vim.keymap.set("n", '<C-t><C-s>', function() require('usr.terminal').split_terminal() end)
-vim.keymap.set("n", '<C-t><C-m>', function() require('usr.terminal').bottom_terminal() end)
+vim.keymap.set("n", '<C-t><C-b>', function() require('usr.terminal').bottom_terminal() end)
 vim.api.nvim_create_user_command('Term', function() require('usr.terminal').float_terminal() end, {})
 
 -- nvim tree
@@ -117,7 +117,7 @@ vim.keymap.set('n', '<space>fb', function() require('telescope.builtin').buffers
 -- vim.keymap.set('n', '<C-c>', function() require('harpoon.mark').clear_all() end, silent_opts)
 
 -- snippets
-vim.keymap.set({ "i", "s" }, "<C-m>", function() require('luasnip').jump(1) end, silent_opts)
+vim.keymap.set({ "i", "s" }, "<C-v>", function() require('luasnip').jump(1) end, silent_opts)
 vim.keymap.set({ "i", "s" }, "<C-b>", function() require('luasnip').jump(-1) end, silent_opts)
 
 -- comments
@@ -164,6 +164,11 @@ vim.keymap.set('n', '<space>lr', ':LspRestart<cr>')
 -- packages
 vim.keymap.set('n', '<C-p><C-p>', ':Lazy<cr>')
 vim.keymap.set('n', '<C-p><C-m>', ':Mason<cr>')
+
+-- markdown
+
+vim.keymap.set('n', '<C-m>', ':Markview toggle<cr>')
+vim.keymap.set('n', 'gx', function() require('usr.url').open_url(vim.fn.expand('<cfile>')) end)
 
 -- cmp
 function M.get_cmp_mapping()
