@@ -85,7 +85,7 @@ return {
             markview.keymaps.createKeymap = function(buffer)
                 vim.api.nvim_buf_set_keymap(buffer, "n", "gx", "", {
                     desc = "gx patch for Markview.nvim",
-                    callback = function ()
+                    callback = function()
                         local keymaps = require('markview.keymaps')
                         local buf_links = keymaps.views[buffer] or {};
                         local cursor = vim.api.nvim_win_get_cursor(0);
@@ -106,45 +106,44 @@ return {
             markview.setup({
                 headings = {
                     heading_1 = {
-                        style = 'icon',
-                        shift_char = '',
-                        icon = ' '
+                        style = 'simple',
+                        hl = ''
                     },
                     heading_2 = {
-                        style = 'icon',
-                        shift_char = '',
-                        icon = ' '
+                        style = 'simple',
+                        hl = ''
                     },
                     heading_3 = {
-                        style = 'icon',
-                        shift_char = '',
-                        icon = ' '
+                        style = 'simple',
+                        hl = ''
                     },
                     heading_4 = {
-                        style = 'icon',
-                        shift_char = '',
-                        icon = ' '
+                        style = 'simple',
+                        hl = ''
                     },
                     heading_5 = {
-                        style = 'icon',
-                        shift_char = '',
-                        icon = ' '
+                        style = 'simple',
+                        hl = ''
                     },
                     heading_6 = {
-                        style = 'icon',
-                        shift_char = '',
-                        icon = ' '
+                        style = 'simple',
+                        hl = ''
                     },
                     heading_7 = {
-                        style = 'icon',
-                        shift_char = '',
-                        icon = ' '
+                        style = 'simple',
+                        hl = ''
                     },
                     heading_8 = {
-                        style = 'icon',
-                        shift_char = '',
-                        icon = ' '
+                        style = 'simple',
+                        hl = ''
                     },
+                },
+                list_items = {
+                    indent_size = 2,
+                    shift_width = 2,
+                    marker_minus = {
+                        add_padding = true
+                    }
                 }
             })
         end
