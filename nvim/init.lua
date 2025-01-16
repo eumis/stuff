@@ -45,10 +45,11 @@ vim.filetype.add {
     extension = {
         zsh = "sh",
         sh = "sh", -- force sh-files with zsh-shebang to still get sh as filetype
+        lmd = "markdown"
     },
     filename = {
         [".zshrc"] = "sh",
-        [".zshenv"] = "sh",
+        [".zshenv"] = "sh"
     },
 }
 
