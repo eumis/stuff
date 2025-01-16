@@ -1,6 +1,9 @@
 local M = {}
 local silent_opts = { noremap = true, silent = true }
 
+vim.keymap.set('n', '<space>md', function() vim.api.nvim_input('0f-a [x]<esc>') end)
+vim.keymap.set('n', '<space>mt', function() vim.api.nvim_input('0f-ldf]') end)
+
 -- source
 vim.keymap.set('n', '<C-x><C-x>', '<cmd>.lua<CR>')
 vim.keymap.set('n', '<C-x><C-f>', '<cmd>source %<CR>')
