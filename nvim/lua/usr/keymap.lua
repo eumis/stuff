@@ -2,11 +2,11 @@ local M = {}
 local silent_opts = { noremap = true, silent = true }
 
 -- source
-vim.keymap.set('n', '<C-r><C-r>', '<cmd>.lua<CR>')
-vim.keymap.set('n', '<C-r><C-f>', '<cmd>source %<CR>')
+vim.keymap.set('n', '<C-x><C-x>', '<cmd>.lua<CR>')
+vim.keymap.set('n', '<C-x><C-f>', '<cmd>source %<CR>')
 
 vim.keymap.set('n', '<space>/', ':noh<CR>')
-vim.keymap.set('n', '<space>qq', '<cmd>:q<cr>')
+vim.keymap.set('n', '<C-q>', '<cmd>:q<cr>')
 vim.keymap.set('n', '<space>qf', '<cmd>:q!<cr>')
 vim.keymap.set('n', '<space>qa', '<cmd>:qa<cr>')
 vim.keymap.set('n', '<space>qn', '<cmd>:qa!<cr>')
@@ -16,7 +16,7 @@ vim.keymap.set('n', '<C-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>')
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>')
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>')
-vim.keymap.set('n', '<C-x>', ':wincmd x<CR>')
+-- vim.keymap.set('n', '<C-x>', ':wincmd x<CR>')
 vim.keymap.set('n', '<space>mh', ':wincmd H<CR>')
 vim.keymap.set('n', '<space>mj', ':wincmd J<CR>')
 vim.keymap.set('n', '<space>mk', ':wincmd K<CR>')
