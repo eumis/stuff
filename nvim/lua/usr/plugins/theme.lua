@@ -49,7 +49,24 @@ return {
         }
     },
     { 'norcalli/nvim-colorizer.lua',  lazy = false, config = function() require('colorizer').setup() end },
-    { 'kyazdani42/nvim-web-devicons', lazy = false, opts = {} },
+    {
+        'kyazdani42/nvim-web-devicons',
+        lazy = false,
+        opts = {
+            override = {
+                luamarkdown = {
+                    icon = '󰽛',
+                    name = 'luamarkdown'
+                }
+            },
+            override_by_extension = {
+                ['luamd'] = {
+                    icon = '󰽛',
+                    name = 'luamarkdown'
+                }
+            }
+        }
+    },
     { 'mhinz/vim-startify',           lazy = false },
     {
         'nvim-lualine/lualine.nvim',

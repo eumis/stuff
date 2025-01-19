@@ -18,6 +18,7 @@ return {
                         additional_vim_regex_highlighting = false,
                     }
                 }
+                vim.treesitter.language.register("markdown", "luamarkdown")
             end,
         }
     },
@@ -104,6 +105,7 @@ return {
                 })
             end
             markview.setup({
+                buf_ignore = { 'lmarkdown' },
                 headings = {
                     heading_1 = {
                         style = 'simple',

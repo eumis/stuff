@@ -26,4 +26,13 @@ return {
         cond = get_cond('boil'),
         config = get_config('boil')
     },
+    {
+        'luamd',
+        event = 'VeryLazy',
+        dir = '~/data/plugins/luamd',
+        cond = get_cond('luamd'),
+        config = function()
+            require('luamd').setup()
+        end
+    },
 }

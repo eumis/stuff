@@ -1,9 +1,6 @@
 local M = {}
 local silent_opts = { noremap = true, silent = true }
 
-vim.keymap.set('n', '<space>md', function() vim.api.nvim_input('0f-a [x]<esc>') end)
-vim.keymap.set('n', '<space>mt', function() vim.api.nvim_input('0f-ldf]') end)
-
 -- source
 vim.keymap.set('n', '<C-x><C-x>', '<cmd>.lua<CR>')
 vim.keymap.set('n', '<C-x><C-f>', '<cmd>source %<CR>')
@@ -169,8 +166,25 @@ vim.keymap.set('n', '<C-p><C-p>', ':Lazy<cr>')
 vim.keymap.set('n', '<C-p><C-m>', ':Mason<cr>')
 
 -- markdown
-
-vim.keymap.set('n', '<C-m>', ':Markview toggle<cr>')
+vim.keymap.set('n', '<C-m>', function()
+    if vim.bo.buftype == 'nofile' or vim.bo.filetype == 'luamarkdown' then
+        require('luamd').toggle()
+    else
+        require('markview').commands.toggle()
+    end
+end)
+local function set_task(char)
+    local line = vim.api.nvim_get_current_line()
+    line = string.gsub(line, '- *%[.%]', '- [' .. char ..']')
+    vim.api.nvim_set_current_line(line)
+end
+vim.keymap.set('n', '<space>ma', ':Markview attach<cr>')
+vim.keymap.set('n', 'tt', function() vim.api.nvim_input('0f-a [ ]<esc>') end)
+vim.keymap.set('n', 't<space>', function() set_task(' ') end)
+vim.keymap.set('n', 't/', function() set_task('/') end)
+vim.keymap.set('n', 'tx', function() set_task('x') end)
+vim.keymap.set('n', 't-', function() set_task('-') end)
+vim.keymap.set('n', 't?', function() set_task('?') end)
 vim.keymap.set('n', 'gx', function() require('usr.url').open_url(vim.fn.expand('<cfile>')) end)
 
 -- cmp
