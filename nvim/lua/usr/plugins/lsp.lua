@@ -47,7 +47,7 @@ return {
                 ts_ls = {},
                 marksman = {
                     {
-                        filetypes = { 'makrdown', 'luamarkdown' }
+                        filetypes = { 'markdown', 'luamarkdown' }
                     },
                     remap = function(bufnr)
                         local opts = { noremap = true, silent = true, buffer = bufnr }
