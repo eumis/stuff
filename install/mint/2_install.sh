@@ -80,17 +80,32 @@ sudo apt-get install -y nodejs
 
 sudo apt install build-essential -y
 sudo apt install gcc -y
-sudo apt install lua5.4 -y
 sudo apt install unzip -y
 sudo apt install ripgrep -y
 sudo apt install fd-find -y
 sudo apt install xsel -y
 sudo apt install fzf
 
+curl -LRO https://www.lua.org/ftp/lua-5.1.5.tar.gz
+tar zxf lua-5.1.5.tar.gz
+cd lua-5.1.5
+make linux
+make test
+sudo make install
+cd ..
+
+curl -LRO https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+tar zxpf luarocks-3.11.1.tar.gz
+cd luarocks-3.11.1
+./configure
+make
+sudo make install
+cd ..
+
 echo 'alias fd=fdfind' >> ~/.bashrc
 echo 'alias fd=fdfind' >> ~/.config/fish/config.fish
 
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+curl -LRO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 mv nvim.appimage ~/.local
 chmod u+x ~/.local/nvim.appimage
 echo 'alias nvim=~/.local/nvim.appimage' >> ~/.bashrc
