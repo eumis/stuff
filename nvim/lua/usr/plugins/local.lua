@@ -35,4 +35,10 @@ return {
             require('luamd').setup()
         end
     },
+    {
+        'auto',
+        event = 'VeryLazy',
+        dir = '~/data/plugins/auto',
+        cond = get_cond('auto')
+    },
 }
