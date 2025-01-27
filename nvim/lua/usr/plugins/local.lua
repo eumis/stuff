@@ -13,6 +13,13 @@ end
 
 return {
     {
+        'util',
+        event = 'VeryLazy',
+        dir = '~/data/plugins/util',
+        cond = get_cond('util'),
+        config = get_config('util')
+    },
+    {
         'nvwd',
         event = 'VeryLazy',
         dir = '~/data/plugins/nvwd',
