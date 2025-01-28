@@ -46,6 +46,9 @@ return {
         'auto',
         event = 'VeryLazy',
         dir = '~/data/plugins/auto',
-        cond = get_cond('auto')
+        cond = get_cond('auto'),
+        config = function()
+            require('auto').setup()
+        end
     },
 }

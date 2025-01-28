@@ -32,7 +32,6 @@ tar -xf CodeNewRoman.tar.xz -C ~/.local/share/fonts/
 curl -fLo Hack.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.tar.xz
 tar -xf Hack.tar.xz -C ~/.local/share/fonts/
 
-
 # kitty
 ln -s ~/stuff/kitty ~/.config
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
@@ -85,6 +84,7 @@ sudo apt install ripgrep -y
 sudo apt install fd-find -y
 sudo apt install xsel -y
 sudo apt install fzf
+sudo apt install jq
 
 curl -LRO https://www.lua.org/ftp/lua-5.1.5.tar.gz
 tar zxf lua-5.1.5.tar.gz
