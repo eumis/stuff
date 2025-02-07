@@ -106,7 +106,9 @@ return {
             --     })
             -- end
             markview.setup({
-                buf_ignore = { 'lmarkdown' },
+                preview = {
+                    ignore_buftypes = { 'lmarkdown' }
+                },
                 headings = {
                     heading_1 = {
                         style = 'simple',
