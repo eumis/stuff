@@ -76,6 +76,7 @@ return {
     },
     {
         "OXY2DEV/markview.nvim",
+        event = 'VeryLazy',
         ft = "markdown",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
@@ -83,27 +84,27 @@ return {
         },
         config = function()
             local markview = require('markview')
-            markview.keymaps.createKeymap = function(buffer)
-                vim.api.nvim_buf_set_keymap(buffer, "n", "gx", "", {
-                    desc = "gx patch for Markview.nvim",
-                    callback = function()
-                        local keymaps = require('markview.keymaps')
-                        local buf_links = keymaps.views[buffer] or {};
-                        local cursor = vim.api.nvim_win_get_cursor(0);
-
-                        local address = vim.fn.expand('<cfile>')
-                        for _, link in ipairs(buf_links) do
-                            if link.row_start + 1 == cursor[1] and cursor[2] >= link.col_start and cursor[2] <= link.col_end then
-                                address = link.address
-                                break
-                            end
-                        end
-
-                        require('usr.url').open_url(address)
-                    end
-
-                })
-            end
+            -- markview.keymaps.createKeymap = function(buffer)
+            --     vim.api.nvim_buf_set_keymap(buffer, "n", "gx", "", {
+            --         desc = "gx patch for Markview.nvim",
+            --         callback = function()
+            --             local keymaps = require('markview.keymaps')
+            --             local buf_links = keymaps.views[buffer] or {};
+            --             local cursor = vim.api.nvim_win_get_cursor(0);
+            --
+            --             local address = vim.fn.expand('<cfile>')
+            --             for _, link in ipairs(buf_links) do
+            --                 if link.row_start + 1 == cursor[1] and cursor[2] >= link.col_start and cursor[2] <= link.col_end then
+            --                     address = link.address
+            --                     break
+            --                 end
+            --             end
+            --
+            --             require('usr.url').open_url(address)
+            --         end
+            --
+            --     })
+            -- end
             markview.setup({
                 buf_ignore = { 'lmarkdown' },
                 headings = {

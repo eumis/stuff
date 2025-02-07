@@ -48,7 +48,7 @@ return {
             exclude_groups = {},
         }
     },
-    { 'norcalli/nvim-colorizer.lua',  lazy = false, config = function() require('colorizer').setup() end },
+    { 'norcalli/nvim-colorizer.lua', lazy = false, config = function() require('colorizer').setup() end },
     {
         'kyazdani42/nvim-web-devicons',
         lazy = false,
@@ -67,7 +67,21 @@ return {
             }
         }
     },
-    { 'mhinz/vim-startify',           lazy = false },
+    {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                theme = 'hyper',
+                config = {
+                    week_header = {enable = true},
+                    project = { enable = false },
+                    mru = { enable = true, limit = 10, cwd_only = true }
+                }
+            }
+        end,
+        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+    },
     {
         'nvim-lualine/lualine.nvim',
         lazy = false,
