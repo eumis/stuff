@@ -167,10 +167,12 @@ vim.keymap.set('n', '<C-p><C-m>', ':Mason<cr>')
 
 -- markdown
 vim.keymap.set('n', '<C-m>', function()
-    if vim.bo.buftype == 'nofile' or vim.bo.filetype == 'luamarkdown' then
-        require('luamd').toggle()
-    else
+    if vim.bo.filetype == 'markdown' and vim.bo.buftype ~= 'nofile' then
+        print('markview')
         require('markview').commands.toggle()
+    else
+        print('luamd')
+        require('luamd').toggle()
     end
 end)
 local function set_task(char)
