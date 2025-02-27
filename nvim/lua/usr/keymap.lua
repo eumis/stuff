@@ -7,6 +7,7 @@ vim.keymap.set('n', '<C-x><C-f>', '<cmd>source %<CR>')
 
 vim.keymap.set('n', '<space>/', ':noh<CR>')
 vim.keymap.set('n', '<C-q>', '<cmd>:q<cr>')
+vim.keymap.set('t', '<C-q>', '<c-\\><c-n><cmd>:q<cr>')
 vim.keymap.set('n', '<space>qf', '<cmd>:q!<cr>')
 vim.keymap.set('n', '<space>qa', '<cmd>:qa<cr>')
 vim.keymap.set('n', '<space>qn', '<cmd>:qa!<cr>')
@@ -41,6 +42,9 @@ vim.keymap.set("t", '<C-t><C-t>', function() require('usr.terminal').float_termi
 vim.keymap.set("n", '<C-t><C-s>', function() require('usr.terminal').split_terminal() end)
 vim.keymap.set("n", '<C-t><C-b>', function() require('usr.terminal').bottom_terminal() end)
 vim.api.nvim_create_user_command('Term', function() require('usr.terminal').float_terminal() end, {})
+
+-- tasks
+vim.keymap.set("n", '<C-t><C-r>', function() require('task').toggle_list() end)
 
 -- nvim tree
 vim.keymap.set('n', '<C-f><C-f>', ':NvimTreeToggle<CR>')

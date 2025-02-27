@@ -51,4 +51,13 @@ return {
             require('auto').setup()
         end
     },
+    {
+        'task',
+        event = 'VeryLazy',
+        dir = '~/data/plugins/task',
+        cond = get_cond('task'),
+        -- config = function()
+        --     require('auto').setup()
+        -- end
+    },
 }
