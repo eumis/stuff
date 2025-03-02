@@ -189,7 +189,8 @@ return {
                             validation = { noGrammar = "hint" }
                         }
                     }
-                } }
+                } },
+                kotlin_language_server = {}
             }
 
             local lspconfig = require('lspconfig')
