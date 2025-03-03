@@ -1,7 +1,7 @@
 local Path = require('plenary.path')
 local plugins_root = '~/data/plugins'
 
----@param name
+---@param name string
 ---@param options? {root?: string, config: fun()}
 local function custom_plugin(name, options)
     options = options or {}
@@ -12,18 +12,16 @@ local function custom_plugin(name, options)
         event = 'VeryLazy',
         dir = options.root .. '/' .. name,
         cond = function()
-            return Path:new(vim.fn.expand(plugins_root), name):exists()
+            return Path:new(vim.fn.expand(options.root), name):exists()
         end,
-        config = function()
-            require(name)
-        end
+        config = options.config
     }
 end
 
 return {
     custom_plugin('util'),
     custom_plugin('nvwd'),
-    custom_plugin('luamd', { config = function() require('auto').setup() end }),
+    custom_plugin('luamd', { config = function() require('luamd').setup() end }),
     custom_plugin('auto', { config = function() require('auto').setup() end }),
     custom_plugin('task'),
     custom_plugin('nvim', { root = '~/data' })
