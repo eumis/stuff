@@ -181,7 +181,7 @@ vim.keymap.set('n', '<C-m>', function()
 end)
 local function set_task(char)
     local line = vim.api.nvim_get_current_line()
-    line = string.gsub(line, '- *%[.%]', '- [' .. char ..']')
+    line = line:gsub('- *%[.%]', '- [' .. char ..']')
     vim.api.nvim_set_current_line(line)
 end
 vim.keymap.set('n', '<space>ma', ':Markview attach<cr>')

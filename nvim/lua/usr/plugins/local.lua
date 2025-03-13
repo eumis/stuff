@@ -24,4 +24,5 @@ return {
     custom_plugin('auto', { config = function() require('auto').setup() end }),
     custom_plugin('task'),
     custom_plugin('nvwd'),
+    custom_plugin('pronav'),
 }
