@@ -21,19 +21,18 @@ local conds = require("luasnip.extras.conditions")
 local conds_expand = require("luasnip.extras.conditions.expand")
 
 ls.add_snippets('cs', {
-    s('private method',
+    s('setup mocker',
         fmt(
         [[
-            private {async}{ret_type} {name}({parameters})
-            {{
-                {body}
-            }}
+            _mocker
+                .Setup<{interface}, Task<{ret_type}>>(_ => _.{method}({parameters}, _ct))
+                .ReturnsAsync({ret_value});
         ]], {
-            async = i(1, 'async '),
-            ret_type = i(2, 'Task'),
-            name = i(3),
+            interface = i(1),
+            ret_type = i(2),
+            method = i(3),
             parameters = i(4),
-            body = i(5)
+            ret_value = i(5)
         })
     ),
 })
@@ -162,7 +161,7 @@ ls.add_snippets('python', {
 })
 
 ls.add_snippets('cs', {
-    s('ms',
+    s('setup mocker',
         fmt(
         [[
             _mocker
