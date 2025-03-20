@@ -20,6 +20,24 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.conditions")
 local conds_expand = require("luasnip.extras.conditions.expand")
 
+ls.add_snippets('cs', {
+    s('private method',
+        fmt(
+        [[
+            private {async}{ret_type} {name}({parameters})
+            {{
+                {body}
+            }}
+        ]], {
+            async = i(1, 'async '),
+            ret_type = i(2, 'Task'),
+            name = i(3),
+            parameters = i(4),
+            body = i(5)
+        })
+    ),
+})
+
 ls.setup()
 --require('luasnip.loaders.from_vscode').load()
 
@@ -271,4 +289,30 @@ ls.add_snippets('cs', {
             body = i(4)
         })
     ),
+
+
+    s('property',
+        fmt('public {property_type} {name} {{ get; set; }}', {
+            property_type = i(1),
+            name = i(2)
+        })
+    ),
+
+
+    s('private method',
+        fmt(
+        [[
+            private {async}{ret_type} {name}({parameters})
+            {{
+                {body}
+            }}
+        ]], {
+            async = i(1, 'async '),
+            ret_type = i(2, 'Task'),
+            name = i(3),
+            parameters = i(4),
+            body = i(5)
+        })
+    ),
 })
+

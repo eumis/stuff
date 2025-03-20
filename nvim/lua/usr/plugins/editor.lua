@@ -76,6 +76,7 @@ return {
     },
     {
         "OXY2DEV/markview.nvim",
+        enabled = false,
         event = 'VeryLazy',
         ft = "markdown",
         dependencies = {
