@@ -149,7 +149,9 @@ return {
                     },
                     remap = function(bufnr)
                         local opts = { noremap = true, silent = true, buffer = bufnr }
-                        vim.keymap.set('n', '<space>e', "<cmd>silent !yapf % -i && isort %<CR>", opts)
+                        -- vim.keymap.set('n', '<space>e', "<cmd>silent !yapf % -i && isort %<CR>", opts)
+                        -- vim.keymap.set('n', '<space>e', "<cmd>silent !black % && isort %<CR>", opts)
+                        vim.keymap.set('n', '<space>e', "<cmd>silent !autopep8 -i % && isort %<CR>", opts)
                     end
                 },
                 pyright = {
