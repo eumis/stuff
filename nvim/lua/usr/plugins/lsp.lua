@@ -150,8 +150,8 @@ return {
                     remap = function(bufnr)
                         local opts = { noremap = true, silent = true, buffer = bufnr }
                         -- vim.keymap.set('n', '<space>e', "<cmd>silent !yapf % -i && isort %<CR>", opts)
-                        -- vim.keymap.set('n', '<space>e', "<cmd>silent !black % && isort %<CR>", opts)
-                        vim.keymap.set('n', '<space>e', "<cmd>silent !autopep8 -i % && isort %<CR>", opts)
+                        vim.keymap.set('n', '<space>e', "<cmd>silent !black % && isort %<CR>", opts)
+                        -- vim.keymap.set('n', '<space>e', "<cmd>silent !autopep8 -i --agressive --experimental % && isort %<CR>", opts)
                     end
                 },
                 pyright = {
@@ -222,6 +222,7 @@ return {
                 callback = function(args)
                     local client = vim.lsp.get_client_by_id(args.data.client_id)
                     local server_config = servers[client.name]
+                    if server_config == nil then return end
                     if server_config.semanticTokensProvider ~= nil then
                         client.server_capabilities.semanticTokensProvider = server_config.semanticTokensProvider
                     end
