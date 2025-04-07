@@ -222,3 +222,6 @@ sudo usermod -aG plugdev $USER
 sudo apt update -y
 cd ..
 rm -rf temp
+
+# images
+sudo apt install feh

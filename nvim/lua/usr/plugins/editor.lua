@@ -108,7 +108,7 @@ return {
             -- end
             markview.setup({
                 preview = {
-                    ignore_buftypes = { 'lmarkdown' }
+                    ignore_buftypes = { 'lmarkdown', 'json' }
                 },
                 headings = {
                     heading_1 = {
