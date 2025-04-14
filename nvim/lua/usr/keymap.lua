@@ -171,16 +171,8 @@ vim.keymap.set('n', '<C-p><C-m>', ':Mason<cr>')
 
 -- markdown
 vim.keymap.set('n', '<C-m>', function()
-    require('markview').commands.toggle()
-    -- if vim.bo.filetype == 'markdown' and vim.bo.buftype ~= 'nofile' then
-    --     print('markview')
-    --     require('markview').commands.toggle()
-    -- else
-    --     print('luamd')
-    --     require('luamd').toggle()
-    -- end
+    require('render-markdown').buf_toggle()
 end)
-vim.keymap.set('n', '<space>ma', ':Markview attach<cr>')
 
 local function set_task(char)
     local line = vim.api.nvim_get_current_line()

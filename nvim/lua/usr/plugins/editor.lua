@@ -19,6 +19,8 @@ return {
                     }
                 }
                 vim.treesitter.language.register("markdown", "luamarkdown")
+                vim.treesitter.language.register("markdown", "jinja")
+                vim.treesitter.language.register("markdown", "avante")
             end,
         }
     },
@@ -75,83 +77,17 @@ return {
         },
     },
     {
-        "OXY2DEV/markview.nvim",
-        -- enabled = false,
-        event = 'VeryLazy',
-        ft = "markdown",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
+        'MeanderingProgrammer/render-markdown.nvim',
+        event = "VeryLazy",
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+        ft = { 'markdown', 'quarto', 'jinja', 'avante' },
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {
+            heading = {
+                width = 'block',
+                min_width = 50
+            }
         },
-        config = function()
-            local markview = require('markview')
-            -- markview.keymaps.createKeymap = function(buffer)
-            --     vim.api.nvim_buf_set_keymap(buffer, "n", "gx", "", {
-            --         desc = "gx patch for Markview.nvim",
-            --         callback = function()
-            --             local keymaps = require('markview.keymaps')
-            --             local buf_links = keymaps.views[buffer] or {};
-            --             local cursor = vim.api.nvim_win_get_cursor(0);
-            --
-            --             local address = vim.fn.expand('<cfile>')
-            --             for _, link in ipairs(buf_links) do
-            --                 if link.row_start + 1 == cursor[1] and cursor[2] >= link.col_start and cursor[2] <= link.col_end then
-            --                     address = link.address
-            --                     break
-            --                 end
-            --             end
-            --
-            --             require('usr.url').open_url(address)
-            --         end
-            --
-            --     })
-            -- end
-            markview.setup({
-                preview = {
-                    ignore_buftypes = { 'lmarkdown', 'json' }
-                },
-                headings = {
-                    heading_1 = {
-                        style = 'simple',
-                        hl = ''
-                    },
-                    heading_2 = {
-                        style = 'simple',
-                        hl = ''
-                    },
-                    heading_3 = {
-                        style = 'simple',
-                        hl = ''
-                    },
-                    heading_4 = {
-                        style = 'simple',
-                        hl = ''
-                    },
-                    heading_5 = {
-                        style = 'simple',
-                        hl = ''
-                    },
-                    heading_6 = {
-                        style = 'simple',
-                        hl = ''
-                    },
-                    heading_7 = {
-                        style = 'simple',
-                        hl = ''
-                    },
-                    heading_8 = {
-                        style = 'simple',
-                        hl = ''
-                    },
-                },
-                list_items = {
-                    indent_size = 2,
-                    shift_width = 2,
-                    marker_minus = {
-                        add_padding = true
-                    }
-                }
-            })
-        end
     }
 }
