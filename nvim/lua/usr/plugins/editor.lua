@@ -19,7 +19,6 @@ return {
                     }
                 }
                 vim.treesitter.language.register("markdown", "luamarkdown")
-                vim.treesitter.language.register("markdown", "jinja")
                 vim.treesitter.language.register("markdown", "avante")
             end,
         }

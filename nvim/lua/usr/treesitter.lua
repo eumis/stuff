@@ -25,6 +25,7 @@ return {
     'ini',
     'java',
     'javascript',
+    'jinja',
     'jsdoc',
     'json',
     'json5',
