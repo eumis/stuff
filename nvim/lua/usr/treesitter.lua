@@ -38,6 +38,7 @@ return {
     'luau',
     'markdown',
     'markdown_inline',
+    'mermaid',
     'ocaml',
     'ocaml_interface',
     'org',

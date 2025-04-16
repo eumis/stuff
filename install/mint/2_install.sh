@@ -224,4 +224,5 @@ cd ..
 rm -rf temp
 
 # images
-sudo apt install feh
+sudo apt install eog
+npm install -g @mermaid-js/mermaid-cli
