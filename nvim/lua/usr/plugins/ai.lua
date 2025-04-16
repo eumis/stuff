@@ -68,12 +68,12 @@ return {
                     next = "]x",
                     prev = "[x",
                 },
-                -- suggestion = {
-                --     accept = "<C-.><C-.>",
-                --     next = "<C-.><C-m>",
-                --     prev = "<C-.><C-n>",
-                --     dismiss = "<C-.><C-,>",
-                -- },
+                suggestion = {
+                    accept = "<C-.><C-.>",
+                    next = "<C-.><C-m>",
+                    prev = "<C-.><C-n>",
+                    dismiss = "<C-.><C-,>",
+                },
                 jump = {
                     next = "]]",
                     prev = "[[",
