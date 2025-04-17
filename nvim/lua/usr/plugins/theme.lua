@@ -11,7 +11,7 @@ return {
                 italic_comments = false,
                 disable_nvimtree_bg = true,
                 color_overrides = {
-                    vscBack = '#121a26',
+                    vscBack = '#282C34',
                     vscPopupBack = '#282C34'
                 },
                 group_overrides = {
