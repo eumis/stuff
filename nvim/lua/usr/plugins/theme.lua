@@ -7,11 +7,11 @@ return {
             vim.o.background = 'dark'
             local c = require('vscode.colors')
             require('vscode').setup({
-                transparent = true,
+                transparent = false,
                 italic_comments = false,
                 disable_nvimtree_bg = true,
                 color_overrides = {
-                    vscBack = '#282C34',
+                    vscBack = '#121a26',
                     vscPopupBack = '#282C34'
                 },
                 group_overrides = {
@@ -21,33 +21,33 @@ return {
             require('vscode').load()
         end
     },
-    {
-        'xiyaowong/nvim-transparent',
-        lazy = false,
-        priority = 999,
-        opts = {
-            extra_groups = {
-                "BufferLineTabClose",
-                "BufferlineBufferSelected",
-                "BufferLineFill",
-                "BufferLineBackground",
-                "BufferLineSeparator",
-                "BufferLineIndicatorSelected",
-                "NvimTreeRootFolder",
-                "NvimTreeEmptyFoldername",
-                "NvimTreeTreeFolderName",
-                "NvimTreeNormal",
-                "NvimTreeNormalFloat",
-                "NvimTreeNormalPopup",
-                "NvimTreeWindowPicker",
-                "NvimTreeEndOfBuffer",
-                "NvimTreeOpenedFolderName",
-                "NvimTreeVertSplit",
-                "VertSplit"
-            },
-            exclude_groups = {},
-        }
-    },
+    -- {
+    --     'xiyaowong/nvim-transparent',
+    --     lazy = false,
+    --     priority = 999,
+    --     opts = {
+    --         extra_groups = {
+    --             "BufferLineTabClose",
+    --             "BufferlineBufferSelected",
+    --             "BufferLineFill",
+    --             "BufferLineBackground",
+    --             "BufferLineSeparator",
+    --             "BufferLineIndicatorSelected",
+    --             "NvimTreeRootFolder",
+    --             "NvimTreeEmptyFoldername",
+    --             "NvimTreeTreeFolderName",
+    --             "NvimTreeNormal",
+    --             "NvimTreeNormalFloat",
+    --             "NvimTreeNormalPopup",
+    --             "NvimTreeWindowPicker",
+    --             "NvimTreeEndOfBuffer",
+    --             "NvimTreeOpenedFolderName",
+    --             "NvimTreeVertSplit",
+    --             "VertSplit"
+    --         },
+    --         exclude_groups = {},
+    --     }
+    -- },
     { 'norcalli/nvim-colorizer.lua', lazy = false, config = function() require('colorizer').setup() end },
     {
         'kyazdani42/nvim-web-devicons',
