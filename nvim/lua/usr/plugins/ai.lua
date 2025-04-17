@@ -12,7 +12,7 @@ return {
                     debounce = 75,
                     trigger_on_accept = true,
                     keymap = {
-                        accept = "<C-.><C-.>",
+                        accept = "<C-.><C-y>",
                         accept_word = false,
                         accept_line = false,
                         next = "<C-.><C-m>",
@@ -39,67 +39,7 @@ return {
         -- event = "VeryLazy",
         version = false, -- Never set this value to "*"! Never!
         lazy = true,
-        opts = {
-            -- add any opts here
-            -- for example
-            provider = "claude",
-            claude = {
-                endpoint = "https://api.anthropic.com",
-                model = "claude-3-5-sonnet-20241022",
-                temperature = 0,
-                max_tokens = 4096,
-            },
-            -- openai = {
-            --     endpoint = "https://api.openai.com/v1",
-            --     model = "gpt-4o",  -- your desired model (or use gpt-4o, etc.)
-            --     timeout = 30000,   -- Timeout in milliseconds, increase this for reasoning models
-            --     temperature = 0,
-            --     max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-            --     --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-            -- },
-            mappings = {
-                --- @class AvanteConflictMappings
-                diff = {
-                    ours = "co",
-                    theirs = "ct",
-                    all_theirs = "ca",
-                    both = "cb",
-                    cursor = "cc",
-                    next = "]x",
-                    prev = "[x",
-                },
-                suggestion = {
-                    accept = "<C-.><C-.>",
-                    next = "<C-.><C-m>",
-                    prev = "<C-.><C-n>",
-                    dismiss = "<C-.><C-,>",
-                },
-                jump = {
-                    next = "]]",
-                    prev = "[[",
-                },
-                submit = {
-                    normal = "<CR>",
-                    insert = "<C-s>",
-                },
-                cancel = {
-                    normal = { "<C-c>", "<Esc>", "q" },
-                    insert = { "<C-c>" },
-                },
-                sidebar = {
-                    apply_all = "A",
-                    apply_cursor = "a",
-                    retry_user_request = "r",
-                    edit_user_request = "e",
-                    switch_windows = "<Tab>",
-                    reverse_switch_windows = "<S-Tab>",
-                    remove_file = "d",
-                    add_file = "@",
-                    close = { "<Esc>", "q" },
-                    close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
-                },
-            },
-        },
+        -- opts = {},
         -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
         build = "make",
         -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
