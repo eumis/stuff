@@ -12,7 +12,7 @@ return {
                     debounce = 75,
                     trigger_on_accept = true,
                     keymap = {
-                        accept = "<C-.><C-y>",
+                        accept = "<C-.><C-.>",
                         accept_word = false,
                         accept_line = false,
                         next = "<C-.><C-m>",

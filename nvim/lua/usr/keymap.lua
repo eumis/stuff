@@ -187,6 +187,25 @@ vim.keymap.set('n', 't-', function() set_task('-') end)
 vim.keymap.set('n', 't?', function() set_task('?') end)
 vim.keymap.set('n', 'gx', function() require('usr.url').open_url(vim.fn.expand('<cfile>')) end)
 
+-- ai
+vim.keymap.set('i', '<C-.><C-.>', function()
+    local copilot = require('copilot.suggestion')
+    if copilot.is_visible() then
+        copilot.accept()
+    else
+        copilot.next()
+    end
+end, opts)
+vim.keymap.set('i', '<C-.><C-m>', function()
+    require('copilot.suggestion').next()
+end, opts)
+vim.keymap.set('i', '<C-.><C-n>', function()
+    require('copilot.suggestion').previous()
+end, opts)
+vim.keymap.set('i', '<C-.><C-,>', function()
+    require('copilot.suggestion').dismiss()
+end, opts)
+
 -- cmp
 function M.get_cmp_mapping()
     local cmp = require('cmp')
