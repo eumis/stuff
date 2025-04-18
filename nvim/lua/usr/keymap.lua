@@ -121,8 +121,8 @@ vim.keymap.set('n', '<C-g><C-a>', function() require('harpoon.mark').add_file() 
 -- vim.keymap.set('n', '<C-c>', function() require('harpoon.mark').clear_all() end, silent_opts)
 
 -- snippets
-vim.keymap.set({ "i", "s" }, "<C-a>", function() require('luasnip').jump(1) end, silent_opts)
-vim.keymap.set({ "i", "s" }, "<C-b>", function() require('luasnip').jump(-1) end, silent_opts)
+vim.keymap.set({ "i", "s" }, "<C-l>", function() require('luasnip').jump(1) end, silent_opts)
+vim.keymap.set({ "i", "s" }, "<C-h>", function() require('luasnip').jump(-1) end, silent_opts)
 
 -- comments
 vim.keymap.set('n', 'CC', function() require('Comment.api').toggle.linewise.current() end, silent_opts)
@@ -188,21 +188,16 @@ vim.keymap.set('n', 't?', function() set_task('?') end)
 vim.keymap.set('n', 'gx', function() require('usr.url').open_url(vim.fn.expand('<cfile>')) end)
 
 -- ai
-vim.keymap.set('i', '<C-.><C-.>', function()
-    local copilot = require('copilot.suggestion')
-    if copilot.is_visible() then
-        copilot.accept()
-    else
-        copilot.next()
-    end
-end, opts)
-vim.keymap.set('i', '<C-.><C-m>', function()
+vim.keymap.set('i', '<C-s>', function()
     require('copilot.suggestion').next()
 end, opts)
-vim.keymap.set('i', '<C-.><C-n>', function()
+vim.keymap.set('i', '<C-x>', function()
     require('copilot.suggestion').previous()
 end, opts)
-vim.keymap.set('i', '<C-.><C-,>', function()
+vim.keymap.set('i', '<C-a>', function()
+    require('copilot.suggestion').accept()
+end, opts)
+vim.keymap.set('i', '<C-z>', function()
     require('copilot.suggestion').dismiss()
 end, opts)
 
