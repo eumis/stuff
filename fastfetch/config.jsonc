@@ -3,6 +3,7 @@
   "logo": { "type": "small" },
   "modules": [
     "os",
+    "kernel",
     "wm",
     "terminal",
     "shell",
