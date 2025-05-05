@@ -83,6 +83,14 @@ return {
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {
+            anti_conceal = {
+                -- This enables hiding any added text on the line the cursor is on.
+                enabled = false,
+                ignore = {
+                    dash = true,
+                    bullet = true
+                }
+            },
             heading = {
                 width = 'block',
                 min_width = 50

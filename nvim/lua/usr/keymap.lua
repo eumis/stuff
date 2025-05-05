@@ -190,16 +190,16 @@ vim.keymap.set('n', 'gx', function() require('usr.url').open_url(vim.fn.expand('
 -- ai
 vim.keymap.set('i', '<C-s>', function()
     require('copilot.suggestion').next()
-end, opts)
+end, silent_opts)
 vim.keymap.set('i', '<C-x>', function()
     require('copilot.suggestion').previous()
-end, opts)
+end, silent_opts)
 vim.keymap.set('i', '<C-a>', function()
     require('copilot.suggestion').accept()
-end, opts)
+end, silent_opts)
 vim.keymap.set('i', '<C-z>', function()
     require('copilot.suggestion').dismiss()
-end, opts)
+end, silent_opts)
 
 -- cmp
 function M.get_cmp_mapping()
