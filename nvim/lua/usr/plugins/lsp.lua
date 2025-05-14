@@ -67,7 +67,7 @@ return {
                         ["textDocument/references"] = require('omnisharp_extended').references_handler,
                         ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
                     },
-                    cmd = { 'omnisharp', "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+                    cmd = { 'OmniSharp', "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
                     flags = {
                         debounce_text_changes = 150,
                     },

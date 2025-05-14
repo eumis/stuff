@@ -160,10 +160,10 @@ vim.keymap.set({ 'n', 'v' }, '<F8>', function() require('dap.ui.widgets').previe
 vim.keymap.set('n', '<F9>', function() require('dapui').toggle() end)
 
 -- lsp
-vim.keymap.set('n', '<space>li', ':LspInfo<cr>')
-vim.keymap.set('n', '<space>ls', ':LspStart<cr>')
-vim.keymap.set('n', '<space>lq', ':LspStop<cr>')
-vim.keymap.set('n', '<space>lr', ':LspRestart<cr>')
+-- vim.keymap.set('n', '<space>li', ':LspInfo<cr>')
+-- vim.keymap.set('n', '<space>ls', ':LspStart<cr>')
+-- vim.keymap.set('n', '<space>lq', ':LspStop<cr>')
+-- vim.keymap.set('n', '<space>lr', ':LspRestart<cr>')
 
 -- packages
 vim.keymap.set('n', '<C-p><C-p>', ':Lazy<cr>')
