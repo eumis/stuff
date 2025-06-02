@@ -41,7 +41,6 @@ return {
     'mermaid',
     'ocaml',
     'ocaml_interface',
-    'org',
     'python',
     'ql',
     'query',
