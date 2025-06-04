@@ -12,6 +12,15 @@ return {
             require('dap-python').setup('python')
             require('dap-python').test_runner = 'pytest'
 
+            -- table.insert(require('dap').configurations.python, {
+            --     justMyCode = false,
+            --     type = 'python',
+            --     request = 'launch',
+            --     name = 'run',
+            --     program = 'run.py',
+            --     cwd = '${workspaceFolder}/src'
+            -- })
+
             dap.adapters.coreclr = {
                 type = 'executable',
                 command = 'netcoredbg',
