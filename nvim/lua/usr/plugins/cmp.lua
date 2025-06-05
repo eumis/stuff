@@ -8,6 +8,7 @@ return {
             'hrsh7th/cmp-cmdline',
             'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lsp-signature-help'
         },
         config = function()
             local cmp = require('cmp')
@@ -19,6 +20,7 @@ return {
                 },
                 mapping = cmp.mapping.preset.insert(require('usr.keymap').get_cmp_mapping()),
                 sources = {
+                    { name = 'nvim_lsp_signature_help' },
                     { name = 'lazydev' },
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },

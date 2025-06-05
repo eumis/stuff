@@ -40,7 +40,7 @@ return {
                 update_in_insert = true
             })
 
-            require('lsp_signature').setup()
+            -- require('lsp_signature').setup()
 
             local servers = {
                 html = {},
