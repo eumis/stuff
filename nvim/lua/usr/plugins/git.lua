@@ -1,7 +1,8 @@
 return {
     {
         'tpope/vim-fugitive',
-        cmd = {'G', 'Git'}
+        cmd = {'G', 'Git'},
+        enabled = false
     },
     {
         'sindrets/diffview.nvim',
@@ -15,7 +16,7 @@ return {
     {
         'NeogitOrg/neogit',
         lazy = true,
-        enabled = false,
+        enabled = true,
         dependencies = {
             'nvim-lua/plenary.nvim',
             -- 'sindrets/diffview.nvim',
