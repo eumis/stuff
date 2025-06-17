@@ -115,8 +115,8 @@ vim.keymap.set('n', '<space>fm', function() require('telescope.builtin').marks()
 vim.keymap.set('n', '<space>fb', function() require('telescope.builtin').buffers() end, silent_opts)
 
 vim.keymap.set('n', '<C-g><C-g>', function() require('harpoon.ui').toggle_quick_menu() end, silent_opts)
--- vim.keymap.set('n', '<C-n>', function() require('harpoon.ui').nav_next() end, silent_opts)
--- vim.keymap.set('n', '<C-p>', function() require('harpoon.ui').nav_prev() end, silent_opts)
+vim.keymap.set('n', '<C-g><C-n>', function() require('harpoon.ui').nav_next() end, silent_opts)
+vim.keymap.set('n', '<C-g><C-b>', function() require('harpoon.ui').nav_prev() end, silent_opts)
 vim.keymap.set('n', '<C-g><C-a>', function() require('harpoon.mark').add_file() end, silent_opts)
 -- vim.keymap.set('n', '<C-c>', function() require('harpoon.mark').clear_all() end, silent_opts)
 
