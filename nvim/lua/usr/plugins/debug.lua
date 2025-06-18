@@ -26,7 +26,7 @@ return {
                 command = 'netcoredbg',
                 args = { '--interpreter=vscode' }
             }
-
+            require("dap").configurations.cs = {}
             -- table.insert(require("dap").configurations.cs, {
             --     type = "coreclr",
             --     name = "debug some service",
