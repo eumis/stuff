@@ -44,7 +44,7 @@ vim.keymap.set("n", '<C-t><C-b>', function() require('usr.terminal').bottom_term
 vim.api.nvim_create_user_command('Term', function() require('usr.terminal').float_terminal() end, {})
 
 -- tasks
-vim.keymap.set("n", '<C-t><C-r>', function() require('task').toggle_list() end)
+vim.keymap.set("n", "<C-t><C-r>", function() require("tasks").toggle_list() end)
 
 -- nvim tree
 vim.keymap.set('n', '<C-f><C-f>', ':NvimTreeToggle<CR>')
