@@ -25,7 +25,7 @@ return {
         dependencies = {
             'hrsh7th/nvim-cmp',
             'ray-x/lsp_signature.nvim',
-            'Hoffs/omnisharp-extended-lsp.nvim',
+            -- 'Hoffs/omnisharp-extended-lsp.nvim',
             'gbrlsnchs/telescope-lsp-handlers.nvim',
             'nvim-lua/lsp-status.nvim',
             'j-hui/fidget.nvim',
@@ -61,12 +61,12 @@ return {
                             client.server_capabilities.semanticTokensProvider = false -- turn off semantic tokens
                         end
                     end,
-                    handlers = {
-                        ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
-                        ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
-                        ["textDocument/references"] = require('omnisharp_extended').references_handler,
-                        ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
-                    },
+                    -- handlers = {
+                    --     ["textDocument/definition"] = require('omnisharp_extended').telescope_lsp_definition,
+                    --     ["textDocument/typeDefinition"] = require('omnisharp_extended').telescope_lsp_type_definition,
+                    --     ["textDocument/references"] = require('omnisharp_extended').telescope_lsp_references,
+                    --     ["textDocument/implementation"] = require('omnisharp_extended').telescope_lsp_implementation,
+                    -- },
                     cmd = { 'OmniSharp', "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
                     flags = {
                         debounce_text_changes = 150,
