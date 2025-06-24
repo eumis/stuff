@@ -11,6 +11,11 @@ function M.on(provider)
         require("copilot")
     elseif provider == "supermaven" then
         require("supermaven-nvim")
+        local binary = require("supermaven-nvim.binary.binary_handler")
+        binary.open_popup = function(self, message, include_free)
+            print("free supermaven started")
+        end
+        print("hack is set")
         local api = require("supermaven-nvim.api")
         api.use_free_version()
     end
