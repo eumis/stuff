@@ -12,6 +12,10 @@ vim.keymap.set('n', '<space>qf', '<cmd>:q!<cr>')
 vim.keymap.set('n', '<space>qa', '<cmd>:qa<cr>')
 vim.keymap.set('n', '<space>qn', '<cmd>:qa!<cr>')
 
+--tabs
+vim.keymap.set("n", "<C-n>", ":tabnext<CR>")
+vim.keymap.set("n", "<C-p>", ":tabprevious<CR>")
+
 -- windows
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>')
@@ -34,7 +38,6 @@ vim.keymap.set('n', '<space>sh', ':split<CR>')
 vim.keymap.set('n', '<space>bd', ':bdelete<CR>')
 vim.keymap.set('n', '<C-s>', ':w<CR>')
 vim.keymap.set('n', '<C-s>a', ':wa<CR>')
-vim.keymap.set('n', '<C-b>', ':tabnext<CR>')
 
 -- terminal
 vim.keymap.set("t", '<esc><esc>', '<c-\\><c-n>')
@@ -167,8 +170,8 @@ vim.keymap.set('n', '<F9>', function() require('dapui').toggle() end)
 -- vim.keymap.set('n', '<space>lr', ':LspRestart<cr>')
 
 -- packages
-vim.keymap.set('n', '<C-p><C-p>', ':Lazy<cr>')
-vim.keymap.set('n', '<C-p><C-m>', ':Mason<cr>')
+-- vim.keymap.set('n', '<C-p><C-p>', ':Lazy<cr>')
+-- vim.keymap.set('n', '<C-p><C-m>', ':Mason<cr>')
 
 -- markdown
 vim.keymap.set('n', '<C-m>', function()
@@ -201,6 +204,8 @@ vim.keymap.set('n', 'gx', function() require('usr.url').open_url(vim.fn.expand('
 -- vim.keymap.set('i', '<C-z>', function()
 --     require('copilot.suggestion').dismiss()
 -- end, silent_opts)
+
+vim.keymap.set("n", ":", function() require("telescope.builtin").commands() end)
 
 -- cmp
 function M.get_cmp_mapping()
