@@ -3,10 +3,17 @@ local M = {}
 ---@alias provider
 ---| "copilot"
 ---| "claude"
+---| "supermaven"
 
 ---@param provider provider?
 function M.on(provider)
-    require('copilot')
+    if provider == "copilot" then
+        require("copilot")
+    elseif provider == "supermaven" then
+        require("supermaven-nvim")
+        local api = require("supermaven-nvim.api")
+        api.use_free_version()
+    end
     -- local avante_options = {
     --     -- add any opts here
     --     -- for example

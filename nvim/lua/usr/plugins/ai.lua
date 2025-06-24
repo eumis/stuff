@@ -7,17 +7,17 @@ return {
                 panel = { enabled = false },
                 suggestion = {
                     enabled = true,
-                    auto_trigger = false,
+                    auto_trigger = true,
                     hide_during_completion = true,
                     debounce = 75,
                     trigger_on_accept = true,
                     keymap = {
-                        accept = "<C-.><C-.>",
+                        accept = "<C-a>",
                         accept_word = false,
                         accept_line = false,
-                        next = "<C-.><C-m>",
-                        prev = "<C-.><C-n>",
-                        dismiss = "<C-.><C-,>",
+                        next = "<C-s>",
+                        prev = "<C-x>",
+                        dismiss = "<C-z>",
                     },
                     filetypes = {
                         yaml = false,
@@ -33,6 +33,20 @@ return {
                 },
             })
         end
+    },
+    {
+        "supermaven-inc/supermaven-nvim",
+        lazy = true,
+        config = function()
+            require("supermaven-nvim").setup({
+                disable_keymaps = false,
+                keymaps = {
+                    accept_suggestion = "<C-a>",
+                    clear_suggestion = "<C-z>",
+                    accept_word = "<C-x>",
+                },
+            })
+        end,
     },
     {
         "yetone/avante.nvim",
