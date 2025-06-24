@@ -205,7 +205,7 @@ vim.keymap.set('n', 'gx', function() require('usr.url').open_url(vim.fn.expand('
 --     require('copilot.suggestion').dismiss()
 -- end, silent_opts)
 
-vim.keymap.set("n", ":", function() require("telescope.builtin").commands() end)
+vim.keymap.set("n", "<C-c>", function() require("telescope.builtin").commands() end)
 
 -- cmp
 function M.get_cmp_mapping()
