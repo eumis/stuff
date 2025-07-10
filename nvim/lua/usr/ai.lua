@@ -1,12 +1,11 @@
 local M = {}
 
----@alias provider
+---@alias suggestion_provider
 ---| "copilot"
----| "claude"
 ---| "supermaven"
 
----@param provider provider?
-function M.on(provider)
+---@param provider suggestion_provider?
+function M.use_suggestions(provider)
     if provider == "copilot" then
         require("copilot")
     elseif provider == "supermaven" then
@@ -15,75 +14,30 @@ function M.on(provider)
         binary.open_popup = function(self, message, include_free)
             print("free supermaven started")
         end
-        print("hack is set")
         local api = require("supermaven-nvim.api")
         api.use_free_version()
     end
-    -- local avante_options = {
-    --     -- add any opts here
-    --     -- for example
-    --     -- provider = "claude",
-    --     claude = {
-    --         endpoint = "https://api.anthropic.com",
-    --         model = "claude-3-5-sonnet-20241022",
-    --         temperature = 0,
-    --         max_tokens = 4096,
-    --     },
-    --     -- openai = {
-    --     --     endpoint = "https://api.openai.com/v1",
-    --     --     model = "gpt-4o",  -- your desired model (or use gpt-4o, etc.)
-    --     --     timeout = 30000,   -- Timeout in milliseconds, increase this for reasoning models
-    --     --     temperature = 0,
-    --     --     max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-    --     --     --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-    --     -- },
-    --     mappings = {
-    --         --- @class AvanteConflictMappings
-    --         diff = {
-    --             ours = "co",
-    --             theirs = "ct",
-    --             all_theirs = "ca",
-    --             both = "cb",
-    --             cursor = "cc",
-    --             next = "]x",
-    --             prev = "[x",
-    --         },
-    --         -- suggestion = {
-    --         --     accept = "<C-.><C-.>",
-    --         --     next = "<C-.><C-m>",
-    --         --     prev = "<C-.><C-n>",
-    --         --     dismiss = "<C-.><C-,>",
-    --         -- },
-    --         jump = {
-    --             next = "]]",
-    --             prev = "[[",
-    --         },
-    --         submit = {
-    --             normal = "<CR>",
-    --             insert = "<C-s>",
-    --         },
-    --         cancel = {
-    --             normal = { "<C-c>", "<Esc>", "q" },
-    --             insert = { "<C-c>" },
-    --         },
-    --         sidebar = {
-    --             apply_all = "A",
-    --             apply_cursor = "a",
-    --             retry_user_request = "r",
-    --             edit_user_request = "e",
-    --             switch_windows = "<Tab>",
-    --             reverse_switch_windows = "<S-Tab>",
-    --             remove_file = "d",
-    --             add_file = "@",
-    --             close = { "<Esc>", "q" },
-    --             close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
-    --         },
-    --     },
-    -- }
-    -- if provider == nil then provider = "claude" end
-    -- avante_options.provider = provider
-    -- print('SETTING PROVIDER FOR ' .. provider)
-    -- require('avante').setup(avante_options)
+end
+
+---@alias assistant
+---| "opencode"
+
+---@param assistant assistant
+function M.use_assistant(assistant)
+    if assistant == "opencode" then
+        print("opencode started")
+        local terminal = require "usr.terminal"
+        local state = terminal.new_state()
+        vim.keymap.set("n", "<space>ai", function()
+            if vim.api.nvim_buf_is_valid(state.buf) then
+                terminal.float_terminal(state)
+            else
+                terminal.float_terminal(state)
+                local channel = vim.bo[state.buf].channel
+                vim.fn.chansend(channel, { "opencode", "" })
+            end
+        end)
+    end
 end
 
 return M

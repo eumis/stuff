@@ -1,11 +1,23 @@
 local M = {}
 
-local state = {
-    buf = -1,
-    win = -1
-}
+---@class State
+---@field buf number
+---@field win number
 
-local function toggle_terminal_window(win_config)
+---@return State
+function M.new_state()
+    return {
+        buf = -1,
+        win = -1
+    }
+end
+
+---@type State
+M.state = M.new_state()
+
+---@param win_config table
+---@param state State
+function M.toggle_terminal_window(win_config, state)
     if vim.api.nvim_win_is_valid(state.win) then
         vim.api.nvim_win_hide(state.win)
         return
@@ -22,12 +34,14 @@ local function toggle_terminal_window(win_config)
     end
 end
 
-function M.float_terminal()
+---@param state? State
+function M.float_terminal(state)
+    if state == nil then state = M.state end
     local width = math.floor(vim.o.columns * 0.8)
     local height = math.floor(vim.o.lines * 0.8)
     local col = math.floor((vim.o.columns - width) / 2)
     local row = math.floor((vim.o.lines - height) / 2)
-    toggle_terminal_window({
+    M.toggle_terminal_window({
         relative = "editor",
         width = width,
         height = height,
@@ -35,21 +49,25 @@ function M.float_terminal()
         row = row,
         style = "minimal", -- No borders or extra UI elements
         border = "rounded",
-    })
+    }, state)
 end
 
-function M.split_terminal()
-    toggle_terminal_window({
+---@param state? State
+function M.split_terminal(state)
+    if state == nil then state = M.state end
+    M.toggle_terminal_window({
         split = "right",
         style = "minimal", -- No borders or extra UI elements
-    })
+    }, state)
 end
 
-function M.bottom_terminal()
-    toggle_terminal_window({
+---@param state? State
+function M.bottom_terminal(state)
+    if state == nil then state = M.state end
+    M.toggle_terminal_window({
         split = "bottom",
         style = "minimal", -- No borders or extra UI elements
-    })
+    }, state)
 end
 
 return M

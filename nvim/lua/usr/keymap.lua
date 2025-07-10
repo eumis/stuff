@@ -40,7 +40,7 @@ vim.keymap.set('n', '<C-s>', ':w<CR>')
 vim.keymap.set('n', '<C-s>a', ':wa<CR>')
 
 -- terminal
-vim.keymap.set("t", '<esc><esc>', '<c-\\><c-n>')
+-- vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 vim.keymap.set("n", '<C-t><C-t>', function() require('usr.terminal').float_terminal() end)
 vim.keymap.set("t", '<C-t><C-t>', function() require('usr.terminal').float_terminal() end)
 vim.keymap.set("n", '<C-t><C-s>', function() require('usr.terminal').split_terminal() end)

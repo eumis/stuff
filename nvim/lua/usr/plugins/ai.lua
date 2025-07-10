@@ -13,11 +13,11 @@ return {
                     trigger_on_accept = true,
                     keymap = {
                         accept = "<C-a>",
-                        accept_word = false,
-                        accept_line = false,
-                        next = "<C-s>",
-                        prev = "<C-x>",
+                        accept_word = "<C-x>",
                         dismiss = "<C-z>",
+                        next = "<C-s>",
+                        accept_line = false,
+                        prev = false
                     },
                     filetypes = {
                         yaml = false,
