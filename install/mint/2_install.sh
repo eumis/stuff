@@ -108,8 +108,10 @@ echo 'alias fd=fdfind' >> ~/.config/fish/config.fish
 curl -LRO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
 chmod u+x ./nvim.appimage
 mv nvim.appimage ~/.local/bin/nvim
-echo 'alias nvim=~/.local/nvim.appimage' >> ~/.bashrc
-echo 'alias nvim=~/.local/nvim.appimage' >> ~/.config/fish/config.fish
+# echo 'alias nvim=~/.local/nvim.appimage' >> ~/.bashrc
+# echo 'alias nvim=~/.local/nvim.appimage' >> ~/.config/fish/config.fish
+echo 'export EDITOR=nvim' >> ~/.bashrc
+echo 'export EDITOR=nvim' >> ~/.config/fish/config.fish
 git config --global core.editor ~/.local/nvim.appimage
 
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
