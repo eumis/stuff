@@ -70,4 +70,19 @@ function M.bottom_terminal(state)
     }, state)
 end
 
+---@param state? State
+function M.open_terminal(state)
+    if state == nil then state = M.state end
+
+    if not vim.api.nvim_buf_is_valid(state.buf) then
+        state.buf = vim.api.nvim_create_buf(false, true)
+    end
+
+    state.win = vim.api.nvim_get_current_win()
+    vim.api.nvim_set_current_buf(state.buf)
+    if vim.bo[state.buf].buftype ~= "terminal" then
+        vim.cmd.terminal()
+    end
+end
+
 return M

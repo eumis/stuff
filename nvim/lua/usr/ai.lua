@@ -28,11 +28,31 @@ function M.use_assistant(assistant)
         print("opencode started")
         local terminal = require "usr.terminal"
         local state = terminal.new_state()
-        vim.keymap.set("n", "<space>ai", function()
+        vim.keymap.set("n", "<space>af", function()
             if vim.api.nvim_buf_is_valid(state.buf) then
                 terminal.float_terminal(state)
             else
                 terminal.float_terminal(state)
+                local channel = vim.bo[state.buf].channel
+                vim.fn.chansend(channel, { "opencode", "" })
+            end
+        end)
+
+        vim.keymap.set("n", "<space>ai", function()
+            if vim.api.nvim_buf_is_valid(state.buf) then
+                terminal.split_terminal(state)
+            else
+                terminal.split_terminal(state)
+                local channel = vim.bo[state.buf].channel
+                vim.fn.chansend(channel, { "opencode", "" })
+            end
+        end)
+
+        vim.keymap.set("n", "<space>ao", function()
+            if vim.api.nvim_buf_is_valid(state.buf) then
+                terminal.open_terminal(state)
+            else
+                terminal.open_terminal(state)
                 local channel = vim.bo[state.buf].channel
                 vim.fn.chansend(channel, { "opencode", "" })
             end

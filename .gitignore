@@ -7,3 +7,5 @@ onetool/local.py
 onetool/init.dev.py
 onetool/pyrightconfig.json
 *.pyc
+
+config.lua
