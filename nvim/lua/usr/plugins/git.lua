@@ -1,7 +1,7 @@
 return {
     {
         'tpope/vim-fugitive',
-        cmd = {'G', 'Git'},
+        cmd = { 'G', 'Git' },
         enabled = false
     },
     {
@@ -10,7 +10,14 @@ return {
         event = "VeryLazy",
         config = function()
             require('diffview').setup({
-                keymaps = require('usr.keymap').get_diffview_keymaps()
+                keymaps = require('usr.keymap').get_diffview_keymaps(),
+                file_panel = {
+                    win_config = {
+                        position = "left",
+                        width = 70,
+                        win_opts = {},
+                    },
+                },
             })
         end
     },
