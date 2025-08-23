@@ -13,5 +13,6 @@ return {
             require("wdconfig").load(user_config)
             require("wdconfig").load_cwd()
         end
-    }
+    },
+    { "eumis/runb.nvim", branch = "dev", lazy = true },
 }

@@ -207,6 +207,11 @@ vim.keymap.set('n', 'gx', function() require('usr.url').open_url(vim.fn.expand('
 
 vim.keymap.set("n", "<C-c>", function() require("telescope.builtin").commands() end)
 
+-- runb
+vim.keymap.set("n", "<C-a><C-r>", function() require("runb").run() end)
+vim.keymap.set("n", "<C-a><C-n>", function() require("runb.view").next_tab() end)
+vim.keymap.set("n", "<C-a><C-b>", function() require("runb.view").previous_tab() end)
+
 -- cmp
 function M.get_cmp_mapping()
     local cmp = require('cmp')
