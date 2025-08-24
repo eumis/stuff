@@ -14,7 +14,7 @@ return {
                     ignore_install = {},
                     highlight = {
                         enable = true,
-                        disable = {},   
+                        disable = {},
                         additional_vim_regex_highlighting = false,
                     }
                 }
@@ -95,5 +95,13 @@ return {
                 min_width = 50
             }
         },
-    }
+    },
+    {
+        "norcalli/nvim-colorizer.lua",
+        event = "VeryLazy",
+        lazy = true,
+        config = function()
+            require("colorizer").setup()
+        end
+    },
 }
