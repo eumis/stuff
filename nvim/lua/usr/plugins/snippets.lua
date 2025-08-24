@@ -1,9 +1,9 @@
 return {
     {
-        'L3MON4D3/LuaSnip',
+        "L3MON4D3/LuaSnip",
         lazy = true,
-        config = function()
-            require('usr.snippets')
-        end
+        -- config = function()
+        --     require('usr.snippets')
+        -- end
     }
 }

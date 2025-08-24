@@ -2,6 +2,7 @@ return {
     {
         'nvim-neotest/neotest',
         lazy = true,
+        enabled = false,
         dependencies = {
             'nvim-neotest/neotest-python',
             'Issafalcon/neotest-dotnet'

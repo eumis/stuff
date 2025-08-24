@@ -1,16 +1,11 @@
 return {
     {
-        'tpope/vim-fugitive',
-        cmd = { 'G', 'Git' },
-        enabled = false
-    },
-    {
-        'sindrets/diffview.nvim',
+        "sindrets/diffview.nvim",
         lazy = true,
         event = "VeryLazy",
         config = function()
-            require('diffview').setup({
-                keymaps = require('usr.keymap').get_diffview_keymaps(),
+            require("diffview").setup({
+                keymaps = require("usr.keymap").get_diffview_keymaps(),
                 file_panel = {
                     win_config = {
                         position = "left",
@@ -22,25 +17,24 @@ return {
         end
     },
     {
-        'NeogitOrg/neogit',
+        "NeogitOrg/neogit",
         lazy = true,
-        enabled = true,
         dependencies = {
-            'nvim-lua/plenary.nvim',
-            -- 'sindrets/diffview.nvim',
+            "nvim-lua/plenary.nvim",
+            -- "sindrets/diffview.nvim",
             "nvim-telescope/telescope.nvim"
         },
         opts = {
             mappings = {
                 status = {
-                    ['='] = 'Toggle'
+                    ["="] = "Toggle"
                 }
             }
         }
     },
     {
-        'lewis6991/gitsigns.nvim',
-        event = 'BufReadPre',
+        "lewis6991/gitsigns.nvim",
+        event = "BufReadPre",
         opts = {}
     }
 }

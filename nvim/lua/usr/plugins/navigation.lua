@@ -1,7 +1,8 @@
 return {
     {
-        'nvim-tree/nvim-tree.lua',
-        lazy = false,
+        "nvim-tree/nvim-tree.lua",
+        lazy = true,
+        event = "VeryLazy",
         opts = {
             view = {
                 relativenumber = true,
@@ -39,20 +40,20 @@ return {
             on_attach = function(bufnr)
                 local api = require "nvim-tree.api"
                 api.config.mappings.default_on_attach(bufnr)
-                vim.keymap.set("n", '<C-t><C-t>', function() require('usr.terminal').float_terminal() end)
+                -- vim.keymap.set("n", "<C-t><C-t>", function() require("usr.terminal").float_terminal() end)
             end
         }
     },
     {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.8',
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.8",
         dependencies = {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            build = 'make'
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make"
         },
         lazy = true,
         config = function()
-            require('telescope').setup {
+            require("telescope").setup {
                 defaults = {
                     results_title = false,
                     sorting_strategy = "ascending",
@@ -76,8 +77,8 @@ return {
 
                     mappings = {
                         i = {
-                            ['<esc>'] = require('telescope.actions').close,
-                            ['<C-c>'] = require('telescope.actions').delete_buffer
+                            ["<esc>"] = require("telescope.actions").close,
+                            ["<C-c>"] = require("telescope.actions").delete_buffer
                         }
                     }
                 },
@@ -93,12 +94,13 @@ return {
                     }
                 }
             }
-            require('telescope').load_extension('fzf')
+            require("telescope").load_extension("fzf")
         end
     },
     {
         "ThePrimeagen/harpoon",
-        -- lazy = true,
+        lazy = true,
+        event = "VeryLazy",
         -- branch = "harpoon2",
         -- enabled = false,
         dependencies = { "nvim-lua/plenary.nvim" },

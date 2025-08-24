@@ -1,30 +1,30 @@
 return {
     {
-        'mfussenegger/nvim-dap',
+        "mfussenegger/nvim-dap",
         lazy = true,
         dependencies = {
-            { 'mfussenegger/nvim-dap-python', lazy = true },
-            { 'rcarriga/nvim-dap-ui',         lazy = true }
+            { "mfussenegger/nvim-dap-python", lazy = true },
+            { "rcarriga/nvim-dap-ui",         lazy = true }
         },
         config = function()
             local dap = require("dap")
 
-            require('dap-python').setup('python')
-            require('dap-python').test_runner = 'pytest'
+            require("dap-python").setup("python")
+            require("dap-python").test_runner = "pytest"
 
-            -- table.insert(require('dap').configurations.python, {
+            -- table.insert(require("dap").configurations.python, {
             --     justMyCode = false,
-            --     type = 'python',
-            --     request = 'launch',
-            --     name = 'run',
-            --     program = 'run.py',
-            --     cwd = '${workspaceFolder}/src'
+            --     type = "python",
+            --     request = "launch",
+            --     name = "run",
+            --     program = "run.py",
+            --     cwd = "${workspaceFolder}/src"
             -- })
 
             dap.adapters.coreclr = {
-                type = 'executable',
-                command = 'netcoredbg',
-                args = { '--interpreter=vscode' }
+                type = "executable",
+                command = "netcoredbg",
+                args = { "--interpreter=vscode" }
             }
             require("dap").configurations.cs = {}
             -- table.insert(require("dap").configurations.cs, {
@@ -41,7 +41,7 @@ return {
             --     },
             -- })
 
-            local dapui = require('dapui')
+            local dapui = require("dapui")
             dapui.setup()
             ---@diagnostic disable-next-line: undefined-field
             dap.listeners.before.attach.dapui_config = function()

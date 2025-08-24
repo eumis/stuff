@@ -1,10 +1,10 @@
 return {
     {
         "folke/lazydev.nvim",
-        event = 'BufReadPre',
+        event = "BufReadPre",
         ft = "lua",
         dependencies = {
-            --'justinsgithub/wezterm-types',
+            --"justinsgithub/wezterm-types",
         },
         opts = {
             library = {
@@ -13,22 +13,22 @@ return {
         }
     },
     {
-        'gbrlsnchs/telescope-lsp-handlers.nvim',
+        "gbrlsnchs/telescope-lsp-handlers.nvim",
         lazy = true,
         config = function()
-            require('telescope').load_extension('lsp_handlers')
+            require("telescope").load_extension("lsp_handlers")
         end
     },
     {
-        'neovim/nvim-lspconfig',
-        event = 'BufReadPre',
+        "neovim/nvim-lspconfig",
+        event = "BufReadPre",
         dependencies = {
-            'hrsh7th/nvim-cmp',
-            'ray-x/lsp_signature.nvim',
-            -- 'Hoffs/omnisharp-extended-lsp.nvim',
-            'gbrlsnchs/telescope-lsp-handlers.nvim',
-            'nvim-lua/lsp-status.nvim',
-            'j-hui/fidget.nvim',
+            "hrsh7th/nvim-cmp",
+            -- "ray-x/lsp_signature.nvim",
+            -- "Hoffs/omnisharp-extended-lsp.nvim",
+            "gbrlsnchs/telescope-lsp-handlers.nvim",
+            "nvim-lua/lsp-status.nvim",
+            -- "j-hui/fidget.nvim",
         },
         config = function()
             vim.diagnostic.config({
@@ -40,18 +40,18 @@ return {
                 update_in_insert = true
             })
 
-            -- require('lsp_signature').setup()
+            -- require("lsp_signature").setup()
 
             local servers = {
                 html = {},
                 ts_ls = {},
                 marksman = {
                     {
-                        filetypes = { 'markdown', 'luamarkdown' }
+                        filetypes = { "markdown", "luamarkdown" }
                     },
                     remap = function(bufnr)
                         local opts = { noremap = true, silent = true, buffer = bufnr }
-                        vim.keymap.set('n', '<space>e', ":silent !prettier '%' --write<CR>", opts)
+                        vim.keymap.set("n", "<space>e", ":silent !prettier '%' --write<CR>", opts)
                     end
                 },
                 bashls = {},
@@ -62,18 +62,18 @@ return {
                         end
                     end,
                     -- handlers = {
-                    --     ["textDocument/definition"] = require('omnisharp_extended').telescope_lsp_definition,
-                    --     ["textDocument/typeDefinition"] = require('omnisharp_extended').telescope_lsp_type_definition,
-                    --     ["textDocument/references"] = require('omnisharp_extended').telescope_lsp_references,
-                    --     ["textDocument/implementation"] = require('omnisharp_extended').telescope_lsp_implementation,
+                    --     ["textDocument/definition"] = require("omnisharp_extended").telescope_lsp_definition,
+                    --     ["textDocument/typeDefinition"] = require("omnisharp_extended").telescope_lsp_type_definition,
+                    --     ["textDocument/references"] = require("omnisharp_extended").telescope_lsp_references,
+                    --     ["textDocument/implementation"] = require("omnisharp_extended").telescope_lsp_implementation,
                     -- },
-                    cmd = { 'OmniSharp', "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+                    cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
                     flags = {
                         debounce_text_changes = 150,
                     },
                     root_dir = function(fname)
-                        local root_patterns = { '*.sln', 'omnisharp.json', '.git' }
-                        return require('lspconfig.util').root_pattern(root_patterns)(fname)
+                        local root_patterns = { "*.sln", "omnisharp.json", ".git" }
+                        return require("lspconfig.util").root_pattern(root_patterns)(fname)
                     end,
                     settings = {
                         FormattingOptions = {
@@ -119,7 +119,7 @@ return {
                     {},
                     -- remap = function(bufnr)
                     --     local opts = { noremap = true, silent = true, buffer = bufnr }
-                    --     vim.keymap.set('n', '<space>e', ":silent !prettier '%' --write<CR>", opts)
+                    --     vim.keymap.set("n", "<space>e", ":silent !prettier '%' --write<CR>", opts)
                     -- end
                 },
                 lua_ls = {},
@@ -132,9 +132,9 @@ return {
                             basedpyright = {
                                 analysis = {
                                     autoSearchPaths = true,
-                                    --diagnosticMode = 'workspace',
+                                    --diagnosticMode = "workspace",
                                     enableTypeIgnoreComments = true,
-                                    typeCheckingMode = 'standard', -- standard, strict, all, off, basic
+                                    typeCheckingMode = "standard", -- standard, strict, all, off, basic
                                     diagnosticSeverityOverrides = {
                                         strictParameterNoneValue = false,
                                         autoImportCompletions = true,
@@ -149,9 +149,9 @@ return {
                     },
                     remap = function(bufnr)
                         local opts = { noremap = true, silent = true, buffer = bufnr }
-                        -- vim.keymap.set('n', '<space>e', "<cmd>silent !yapf % -i && isort %<CR>", opts)
-                        vim.keymap.set('n', '<space>e', "<cmd>silent !black % && isort %<CR>", opts)
-                        -- vim.keymap.set('n', '<space>e', "<cmd>silent !autopep8 -i --agressive --experimental % && isort %<CR>", opts)
+                        -- vim.keymap.set("n", "<space>e", "<cmd>silent !yapf % -i && isort %<CR>", opts)
+                        vim.keymap.set("n", "<space>e", "<cmd>silent !black % && isort %<CR>", opts)
+                        -- vim.keymap.set("n", "<space>e", "<cmd>silent !autopep8 -i --agressive --experimental % && isort %<CR>", opts)
                     end
                 },
                 pyright = {
@@ -180,11 +180,11 @@ return {
                     },
                     remap = function(bufnr)
                         local opts = { noremap = true, silent = true, buffer = bufnr }
-                        vim.keymap.set('n', '<space>e', "<cmd>silent !yapf '%' -i && isort '%'<CR>", opts)
+                        vim.keymap.set("n", "<space>e", "<cmd>silent !yapf '%' -i && isort '%'<CR>", opts)
                     end
                 },
                 lemminx = { {
-                    filetypes = { 'xml', 'xsd', 'xsl', 'xslt', 'svg' },
+                    filetypes = { "xml", "xsd", "xsl", "xslt", "svg" },
                     settings = {
                         xml = {
                             completion = { autoCloseTags = true },
@@ -195,7 +195,7 @@ return {
                 kotlin_language_server = {}
             }
 
-            local lspconfig = require('lspconfig')
+            local lspconfig = require("lspconfig")
             local cmp_lsp = require("cmp_nvim_lsp")
             local capabilities = vim.tbl_deep_extend(
                 "force",
@@ -226,16 +226,16 @@ return {
                     if server_config.semanticTokensProvider ~= nil then
                         client.server_capabilities.semanticTokensProvider = server_config.semanticTokensProvider
                     end
-                    vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = args.buf })
-                    require('usr.keymap').setup_lsp_keys(args.buf)
+                    vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = args.buf })
+                    require("usr.keymap").setup_lsp_keys(args.buf)
                     if server_config.remap ~= nil then
                         server_config.remap(args.buf)
                     end
                 end,
             })
 
-            --require('fidget').setup({})
-            local lsp_status = require('lsp-status')
+            --require("fidget").setup({})
+            local lsp_status = require("lsp-status")
             lsp_status.status()
             lsp_status.register_progress()
         end

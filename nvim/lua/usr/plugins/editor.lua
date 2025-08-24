@@ -1,64 +1,63 @@
 return {
     {
         {
-            'nvim-treesitter/nvim-treesitter',
+            "nvim-treesitter/nvim-treesitter",
             build = ":TSUpdate",
-            event = 'VeryLazy',
+            event = "VeryLazy",
             config = function()
-                require 'nvim-treesitter.install'.compilers = { "zig", "gcc", "clang" }
-                require 'nvim-treesitter.configs'.setup {
-                    ensure_installed = require('usr.treesitter'),
+                require "nvim-treesitter.install".compilers = { "zig", "gcc", "clang" }
+                require "nvim-treesitter.configs".setup {
+                    ensure_installed = require("usr.treesitter"),
                     sync_install = false,
                     auto_install = false,
                     modules = {},
                     ignore_install = {},
                     highlight = {
                         enable = true,
-                        disable = {},
+                        disable = {},   
                         additional_vim_regex_highlighting = false,
                     }
                 }
                 vim.treesitter.language.register("markdown", "luamarkdown")
-                vim.treesitter.language.register("markdown", "avante")
             end,
         }
     },
+    -- {
+    --     'lukas-reineke/indent-blankline.nvim',
+    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    --     event = 'BufReadPre',
+    --     main = "ibl",
+    --     opts = {
+    --         scope = {
+    --             show_start = false,
+    --             show_end = false
+    --         }
+    --     },
+    --     init = function()
+    --         vim.opt.list = true
+    --     end
+    -- },
     {
-        'lukas-reineke/indent-blankline.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        event = 'BufReadPre',
-        main = "ibl",
-        opts = {
-            scope = {
-                show_start = false,
-                show_end = false
-            }
-        },
-        init = function()
-            vim.opt.list = true
-        end
-    },
-    {
-        'windwp/nvim-autopairs',
+        "windwp/nvim-autopairs",
         event = 'BufReadPre',
         config = function()
-            require('nvim-autopairs').setup()
+            require("nvim-autopairs").setup()
         end
     },
     {
-        'numToStr/Comment.nvim',
+        "numToStr/Comment.nvim",
         lazy = true,
         opts = {}
     },
     {
-        'karb94/neoscroll.nvim',
+        "karb94/neoscroll.nvim",
         event = 'BufReadPre',
         config = function()
             require('neoscroll').setup({ mappings = { '<C-u>', '<C-d>' } })
         end
     },
     {
-        'Pocco81/auto-save.nvim',
+        "Pocco81/auto-save.nvim",
         event = 'BufReadPre',
         opts = {
             enabled = true,
@@ -68,18 +67,18 @@ return {
             debounce_delay = 500
         }
     },
+    -- {
+    --     "gregorias/coerce.nvim",
+    --     event = 'BufReadPre',
+    --     opts = {
+    --         default_mode_keymap_prefixes = require('usr.keymap').get_coerce_prefices(),
+    --     },
+    -- },
     {
-        'gregorias/coerce.nvim',
-        event = 'BufReadPre',
-        opts = {
-            default_mode_keymap_prefixes = require('usr.keymap').get_coerce_prefices(),
-        },
-    },
-    {
-        'MeanderingProgrammer/render-markdown.nvim',
+        "MeanderingProgrammer/render-markdown.nvim",
         event = "VeryLazy",
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-        ft = { 'markdown', 'quarto', 'jinja', 'avante' },
+        ft = { 'markdown', 'quarto', 'jinja' },
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {
