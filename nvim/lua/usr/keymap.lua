@@ -93,7 +93,7 @@ local letters = {
     'm', "n", 'o',
     'p', 'q', 'r',
     's', 't', 'u',
-    "n", 'w', 'x',
+    "v", 'w', 'x',
     'y', 'z'
 }
 for i = 1, #letters do
@@ -154,8 +154,8 @@ vim.keymap.set("n", '<F6>', function() require('dap').toggle_breakpoint() end)
 vim.keymap.set("n", '<F10>', function() require('dap').step_over() end)
 vim.keymap.set("n", '<F11>', function() require('dap').step_into() end)
 vim.keymap.set("n", '<F12>', function() require('dap').step_out() end)
-vim.keymap.set({ "n", "n" }, '<F7>', function() require('dap.ui.widgets').hover() end)
-vim.keymap.set({ "n", "n" }, '<F8>', function() require('dap.ui.widgets').preview() end)
+vim.keymap.set({ "n", "v" }, '<F7>', function() require('dap.ui.widgets').hover() end)
+vim.keymap.set({ "n", "v" }, '<F8>', function() require('dap.ui.widgets').preview() end)
 vim.keymap.set("n", '<F9>', function() require('dapui').toggle() end)
 
 -- lsp
@@ -254,9 +254,9 @@ function M.setup_lsp_keys(bufnr)
     --vim.keymap.set('i', '<C-h>', vim.lsp.buf.hover, opts)
     vim.keymap.set("n", '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set("n", '<space>rr', vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", '<space>rr', function() vim.lsp.buf.range_code_action({}) end, opts)
+    vim.keymap.set("v", '<space>rr', function() vim.lsp.buf.range_code_action({}) end, opts)
     vim.keymap.set("n", '<space>e', function() vim.lsp.buf.format({ async = true }) end, opts)
-    vim.keymap.set("n", '<space>e',
+    vim.keymap.set("v", '<space>e',
         function() vim.lsp.buf.format({ async = true, range = { vim.api.nvim_buf_get_mark(0, "<"), vim.api.nvim_buf_get_mark(0, ">") } }) end,
         opts)
 end
