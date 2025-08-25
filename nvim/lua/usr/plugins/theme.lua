@@ -62,22 +62,22 @@ return {
     --     end,
     --     dependencies = { { "nvim-tree/nvim-web-devicons" } }
     -- },
-    -- {
-    --     "nvim-lualine/lualine.nvim",
-    --     lazy = false,
-    --     opts = {
-    --         -- options = {
-    --         --     theme = "vscode"
-    --         -- },
-    --         sections = {
-    --             lualine_a = { "mode" },
-    --             lualine_b = { "branch", "diff", "diagnostics" },
-    --             lualine_c = { { "filename", file_status = true, path = 1 }, function() return require("auto.environment")
-    --                 .current().__name__ end },
-    --             lualine_x = { "require'lsp-status'.status()", "encoding", "fileformat", "filetype" },
-    --             lualine_y = { "progress" },
-    --             lualine_z = { "location", "vim.api.nvim_buf_line_count(0)" }
-    --         }
-    --     }
-    -- }
+    {
+        "nvim-lualine/lualine.nvim",
+        lazy = false,
+        opts = {
+            -- options = {
+            --     theme = "vscode"
+            -- },
+            sections = {
+                lualine_a = { "mode" },
+                lualine_b = { "branch", "diff", "diagnostics" },
+                lualine_c = { { "filename", file_status = true, path = 1 }, function() return require("auto.environment")
+                    .current().__name__ end },
+                lualine_x = { "require'lsp-status'.status()", "encoding", "fileformat", "filetype" },
+                lualine_y = { "progress" },
+                lualine_z = { "location", "vim.api.nvim_buf_line_count(0)" }
+            }
+        }
+    }
 }
