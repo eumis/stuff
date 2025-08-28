@@ -158,16 +158,6 @@ vim.keymap.set({ "n", "v" }, '<F7>', function() require('dap.ui.widgets').hover(
 vim.keymap.set({ "n", "v" }, '<F8>', function() require('dap.ui.widgets').preview() end)
 vim.keymap.set("n", '<F9>', function() require('dapui').toggle() end)
 
--- lsp
--- vim.keymap.set("n", '<space>li', ':LspInfo<cr>')
--- vim.keymap.set("n", '<space>ls', ':LspStart<cr>')
--- vim.keymap.set("n", '<space>lq', ':LspStop<cr>')
--- vim.keymap.set("n", '<space>lr', ':LspRestart<cr>')
-
--- packages
--- vim.keymap.set("n", '<C-p><C-p>', ':Lazy<cr>')
--- vim.keymap.set("n", '<C-p><C-m>', ':Mason<cr>')
-
 -- markdown
 vim.keymap.set("n", '<C-m>', function()
     require('render-markdown').buf_toggle()
@@ -175,7 +165,7 @@ end)
 
 local function set_task(char)
     local line = vim.api.nvim_get_current_line()
-    line = line:gsub('- *%[.%]', '- [' .. char ..']')
+    line = line:gsub('- *%[.%]', '- [' .. char .. ']')
     vim.api.nvim_set_current_line(line)
 end
 vim.keymap.set("n", 'tt', function() vim.api.nvim_input('0f-a [ ]<esc>') end)
@@ -239,26 +229,26 @@ function M.get_cmp_mapping()
 end
 
 -- lsp
-function M.setup_lsp_keys(bufnr)
-    local telescope_builtin = require('telescope.builtin')
-    local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set("n", 'gd', telescope_builtin.lsp_definitions, opts)
-    vim.keymap.set("n", 'gt', telescope_builtin.lsp_type_definitions, opts)
-    vim.keymap.set("n", 'gi', telescope_builtin.lsp_implementations, opts)
-    vim.keymap.set("n", 'gr', telescope_builtin.lsp_references, opts)
-    vim.keymap.set("n", 'gc', telescope_builtin.lsp_incoming_calls, opts)
-    vim.keymap.set("n", 'go', telescope_builtin.lsp_outgoing_calls, opts)
-    vim.keymap.set("n", 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", 'H', vim.lsp.buf.signature_help, opts)
-    --vim.keymap.set('i', '<C-h>', vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", '<space>rr', vim.lsp.buf.code_action, opts)
-    vim.keymap.set("v", '<space>rr', function() vim.lsp.buf.range_code_action({}) end, opts)
-    vim.keymap.set("n", '<space>e', function() vim.lsp.buf.format({ async = true }) end, opts)
-    vim.keymap.set("v", '<space>e',
-        function() vim.lsp.buf.format({ async = true, range = { vim.api.nvim_buf_get_mark(0, "<"), vim.api.nvim_buf_get_mark(0, ">") } }) end,
-        opts)
-end
+-- local opts = { noremap = true, silent = true }
+vim.keymap.set("n", 'gD', vim.lsp.buf.declaration, silent_opts)
+vim.keymap.set("n", 'gd', function() require("telescope.builtin").lsp_definitions({ fname_width = 200 }) end, silent_opts)
+vim.keymap.set("n", 'gt', function() require("telescope.builtin").lsp_type_definitions({ fname_width = 200 }) end, silent_opts)
+vim.keymap.set("n", 'gi', function() require("telescope.builtin").lsp_implementations({ fname_width = 200 }) end, silent_opts)
+vim.keymap.set("n", 'gr', function() require("telescope.builtin").lsp_references({ fname_width = 200 }) end, silent_opts)
+vim.keymap.set("n", 'gc', function() require("telescope.builtin").lsp_incoming_calls({ fname_width = 200 }) end, silent_opts)
+vim.keymap.set("n", 'go', function() require("telescope.builtin").lsp_outgoing_calls({ fname_width = 200 }) end, silent_opts)
+vim.keymap.set("n", 'gs', function() require("telescope.builtin").lsp_document_symbols({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
+vim.keymap.set("n", 'gw', function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
+vim.keymap.set("n", 'ga', function() require("telescope.builtin").lsp_workspace_symbols({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
+vim.keymap.set("n", 'K', vim.lsp.buf.hover, silent_opts)
+vim.keymap.set("n", 'H', vim.lsp.buf.signature_help, silent_opts)
+--vim.keymap.set('i', '<C-h>', vim.lsp.buf.hover, opts)
+vim.keymap.set("n", '<space>rn', vim.lsp.buf.rename, silent_opts)
+vim.keymap.set("n", '<space>rr', vim.lsp.buf.code_action, silent_opts)
+vim.keymap.set("v", '<space>rr', function() vim.lsp.buf.range_code_action({}) end, silent_opts)
+vim.keymap.set("n", '<space>e', function() vim.lsp.buf.format({ async = true }) end, silent_opts)
+vim.keymap.set("v", '<space>e',
+    function() vim.lsp.buf.format({ async = true, range = { vim.api.nvim_buf_get_mark(0, "<"), vim.api.nvim_buf_get_mark(0, ">") } }) end,
+    silent_opts)
 
 return M

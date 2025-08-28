@@ -39,6 +39,8 @@
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "1f08ed60cafc8f6168b72b80be2b2ea149813e55" },
   "telescope-lsp-handlers.nvim": { "branch": "trunk", "commit": "de02085d6af1633942549a238bc7a5524fa9b201" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
-  "vague.nvim": { "branch": "main", "commit": "f3620ef32fe8b756398d8dbed60166b2af6ea796" },
-  "wdconfig.nvim": { "branch": "dev", "commit": "da3841f7784f4e861b97a6e47956b11178f55339" }
+  "vim-dadbod": { "branch": "master", "commit": "e95afed23712f969f83b4857a24cf9d59114c2e6" },
+  "vim-dadbod-ui": { "branch": "master", "commit": "e8b53c0f3aa6e6127ac2a2d2071d9aade6c6e373" },
+  "wdconfig.nvim": { "branch": "dev", "commit": "da3841f7784f4e861b97a6e47956b11178f55339" },
+  "yorumi.nvim": { "branch": "main", "commit": "0d0c995ecb90cd21e701fd30b7c5e794cb1e41ce" }
 }

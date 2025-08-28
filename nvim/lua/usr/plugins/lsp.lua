@@ -227,7 +227,7 @@ return {
                         client.server_capabilities.semanticTokensProvider = server_config.semanticTokensProvider
                     end
                     vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = args.buf })
-                    require("usr.keymap").setup_lsp_keys(args.buf)
+                    -- require("usr.keymap").setup_lsp_keys(args.buf)
                     if server_config.remap ~= nil then
                         server_config.remap(args.buf)
                     end
