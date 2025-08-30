@@ -14,5 +14,17 @@ return {
             require("wdconfig").load_cwd()
         end
     },
-    { "eumis/runb.nvim", branch = "dev", lazy = true },
+    {
+        "eumis/runb.nvim",
+        branch = "dev",
+        lazy = true,
+        config = function()
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "RunbEnvChanged",
+                callback = function(args)
+                    require("usr.statusline").env(args.data.name)
+                end
+            })
+        end
+    },
 }
