@@ -228,3 +228,9 @@ rm -rf temp
 # images
 sudo apt install eog
 npm install -g @mermaid-js/mermaid-cli
+
+# sql
+
+curl -fLo ./usql.tar.bz2 https://github.com/xo/usql/releases/download/v0.19.25/usql_static-0.19.25-linux-amd64.tar.bz2
+tar -xf ./usql.tar.bz2
+mv usql_static ~/.local/bin/usql
