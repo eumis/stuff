@@ -105,6 +105,7 @@ end
 vim.keymap.set("n", '<space>ff', function() require('telescope.builtin').find_files() end, silent_opts)
 vim.keymap.set("n", '<space>fh',
     function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end, silent_opts)
+vim.keymap.set("n", '<space>fr', function() require('telescope.builtin').oldfiles() end, silent_opts)
 vim.keymap.set("n", '<space>fs', function() require('telescope.builtin').live_grep() end, silent_opts)
 vim.keymap.set("n", '<space>fi', '<cmd>lua require("telescope.builtin").live_grep()<cr>interface ', silent_opts)
 vim.keymap.set("n", '<space>fc', '<cmd>lua require("telescope.builtin").live_grep()<cr>class ')

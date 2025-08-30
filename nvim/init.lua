@@ -64,6 +64,7 @@ vim.g.maplocalleader = '\\'
 vim.g.mapspace = ' '
 
 require('usr.keymap')
+require('usr.statusline')
 
 --let python_highlight_all=1
 
