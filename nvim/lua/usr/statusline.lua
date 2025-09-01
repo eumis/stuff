@@ -16,7 +16,7 @@ function _G.diagnostic_count()
     if counts[1] > 0 then table.insert(result, " " .. counts[1]) end
     if counts[2] > 0 then table.insert(result, " " .. counts[2]) end
     if counts[3] > 0 then table.insert(result, " " .. counts[3]) end
-    if counts[4] > 0 then table.insert(result, "󰋖 " .. counts[4]) end
+    if counts[4] > 0 then table.insert(result, "󰘥 " .. counts[4]) end
 
     return table.concat(result, " ")
 end
