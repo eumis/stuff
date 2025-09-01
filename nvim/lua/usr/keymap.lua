@@ -261,11 +261,18 @@ vim.keymap.set("n", '<space>fd',
 vim.keymap.set("n", '<space>fe',
     function() require("telescope.builtin").diagnostics({ severity_limit = vim.diagnostic.severity.WARN }) end,
     silent_opts)
-vim.keymap.set("n", ']e', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, silent_opts)
-vim.keymap.set("n", '[e', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end, silent_opts)
-vim.keymap.set("n", ']w', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.WARN }) end, silent_opts)
-vim.keymap.set("n", '[w', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.WARN }) end, silent_opts)
-vim.keymap.set("n", ']d', function() vim.diagnostic.jump({ count = 1 }) end, silent_opts)
-vim.keymap.set("n", '[d', function() vim.diagnostic.jump({ count = -1 }) end, silent_opts)
+vim.keymap.set("n", ']e',
+    function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR, float = true }) end,
+    silent_opts)
+vim.keymap.set("n", '[e',
+    function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR, float = true }) end,
+    silent_opts)
+vim.keymap.set("n", ']w',
+    function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.WARN, float = true }) end, silent_opts)
+vim.keymap.set("n", '[w',
+    function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.WARN, float = true }) end,
+    silent_opts)
+vim.keymap.set("n", ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, silent_opts)
+vim.keymap.set("n", '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, silent_opts)
 
 return M
