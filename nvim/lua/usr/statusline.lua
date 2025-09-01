@@ -3,6 +3,30 @@ local custom_items = {
     nil  --environment
 }
 
+function _G.diagnostic_count()
+    local counts = { 0, 0, 0, 0 }
+    local severity = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN, vim.diagnostic.severity.INFO, vim
+        .diagnostic.severity.HINT }
+
+    for i, sev in ipairs(severity) do
+        counts[i] = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity[sev] })
+    end
+
+    local result = {}
+    if counts[1] > 0 then table.insert(result, " " .. counts[1]) end
+    if counts[2] > 0 then table.insert(result, " " .. counts[2]) end
+    if counts[3] > 0 then table.insert(result, " " .. counts[3]) end
+    if counts[4] > 0 then table.insert(result, "󰋖 " .. counts[4]) end
+
+    return table.concat(result, " ")
+end
+
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
+    callback = function()
+        vim.cmd("redrawstatus")
+    end
+})
+
 local function build_line()
     local line = " %f"
     for _, item in ipairs(custom_items) do
@@ -10,7 +34,7 @@ local function build_line()
             line = line .. " | " .. item
         end
     end
-    line = line .. " %h%r %=%y %c:%l/%L"
+    line = line .. " %h%r %=%{v:lua.diagnostic_count()} %y %c:%l/%L"
     vim.opt.statusline = line
 end
 

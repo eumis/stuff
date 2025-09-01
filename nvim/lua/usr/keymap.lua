@@ -78,12 +78,6 @@ vim.keymap.set("n", '<space>ud', function() require("neotest").run.run({ strateg
 vim.keymap.set("n", '<space>ut', function() require("neotest").summary.toggle() end, silent_opts)
 vim.keymap.set("n", '<space>uo', function() require("neotest").output.open({ enter = true }) end, silent_opts)
 
--- diagnostic
-vim.keymap.set("n", '<space>ef', function() vim.diagnostic.open_float() end, silent_opts)
-vim.keymap.set("n", '<space>el', function() vim.diagnostic.setloclist() end, silent_opts)
-vim.keymap.set("n", '[e', function() vim.diagnostic.goto_prev() end, silent_opts)
-vim.keymap.set("n", ']e', function() vim.diagnostic.goto_next() end, silent_opts)
-
 -- marks
 local letters = {
     'a', 'b', 'c',
@@ -107,9 +101,6 @@ vim.keymap.set("n", '<space>fh',
     function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end, silent_opts)
 vim.keymap.set("n", '<space>fr', function() require('telescope.builtin').oldfiles() end, silent_opts)
 vim.keymap.set("n", '<space>fs', function() require('telescope.builtin').live_grep() end, silent_opts)
-vim.keymap.set("n", '<space>fi', '<cmd>lua require("telescope.builtin").live_grep()<cr>interface ', silent_opts)
-vim.keymap.set("n", '<space>fc', '<cmd>lua require("telescope.builtin").live_grep()<cr>class ')
-vim.keymap.set("n", '<space>fd', '<cmd>lua require("telescope.builtin").live_grep()<cr>def ')
 vim.keymap.set("n", '<space>ft', function() require('telescope.builtin').help_tags() end, silent_opts)
 vim.keymap.set("n", '<space>fm', function() require('telescope.builtin').marks() end, silent_opts)
 vim.keymap.set("n", '<space>fb', function() require('telescope.builtin').buffers() end, silent_opts)
@@ -233,14 +224,26 @@ end
 -- local opts = { noremap = true, silent = true }
 vim.keymap.set("n", 'gD', vim.lsp.buf.declaration, silent_opts)
 vim.keymap.set("n", 'gd', function() require("telescope.builtin").lsp_definitions({ fname_width = 200 }) end, silent_opts)
-vim.keymap.set("n", 'gt', function() require("telescope.builtin").lsp_type_definitions({ fname_width = 200 }) end, silent_opts)
-vim.keymap.set("n", 'gi', function() require("telescope.builtin").lsp_implementations({ fname_width = 200 }) end, silent_opts)
+vim.keymap.set("n", 'gt', function() require("telescope.builtin").lsp_type_definitions({ fname_width = 200 }) end,
+    silent_opts)
+vim.keymap.set("n", 'gi', function() require("telescope.builtin").lsp_implementations({ fname_width = 200 }) end,
+    silent_opts)
 vim.keymap.set("n", 'gr', function() require("telescope.builtin").lsp_references({ fname_width = 200 }) end, silent_opts)
-vim.keymap.set("n", 'gc', function() require("telescope.builtin").lsp_incoming_calls({ fname_width = 200 }) end, silent_opts)
-vim.keymap.set("n", 'go', function() require("telescope.builtin").lsp_outgoing_calls({ fname_width = 200 }) end, silent_opts)
-vim.keymap.set("n", 'gs', function() require("telescope.builtin").lsp_document_symbols({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
-vim.keymap.set("n", 'gw', function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
-vim.keymap.set("n", 'ga', function() require("telescope.builtin").lsp_workspace_symbols({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
+vim.keymap.set("n", 'gc', function() require("telescope.builtin").lsp_incoming_calls({ fname_width = 200 }) end,
+    silent_opts)
+vim.keymap.set("n", 'go', function() require("telescope.builtin").lsp_outgoing_calls({ fname_width = 200 }) end,
+    silent_opts)
+vim.keymap.set("n", 'gs',
+    function() require("telescope.builtin").lsp_document_symbols({ fname_width = 200, symbol_width = 60 }) end,
+    silent_opts)
+vim.keymap.set("n", 'gw',
+    function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ fname_width = 200, symbol_width = 60 }) end,
+    silent_opts)
+vim.keymap.set("n", 'ga',
+    function() require("telescope.builtin").lsp_workspace_symbols({ fname_width = 200, symbol_width = 60 }) end,
+    silent_opts)
+vim.keymap.set("n", "ge",
+    function() require("telescope.builtin").diagnostics({ bufnr = 0 }) end, silent_opts)
 vim.keymap.set("n", 'K', vim.lsp.buf.hover, silent_opts)
 vim.keymap.set("n", 'H', vim.lsp.buf.signature_help, silent_opts)
 --vim.keymap.set('i', '<C-h>', vim.lsp.buf.hover, opts)
@@ -251,5 +254,18 @@ vim.keymap.set("n", '<space>e', function() vim.lsp.buf.format({ async = true }) 
 vim.keymap.set("v", '<space>e',
     function() vim.lsp.buf.format({ async = true, range = { vim.api.nvim_buf_get_mark(0, "<"), vim.api.nvim_buf_get_mark(0, ">") } }) end,
     silent_opts)
+
+-- diagnostic
+vim.keymap.set("n", '<space>fd',
+    function() require("telescope.builtin").diagnostics() end, silent_opts)
+vim.keymap.set("n", '<space>fe',
+    function() require("telescope.builtin").diagnostics({ severity_limit = vim.diagnostic.severity.WARN }) end,
+    silent_opts)
+vim.keymap.set("n", ']e', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, silent_opts)
+vim.keymap.set("n", '[e', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end, silent_opts)
+vim.keymap.set("n", ']w', function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.WARN }) end, silent_opts)
+vim.keymap.set("n", '[w', function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.WARN }) end, silent_opts)
+vim.keymap.set("n", ']d', function() vim.diagnostic.jump({ count = 1 }) end, silent_opts)
+vim.keymap.set("n", '[d', function() vim.diagnostic.jump({ count = -1 }) end, silent_opts)
 
 return M
