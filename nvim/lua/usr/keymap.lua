@@ -99,7 +99,7 @@ end
 vim.keymap.set("n", '<space>ff', function() require('telescope.builtin').find_files() end, silent_opts)
 vim.keymap.set("n", '<space>fh',
     function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end, silent_opts)
-vim.keymap.set("n", '<space>fr', function() require('telescope.builtin').oldfiles() end, silent_opts)
+vim.keymap.set("n", '<space>fr', function() require('telescope.builtin').oldfiles({ only_cwd = true }) end, silent_opts)
 vim.keymap.set("n", '<space>fs', function() require('telescope.builtin').live_grep() end, silent_opts)
 vim.keymap.set("n", '<space>ft', function() require('telescope.builtin').help_tags() end, silent_opts)
 vim.keymap.set("n", '<space>fm', function() require('telescope.builtin').marks() end, silent_opts)
