@@ -1,5 +1,5 @@
 ---@param plugin string
----@param opts? {colorscheme: string?, opts: table?}
+---@param opts? {colorscheme: string?, opts: table?, callback: fun()}
 ---@return table
 local function theme(plugin, opts)
     return {
@@ -7,13 +7,23 @@ local function theme(plugin, opts)
         priority = 1000,
         config = function()
             local slash = string.find(plugin, "/", 1, true)
-            local dot_nvim = string.find(plugin, ".nvim", 1, true) or 0
-            local name = string.sub(plugin, slash + 1, dot_nvim - 1)
+            local dot_ext = 0
+            for _, ext in ipairs({ ".vim", ".nvim" }) do
+                local result = string.find(plugin, ext, 1, true)
+                if result ~= nil then
+                    dot_ext = result
+                    break
+                end
+            end
+            local name = string.sub(plugin, slash + 1, dot_ext - 1)
             opts = opts or {}
             if opts.opts ~= nil then
                 require(name).setup()
             end
-            vim.cmd.colorscheme(opts.colorscheme or name)
+            local callback = opts.callback or function()
+                vim.cmd.colorscheme(opts.colorscheme or name)
+            end
+            callback()
         end
     }
 end
@@ -25,10 +35,30 @@ return {
     -- theme("EdenEast/nightfox.nvim", {colorscheme = "terafox", opts = {} }),
     -- theme("EdenEast/nightfox.nvim", {colorscheme = "nordfox", opts = {} }),
     -- theme("vague2k/vague.nvim", { opts = {} }),
-    theme("yorumicolors/yorumi.nvim"),
+    -- theme("yorumicolors/yorumi.nvim"),
     -- theme("wtfox/jellybeans.nvim"),
     -- theme("wtfox/jellybeans.nvim", {colorscheme = "jellybeans-mono" }),
     -- theme("wtfox/jellybeans.nvim", {colorscheme = "jellybeans-muted" }),
+    -- theme("p00f/alabaster.nvim"),
+    -- theme("alligator/accent.vim", {
+    --     callback = function()
+    --         vim.cmd([[
+    --             let g:accent_colour = "yellow"
+    --             source ~/.local/share/nvim/lazy/accent.vim/colors/accent.vim
+    --         ]])
+    --     end
+    -- }),
+    -- theme("davidosomething/vim-colors-meh", { colorscheme = "meh" }),
+    -- theme("axvr/photon.vim"),
+    theme("kvrohit/rasmus.nvim", {
+        callback = function()
+            vim.cmd([[
+                let g:rasmus_italic_functions = 0
+                let g:rasmus_bold_functions = 0
+                colorscheme rasmus
+            ]])
+        end
+    }),
     {
         "kyazdani42/nvim-web-devicons",
         lazy = false,
