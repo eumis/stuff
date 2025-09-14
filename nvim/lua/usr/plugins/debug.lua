@@ -21,6 +21,20 @@ return {
             --     program = "run.py",
             --     cwd = "${workspaceFolder}/src"
             -- })
+            --
+            -- table.insert(require('dap').configurations.python, {
+            --     justMyCode = false,
+            --     type = 'python',
+            --     request = 'launch',
+            --     module = "pytest",
+            --     args = {
+            --         "${file}",
+            --         "-vv"
+            --     },
+            --     console = "integratedTerminal",
+            --     name = "debug tests",
+            --     -- cwd = '${workspaceFolder}'
+            -- })
 
             dap.adapters.coreclr = {
                 type = "executable",
