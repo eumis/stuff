@@ -71,13 +71,6 @@ function M.get_diffview_keymaps()
     }
 end
 
--- tests
-vim.keymap.set("n", '<space>ur', function() require("neotest").run.run() end, silent_opts)
-vim.keymap.set("n", '<space>uf', function() require("neotest").run.run(vim.fn.expand("%")) end, silent_opts)
-vim.keymap.set("n", '<space>ud', function() require("neotest").run.run({ strategy = "dap" }) end, silent_opts)
-vim.keymap.set("n", '<space>ut', function() require("neotest").summary.toggle() end, silent_opts)
-vim.keymap.set("n", '<space>uo', function() require("neotest").output.open({ enter = true }) end, silent_opts)
-
 -- marks
 local letters = {
     'a', 'b', 'c',
@@ -151,9 +144,9 @@ vim.keymap.set({ "n", "v" }, '<F8>', function() require('dap.ui.widgets').previe
 vim.keymap.set("n", '<F9>', function() require('dapui').toggle() end)
 
 -- markdown
-vim.keymap.set("n", '<C-m>', function()
-    require('render-markdown').buf_toggle()
-end)
+-- vim.keymap.set("n", '<C-m>', function()
+--     require('render-markdown').buf_toggle()
+-- end)
 
 local function set_task(char)
     local line = vim.api.nvim_get_current_line()

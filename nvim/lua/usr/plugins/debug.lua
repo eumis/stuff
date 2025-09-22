@@ -4,7 +4,6 @@ return {
         lazy = true,
         dependencies = {
             { "mfussenegger/nvim-dap-python", lazy = true },
-            { "nvim-neotest/nvim-nio",        lazy = true },
             { "rcarriga/nvim-dap-ui",         lazy = true },
         },
         config = function()

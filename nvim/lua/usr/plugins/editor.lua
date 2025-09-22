@@ -75,28 +75,6 @@ return {
     --     },
     -- },
     {
-        "MeanderingProgrammer/render-markdown.nvim",
-        event = "VeryLazy",
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-        ft = { 'markdown', 'quarto', 'jinja' },
-        ---@module 'render-markdown'
-        ---@type render.md.UserConfig
-        opts = {
-            anti_conceal = {
-                enabled = false,
-            },
-            win_options = {
-                concealcursor = {
-                    rendered = "nvic"
-                }
-            },
-            heading = {
-                width = 'block',
-                min_width = 50
-            }
-        },
-    },
-    {
         "norcalli/nvim-colorizer.lua",
         event = "VeryLazy",
         lazy = true,

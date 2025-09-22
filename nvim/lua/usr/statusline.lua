@@ -28,13 +28,13 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
 })
 
 local function build_line()
-    local line = " %f"
+    local line = " "
     for _, item in ipairs(custom_items) do
         if line ~= nil then
-            line = line .. " | " .. item
+            line = line  .. item .. " | "
         end
     end
-    line = line .. " %h%r %=%{v:lua.diagnostic_count()} %y %c:%l/%L"
+    line = line .. "%f %h%r %=%{v:lua.diagnostic_count()} %y %c:%l/%L"
     vim.opt.statusline = line
 end
 
