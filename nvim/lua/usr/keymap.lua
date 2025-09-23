@@ -105,8 +105,8 @@ vim.keymap.set("n", '<C-g><C-a>', function() require('harpoon.mark').add_file() 
 -- vim.keymap.set("n", '<C-c>', function() require('harpoon.mark').clear_all() end, silent_opts)
 
 -- snippets
-vim.keymap.set({ "i", "s" }, "<C-l>", function() require('luasnip').jump(1) end, silent_opts)
-vim.keymap.set({ "i", "s" }, "<C-h>", function() require('luasnip').jump(-1) end, silent_opts)
+-- vim.keymap.set({ "i", "s" }, "<C-l>", function() require('luasnip').jump(1) end, silent_opts)
+-- vim.keymap.set({ "i", "s" }, "<C-h>", function() require('luasnip').jump(-1) end, silent_opts)
 
 -- comments
 vim.keymap.set("n", 'CC', function() require('Comment.api').toggle.linewise.current() end, silent_opts)
