@@ -23,12 +23,13 @@ return {
         "neovim/nvim-lspconfig",
         event = "BufReadPre",
         dependencies = {
-            "hrsh7th/nvim-cmp",
+            -- "hrsh7th/nvim-cmp",
             -- "ray-x/lsp_signature.nvim",
             -- "Hoffs/omnisharp-extended-lsp.nvim",
             "gbrlsnchs/telescope-lsp-handlers.nvim",
-            "nvim-lua/lsp-status.nvim",
+            -- "nvim-lua/lsp-status.nvim",
             -- "j-hui/fidget.nvim",
+            "saghen/blink.cmp",
         },
         config = function()
             vim.diagnostic.config({
@@ -196,13 +197,15 @@ return {
             }
 
             local lspconfig = require("lspconfig")
-            local cmp_lsp = require("cmp_nvim_lsp")
-            local capabilities = vim.tbl_deep_extend(
-                "force",
-                {},
-                vim.lsp.protocol.make_client_capabilities(),
-                cmp_lsp.default_capabilities()
-            )
+            -- local cmp_lsp = require("cmp_nvim_lsp")
+            -- local capabilities = vim.tbl_deep_extend(
+            --     "force",
+            --     {},
+            --     vim.lsp.protocol.make_client_capabilities(),
+            --     cmp_lsp.default_capabilities()
+            -- )
+            local blink = require("blink.cmp")
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.textDocument.completion.completionItem.snippetSupport = true
             for name, config in pairs(servers) do
                 if config.disabled == nil or not config.disabled then
@@ -211,7 +214,7 @@ return {
                         config = {}
                     end
                     config = vim.tbl_deep_extend("force", {}, {
-                        capabilities = capabilities,
+                        capabilities = blink.get_lsp_capabilities(capabilities),
                     }, config)
 
                     lspconfig[name].setup(config)
@@ -235,9 +238,9 @@ return {
             })
 
             --require("fidget").setup({})
-            local lsp_status = require("lsp-status")
-            lsp_status.status()
-            lsp_status.register_progress()
+            -- local lsp_status = require("lsp-status")
+            -- lsp_status.status()
+            -- lsp_status.register_progress()
         end
     }
 }
