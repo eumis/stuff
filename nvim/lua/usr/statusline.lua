@@ -11,7 +11,7 @@ local icons = {
     lua_ls = "󰢱",
     omnisharp = "󰌛",
     basedpyright = "",
-    marksman = ""
+    marksman = "",
 }
 
 ---@type LineItem
@@ -49,7 +49,6 @@ M.copilot = {
         end
     end,
     set_value = function(val)
-        print("setting copilot status for " .. tostring(val))
         vim.g.sl_copilot_status = icons[val] or val or ""
         M.build_line()
     end
@@ -59,7 +58,6 @@ function _G.sl_lsp_status()
     local buf = vim.api.nvim_get_current_buf()
     local clients = vim.lsp.get_clients({ bufnr = buf })
     if #clients == 0 then return "" end
-    if #clients == 1 then return clients[1].name end
     local names = {}
     for _, client in ipairs(clients) do
         if client.name ~= "copilot" then -- copilot is not lsp
@@ -135,7 +133,7 @@ M.build_line = function()
         end
     end
 
-    left = left .. "%f %h%r %=" .. right .. " %y %c:%l/%L"
+    left = left .. "%f %h%r %=" .. right .. "| %y %c:%l/%L"
     vim.opt.statusline = left
 end
 
