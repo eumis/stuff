@@ -21,7 +21,7 @@ return {
             vim.api.nvim_create_autocmd("User", {
                 pattern = "RunbEnvChanged",
                 callback = function(args)
-                    require("usr.statusline").env(args.data.name)
+                    require("usr.statusline").env.set_value(args.data.name)
                 end
             })
         end

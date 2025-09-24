@@ -6,17 +6,22 @@ local M = {}
 
 ---@param provider suggestion_provider?
 function M.use_suggestions(provider)
+    ---@type string?
     if provider == "copilot" then
         require("copilot")
     elseif provider == "supermaven" then
         require("supermaven-nvim")
         local binary = require("supermaven-nvim.binary.binary_handler")
+        ---@diagnostic disable-next-line: unused-local, duplicate-set-field
         binary.open_popup = function(self, message, include_free)
             print("free supermaven started")
         end
         local api = require("supermaven-nvim.api")
         api.use_free_version()
+    else
+        return
     end
+    require("usr.statusline").copilot.set_value(provider)
 end
 
 ---@alias assistant

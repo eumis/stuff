@@ -1,6 +1,6 @@
 return {
     {
-        'zbirenbaum/copilot.lua',
+        "zbirenbaum/copilot.lua",
         lazy = true,
         config = function()
             require('copilot').setup({
