@@ -10,8 +10,8 @@ local icons = {
     supermaven = "",
     lua_ls = "󰢱",
     omnisharp = "󰌛",
-    basedpyright = "",
-    marksman = "",
+    basedpyright = "",
+    marksman = "",
 }
 
 ---@type LineItem
