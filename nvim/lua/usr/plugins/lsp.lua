@@ -33,6 +33,7 @@ return {
                 "lua_ls",
                 "basedpyright",
                 "lemminx",
+                "html"
                 -- "roslyn_ls"
             }
 

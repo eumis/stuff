@@ -12,6 +12,8 @@ local icons = {
     omnisharp = "󰌛",
     basedpyright = "",
     marksman = "",
+    ts_ls = "",
+    html = ""
 }
 
 ---@type LineItem
