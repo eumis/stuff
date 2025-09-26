@@ -27,6 +27,18 @@ Doc.new = function(buf)
     return self
 end
 
+---@return fun(value: integer?):integer
+function Doc:sum()
+    local result = 0
+    return function(value)
+        if value ~= nil then
+            result = result + value
+            return value
+        end
+        return result
+    end
+end
+
 ---@type table<integer, Doc>
 M.docs = {}
 
@@ -43,7 +55,7 @@ M.on = function(buf)
     ---@cast buf integer
     buf = get_buf(buf)
     M.get_doc(buf).on = true
-    vim.cmd("set conceallevel=2")
+    -- vim.cmd("set conceallevel=2")
     local parser = vim.treesitter.get_parser(0, 'markdown_inline', {})
     ---@diagnostic disable-next-line: need-check-nil
     local tree = parser:parse()[1]
@@ -61,14 +73,20 @@ M.on = function(buf)
             local end_col = range[4]
             expression = "local doc = require('usr.luamd').get_doc(" .. tostring(buf) .. ");local _ = doc.vars;"
                 .. expression
-            local result = tostring(loadstring(expression)()) or ""
+            local result = ""
+            if expression ~= nil and expression ~= "" then
+                result = loadstring(expression)()
+                result = result ~= nil and tostring(result) or ""
+            end
+            local node_len = end_col - start_col
+            if #result < node_len then
+                result = result .. string.rep(" ", node_len - #result)
+            end
             vim.api.nvim_buf_set_extmark(buf, ns_id, start_row, start_col, {
                 end_row = end_row,
                 end_col = end_col,
                 virt_text = { { result, "" } },
-                virt_text_pos = "overlay",
-                virt_text_hide = true,
-                conceal = " "
+                virt_text_pos = "overlay"
             })
         end
     end
@@ -78,6 +96,7 @@ end
 M.off = function(buf)
     buf = get_buf(buf)
     M.get_doc(buf).on = false
+    -- vim.cmd("set conceallevel=0")
     vim.api.nvim_buf_clear_namespace(buf, ns_id, 0, -1)
 end
 
@@ -97,8 +116,9 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     pattern = "*.luamd",
     group = group,
     callback = function(args)
-        print("BufReadPost")
-        M.on(args.buf)
+        if M.docs[args.buf] == nil then
+            M.on(args.buf)
+        end
     end
 })
 
