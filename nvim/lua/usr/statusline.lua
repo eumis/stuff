@@ -10,6 +10,7 @@ local icons = {
     supermaven = "",
     lua_ls = "󰢱",
     omnisharp = "󰌛",
+    roslyn_ls = "",
     basedpyright = "",
     marksman = "",
     ts_ls = "",

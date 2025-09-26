@@ -45,7 +45,7 @@ vim.filetype.add {
     extension = {
         zsh = "sh",
         sh = "sh", -- force sh-files with zsh-shebang to still get sh as filetype
-        luamd = "lua"
+        luamd = "markdown"
     },
     filename = {
         [".zshrc"] = "sh",
@@ -64,9 +64,14 @@ vim.g.maplocalleader = '\\'
 vim.g.mapspace = ' '
 
 require('usr.keymap')
-require('usr.statusline')
 
---let python_highlight_all=1
+vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+        require('usr.statusline')
+        require("usr.luamd")
+    end
+})
 
 -- Setup lazy.nvim
 require("lazy").setup({

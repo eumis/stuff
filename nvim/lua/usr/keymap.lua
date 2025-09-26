@@ -144,10 +144,6 @@ vim.keymap.set({ "n", "v" }, '<F8>', function() require('dap.ui.widgets').previe
 vim.keymap.set("n", '<F9>', function() require('dapui').toggle() end)
 
 -- markdown
--- vim.keymap.set("n", '<C-m>', function()
---     require('render-markdown').buf_toggle()
--- end)
-
 local function set_task(char)
     local line = vim.api.nvim_get_current_line()
     line = line:gsub('- *%[.%]', '- [' .. char .. ']')
@@ -160,6 +156,7 @@ vim.keymap.set("n", 'tx', function() set_task('x') end)
 vim.keymap.set("n", 't-', function() set_task('-') end)
 vim.keymap.set("n", 't?', function() set_task('?') end)
 vim.keymap.set("n", 'gx', function() require('usr.url').open_url(vim.fn.expand('<cfile>')) end)
+vim.keymap.set("n", "<C-m>", function() require "usr.luamd".toggle() end)
 
 -- ai
 -- vim.keymap.set('i', '<C-s>', function()
