@@ -45,6 +45,7 @@ M.on = function(buf)
     M.get_doc(buf).on = true
     vim.cmd("set conceallevel=2")
     local parser = vim.treesitter.get_parser(0, 'markdown_inline', {})
+    ---@diagnostic disable-next-line: need-check-nil
     local tree = parser:parse()[1]
     local root = tree:root()
     vim.api.nvim_buf_clear_namespace(buf, ns_id, 0, -1)
@@ -94,6 +95,7 @@ end
 
 vim.api.nvim_create_autocmd("BufReadPost", {
     pattern = "*.luamd",
+    group = group,
     callback = function(args)
         print("BufReadPost")
         M.on(args.buf)
