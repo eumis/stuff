@@ -27,6 +27,7 @@ end
 ---@alias assistant
 ---| "opencode"
 ---| "aider"
+---| "copilot"
 
 ---@param assistant assistant
 function M.use_assistant(assistant)
