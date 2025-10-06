@@ -29,18 +29,26 @@ end
 ---| "aider"
 ---| "copilot"
 
+---@type table<assistant, string>
+local assistants = {
+    opencode = "opencode",
+    aider = "aider",
+    copilot = "copilot",
+}
+
 ---@param assistant assistant
 function M.use_assistant(assistant)
-    if assistant == "opencode" or assistant == "aider" then
+    if assistants[assistant] ~= nil then
         local terminal = require "usr.terminal"
         local state = terminal.new_state()
+        local command = assistants[assistant]
         vim.keymap.set("n", "<space>af", function()
             if vim.api.nvim_buf_is_valid(state.buf) then
                 terminal.float_terminal(state)
             else
                 terminal.float_terminal(state)
                 local channel = vim.bo[state.buf].channel
-                vim.fn.chansend(channel, { assistant, "" })
+                vim.fn.chansend(channel, { command, "" })
             end
         end)
 
@@ -50,7 +58,7 @@ function M.use_assistant(assistant)
             else
                 terminal.split_terminal(state)
                 local channel = vim.bo[state.buf].channel
-                vim.fn.chansend(channel, { assistant, "" })
+                vim.fn.chansend(channel, { command, "" })
             end
         end)
 
@@ -60,7 +68,7 @@ function M.use_assistant(assistant)
             else
                 terminal.open_terminal(state)
                 local channel = vim.bo[state.buf].channel
-                vim.fn.chansend(channel, { assistant, "" })
+                vim.fn.chansend(channel, { command, "" })
             end
         end)
     end
