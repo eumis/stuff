@@ -3,15 +3,15 @@ return {
         "mfussenegger/nvim-dap",
         lazy = true,
         dependencies = {
-            { "mfussenegger/nvim-dap-python", lazy = true },
+            -- { "mfussenegger/nvim-dap-python", lazy = true },
             { "rcarriga/nvim-dap-ui",         lazy = true },
             { "nvim-neotest/nvim-nio",         lazy = true },
         },
         config = function()
             local dap = require("dap")
 
-            require("dap-python").setup("python")
-            require("dap-python").test_runner = "pytest"
+            -- require("dap-python").setup("python")
+            -- require("dap-python").test_runner = "pytest"
 
             -- table.insert(require("dap").configurations.python, {
             --     justMyCode = false,
