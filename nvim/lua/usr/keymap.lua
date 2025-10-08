@@ -97,6 +97,8 @@ vim.keymap.set("n", '<space>fs', function() require('telescope.builtin').live_gr
 vim.keymap.set("n", '<space>ft', function() require('telescope.builtin').help_tags() end, silent_opts)
 vim.keymap.set("n", '<space>fm', function() require('telescope.builtin').marks() end, silent_opts)
 vim.keymap.set("n", '<space>fb', function() require('telescope.builtin').buffers() end, silent_opts)
+vim.keymap.set("n", '<space>fq',
+    function() require('telescope.builtin').quickfix({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
 
 vim.keymap.set("n", '<C-g><C-g>', function() require('harpoon.ui').toggle_quick_menu() end, silent_opts)
 vim.keymap.set("n", '<C-g><C-n>', function() require('harpoon.ui').nav_next() end, silent_opts)
