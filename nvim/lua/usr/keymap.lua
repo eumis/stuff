@@ -59,6 +59,9 @@ vim.keymap.set("n", "<space>gg", function() require("gitsigns").preview_hunk() e
 vim.keymap.set("n", "<space>g]", function() require("gitsigns").nav_hunk("next") end, silent_opts)
 vim.keymap.set("n", "<space>g[", function() require("gitsigns").nav_hunk("prev") end, silent_opts)
 
+-- notes
+vim.keymap.set("n", "<space>nf", function() require("usr.notes").float() end, silent_opts)
+
 function M.get_diffview_keymaps()
     local close_map = { "n", '<C-q>', '<Cmd>DiffviewClose<CR>', { silent = true } }
     return {
