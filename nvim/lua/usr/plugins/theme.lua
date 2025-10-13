@@ -60,23 +60,38 @@ return {
     --     end
     -- }),
     -- theme("AlexvZyl/nordic.nvim", { callback = function() require("nordic").load() end }),
-    theme("cocopon/iceberg.vim"),
-    {
-        "kyazdani42/nvim-web-devicons",
-        lazy = false,
-        opts = {
-            override = {
-                luamarkdown = {
-                    icon = "󰽛",
-                    name = "luamarkdown"
-                }
-            },
-            override_by_extension = {
-                ["luamd"] = {
-                    icon = "󰽛",
-                    name = "luamarkdown"
-                }
-            }
-        }
-    },
+    -- theme("cocopon/iceberg.vim"),
+    -- {
+    --     "kyazdani42/nvim-web-devicons",
+    --     lazy = false,
+    --     opts = {
+    --         override = {
+    --             luamarkdown = {
+    --                 icon = "󰽛",
+    --                 name = "luamarkdown"
+    --             }
+    --         },
+    --         override_by_extension = {
+    --             ["luamd"] = {
+    --                 icon = "󰽛",
+    --                 name = "luamarkdown"
+    --             }
+    --         }
+    --     }
+    -- },
+    -- theme("catppuccin/nvim", {
+    --     callback = function()
+    --         require "catppuccin".setup()
+    --         vim.cmd.colorscheme("catppuccin-macchiato")
+    --     end
+    -- })
+    -- theme("mcauley-penney/techbase.nvim"),
+    -- theme("thesimonho/kanagawa-paper.nvim"),
+    -- theme("scottmckendry/cyberdream.nvim"),
+    theme("Mofiqul/vscode.nvim", {
+        callback = function()
+            vim.o.background = "dark"
+            vim.cmd.colorscheme("vscode")
+        end
+    })
 }

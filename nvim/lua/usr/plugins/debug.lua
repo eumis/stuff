@@ -4,8 +4,8 @@ return {
         lazy = true,
         dependencies = {
             -- { "mfussenegger/nvim-dap-python", lazy = true },
-            { "rcarriga/nvim-dap-ui",         lazy = true },
-            { "nvim-neotest/nvim-nio",         lazy = true },
+            { "rcarriga/nvim-dap-ui",  lazy = true },
+            { "nvim-neotest/nvim-nio", lazy = true },
         },
         config = function()
             local dap = require("dap")
@@ -41,6 +41,7 @@ return {
                 command = "netcoredbg",
                 args = { "--interpreter=vscode" }
             }
+
             require("dap").configurations.cs = {}
             -- table.insert(require("dap").configurations.cs, {
             --     type = "coreclr",
