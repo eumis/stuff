@@ -18,7 +18,7 @@ local function theme(plugin, opts)
             local name = string.sub(plugin, slash + 1, dot_ext - 1)
             opts = opts or {}
             if opts.opts ~= nil then
-                require(name).setup()
+                require(name).setup(opts.opts)
             end
             local callback = opts.callback or function()
                 vim.cmd.colorscheme(opts.colorscheme or name)
@@ -90,6 +90,7 @@ return {
     -- theme("thesimonho/kanagawa-paper.nvim"),
     -- theme("scottmckendry/cyberdream.nvim"),
     theme("Mofiqul/vscode.nvim", {
+        opts = { transparent = true },
         callback = function()
             vim.o.background = "dark"
             vim.cmd.colorscheme("vscode")
