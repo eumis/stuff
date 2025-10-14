@@ -29,6 +29,7 @@ local function theme(plugin, opts)
 end
 
 return {
+    "kyazdani42/nvim-web-devicons",
     -- theme("rebelot/kanagawa.nvim", {colorscheme = "kanagawa-dragon", opts = {} }),
     -- theme("rebelot/kanagawa.nvim", {colorscheme = "kanagawa-wave", opts = {} }),
     -- theme("EdenEast/nightfox.nvim", {colorscheme = "nightfox", opts = {} }),
