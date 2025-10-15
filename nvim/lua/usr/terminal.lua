@@ -28,7 +28,6 @@ function M.toggle_terminal_window(win_config, state)
     end
 
     state.win = vim.api.nvim_open_win(state.buf, true, win_config)
-
     if vim.bo[state.buf].buftype ~= "terminal" then
         vim.cmd.terminal()
     end
