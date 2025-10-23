@@ -1,10 +1,10 @@
 local M = {}
 
----@class State
+---@class TerminalState
 ---@field buf number
 ---@field win number
 
----@return State
+---@return TerminalState
 function M.new_state()
     return {
         buf = -1,
@@ -12,11 +12,11 @@ function M.new_state()
     }
 end
 
----@type State
+---@type TerminalState
 M.state = M.new_state()
 
 ---@param win_config table
----@param state State
+---@param state TerminalState
 function M.toggle_terminal_window(win_config, state)
     if vim.api.nvim_win_is_valid(state.win) then
         vim.api.nvim_win_hide(state.win)
@@ -33,7 +33,7 @@ function M.toggle_terminal_window(win_config, state)
     end
 end
 
----@param state? State
+---@param state? TerminalState
 function M.float_terminal(state)
     if state == nil then state = M.state end
     local width = math.floor(vim.o.columns * 0.9)
@@ -51,7 +51,7 @@ function M.float_terminal(state)
     }, state)
 end
 
----@param state? State
+---@param state? TerminalState
 function M.split_terminal(state)
     if state == nil then state = M.state end
     M.toggle_terminal_window({
@@ -60,7 +60,7 @@ function M.split_terminal(state)
     }, state)
 end
 
----@param state? State
+---@param state? TerminalState
 function M.bottom_terminal(state)
     if state == nil then state = M.state end
     M.toggle_terminal_window({
@@ -69,7 +69,7 @@ function M.bottom_terminal(state)
     }, state)
 end
 
----@param state? State
+---@param state? TerminalState
 function M.open_terminal(state)
     if state == nil then state = M.state end
 
