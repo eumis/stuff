@@ -6,6 +6,9 @@ sudo apt install git -y
 # configs
 git clone git@github.com:eumis/stuff.git
 
+# nopm
+ln -s ~/stuff/nopm ~/.config
+
 # fish
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt update -y
