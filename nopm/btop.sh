@@ -36,7 +36,5 @@ get_latest_version() {
 uninstall() {
     local app_path="$1"
 
-    echo "$app_path"
-
     ask_sudo rm "$app_path"
 }
