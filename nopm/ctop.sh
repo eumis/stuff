@@ -1,11 +1,21 @@
 #!/usr/bin/env bash
 
+get_file_name() {
+    local version=$1
+    arch=$(get_architecture)
+    case "$arch" in
+        aarch64) echo "ctop-$version-linux-arm64" ;;
+        *) echo "ctop-$version-linux-amd64" ;;
+    esac
+}
+
 install() {
     local app_path="$1"
-    local version=$(ensure_v_prefix $2)
+    local version="$2"
+    local vversion=$(ensure_v_prefix $2)
 
     rm -f ctop || echo
-    curl -LRs "https://github.com/bcicen/ctop/releases/download/$version/ctop-0.7.7-linux-amd64" -o ctop
+    curl -LRs "https://github.com/bcicen/ctop/releases/download/$vversion/$(get_file_name $version)" -o ctop
     chmod u+x ./ctop
     ask_sudo mv ctop "$1" -f
 }

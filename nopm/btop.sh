@@ -5,12 +5,20 @@ cleanup() {
     rm -f btop.tbz || echo
 }
 
+get_file_name() {
+    arch=$(get_architecture)
+    case "$arch" in
+        aarch64) echo "btop-aarch64-linux-musl.tbz" ;;
+        *) echo "btop-x86_64-linux-musl.tbz" ;;
+    esac
+}
+
 install() {
     local app_path="$1"
     local version=$(ensure_v_prefix $2)
 
     cleanup
-    curl -LRs "https://github.com/aristocratos/btop/releases/download/$version/btop-x86_64-linux-musl.tbz" -o btop.tbz
+    curl -LRs "https://github.com/aristocratos/btop/releases/download/$version/$(get_file_name)" -o btop.tbz
     tar -xf btop.tbz
     ask_sudo cp btop/bin/btop "$1" -f
     cleanup
