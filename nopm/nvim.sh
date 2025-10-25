@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
+get_file_name() {
+    arch=$(get_architecture)
+    case "$arch" in
+        aarch64) echo "nvim-linux-arm64.appimage" ;;
+        *) echo "nvim-linux-x86_64.appimage" ;;
+    esac
+}
+
 install() {
     local app_path="$1"
     local version=$(ensure_v_prefix $2)
 
     rm -f ./nvim.appimage || echo
-    curl -LRs "https://github.com/neovim/neovim/releases/download/$version/nvim-linux-x86_64.appimage" -o nvim.appimage
+    curl -LRs "https://github.com/neovim/neovim/releases/download/$version/$(get_file_name)" -o nvim.appimage
     chmod u+x ./nvim.appimage
     ask_sudo mv nvim.appimage "$1" -f
 }
