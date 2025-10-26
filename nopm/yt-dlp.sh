@@ -12,7 +12,7 @@ install() {
     local app_path="$1"
     local version="$2"
 
-    rm -f ./nvim.appimage || echo
+    rm -f ./yt-dlp || echo
     curl -LRs "https://github.com/yt-dlp/yt-dlp/releases/download/$version/$(get_file_name)" -o yt-dlp
     chmod u+x ./yt-dlp
     ask_sudo mv yt-dlp "$1" -f
