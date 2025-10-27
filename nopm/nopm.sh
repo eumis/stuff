@@ -39,7 +39,7 @@ update() {
 get_installed_version() {
     local app=$1
 
-    $1 --version | grep -m2 '^nopm' | awk '{print $2}' | tr -d 'v'
+    $1 --version | grep -m2 '^nopm' | awk '{print $2}' | tr -d 'v' || echo
 }
 
 get_latest_version() {
