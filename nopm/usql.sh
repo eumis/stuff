@@ -26,11 +26,9 @@ install() {
         local archive="usql.tar.bz2"
         local exe="usql_static"
         cleanup $archive $exe
-        echo "https://github.com/xo/usql/releases/download/v$version/$filename.tar.bz2"
-        echo "$archive"
         curl -LRs "https://github.com/xo/usql/releases/download/v$version/$filename.tar.bz2" -o "$archive"
         tar -xf "./$archive"
-        ask_sudo mv "$exe" "$1" -f
+        sudo mv "$exe" "$1" -f
         cleanup $archive $exe
     else
         local archive="usql.tar.bz2"

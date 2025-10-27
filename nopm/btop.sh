@@ -7,34 +7,28 @@ cleanup() {
 
 get_file_name() {
     arch=$(get_architecture)
-    case "$arch" in
-        aarch64) echo "btop-aarch64-linux-musl.tbz" ;;
-        *) echo "btop-x86_64-linux-musl.tbz" ;;
-    esac
+
+    echo "btop-$arch-linux-musl.tbz"
 }
 
 install() {
-    local app_path="$1"
-    local version=$(ensure_v_prefix $2)
+    local version="$1"
 
     cleanup
-    curl -LRs "https://github.com/aristocratos/btop/releases/download/$version/$(get_file_name)" -o btop.tbz
+    curl -LRs "https://github.com/aristocratos/btop/releases/download/v$version/$(get_file_name)" -o btop.tbz
     tar -xf btop.tbz
-    ask_sudo cp btop/bin/btop "$1" -f
+    sudo cp btop/bin/btop "/usr/local/bin/btop" -f
     cleanup
 }
 
 update() {
-    local app_path="$1"
-    local version="$2"
+    local version="$1"
 
-    install $app_path $version
+    install $version
 }
 
 get_installed_version() {
-    local app=$1
-
-    $1 --version | rg version | awk '{print $3}' || echo
+    btop -v 2>/dev/null | awk '{print $3}' | sed -r 's/\x1B\[[0-9;]*[A-Za-z]//g' || echo
 }
 
 get_latest_version() {
@@ -42,7 +36,5 @@ get_latest_version() {
 }
 
 uninstall() {
-    local app_path="$1"
-
-    ask_sudo rm "$app_path"
+    sudo rm "/usr/local/bin/btop" || echo
 }

@@ -2,33 +2,28 @@
 
 get_file_name() {
     arch=$(get_architecture)
-    case "$arch" in
-        aarch64) echo "nvim-linux-arm64.appimage" ;;
-        *) echo "nvim-linux-x86_64.appimage" ;;
-    esac
+    [[ "$arch" == "aarch64" ]] && arch="arm64"
+    echo "nvim-linux-$arch.appimage"
 }
 
 install() {
-    local app_path="$1"
-    local version=$(ensure_v_prefix $2)
+    local version="$1"
 
     rm -f ./nvim.appimage || echo
-    curl -LRs "https://github.com/neovim/neovim/releases/download/$version/$(get_file_name)" -o nvim.appimage
+    echo "https://github.com/neovim/neovim/releases/download/v$version/$(get_file_name)"
+    curl -LRs "https://github.com/neovim/neovim/releases/download/v$version/$(get_file_name)" -o nvim.appimage
     chmod u+x ./nvim.appimage
-    ask_sudo mv nvim.appimage "$1" -f
+    sudo mv nvim.appimage "/usr/local/bin/nvim" -f
 }
 
 update() {
-    local app_path="$1"
-    local version="$2"
+    local version="$1"
 
-    install $app_path $version
+    install $version
 }
 
 get_installed_version() {
-    local app=$1
-
-    $1 --version | grep -m2 '^NVIM' | awk '{print $2}' | tr -d 'v' || echo
+    nvim --version 2>/dev/null | grep -m2 '^NVIM' | awk '{print $2}' | tr -d 'v' || echo
 }
 
 get_latest_version() {
@@ -36,7 +31,5 @@ get_latest_version() {
 }
 
 uninstall() {
-    local app_path="$1"
-
-    ask_sudo rm "$app_path"
+    sudo rm "/usr/local/bin/nvim" || echo
 }

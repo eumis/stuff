@@ -18,39 +18,33 @@ checkout() {
 }
 
 install() {
-    local app_path="$1"
-    local version="$2"
+    local version="$1"
 
     rm ./nopm -f || echo
     fetch
     checkout "$version"
     cp ./nopm_repo/src/nopm.sh ./nopm
     chmod u+x ./nopm
-    ask_sudo mv nopm "$1" -f
+    sudo mv nopm "/usr/local/bin/nopm" -f
 }
 
 update() {
-    local app_path="$1"
-    local version="$2"
+    local version="$1"
 
-    install $app_path $version
+    install $version
 }
 
 get_installed_version() {
-    local app=$1
-
-    $1 --version | grep -m2 '^nopm' | awk '{print $2}' | tr -d 'v' || echo
+    nopm --version 2>/dev/null | grep -m2 '^nopm' | awk '{print $2}' | tr -d 'v' || echo
 }
 
 get_latest_version() {
     fetch
     cd ./nopm_repo
-    git tag -l | sort -V | tail -n 1 | tr -d 'v'
+    git tag -l | sort -V | tail -n 1
     cd ..
 }
 
 uninstall() {
-    local app_path="$1"
-
-    ask_sudo rm "$app_path"
+    sudo rm "/usr/local/bin/nopm" || echo
 }
