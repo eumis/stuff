@@ -19,7 +19,7 @@ checkout() {
 
 install() {
     local app_path="$1"
-    local version=$(ensure_v_prefix $2)
+    local version="$2"
 
     rm ./nopm -f || echo
     fetch
