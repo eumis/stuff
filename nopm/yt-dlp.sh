@@ -9,26 +9,22 @@ get_file_name() {
 }
 
 install() {
-    local app_path="$1"
-    local version="$2"
+    local version="$1"
 
     rm -f ./yt-dlp || echo
     curl -LRs "https://github.com/yt-dlp/yt-dlp/releases/download/$version/$(get_file_name)" -o yt-dlp
     chmod u+x ./yt-dlp
-    ask_sudo mv yt-dlp "$1" -f
+    sudo mv yt-dlp "/usr/local/bin/yt-dlp" -f
 }
 
 update() {
-    local app_path="$1"
-    local version="$2"
+    local version="$1"
 
-    install $app_path $version
+    install $version
 }
 
 get_installed_version() {
-    local app=$1
-
-    $1 --version || echo
+    yt-dlp --version 2>/dev/null || echo
 }
 
 get_latest_version() {
@@ -36,7 +32,5 @@ get_latest_version() {
 }
 
 uninstall() {
-    local app_path="$1"
-
-    ask_sudo rm "$app_path"
+    sudo rm "/usr/local/bin/yt-dlp"
 }

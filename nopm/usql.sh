@@ -17,8 +17,7 @@ get_file_name() {
 }
 
 install() {
-    local app_path="$1"
-    local version=$2
+    local version=$1
     local os=$(get_os)
     local filename=$(get_file_name $version)
 
@@ -28,7 +27,7 @@ install() {
         cleanup $archive $exe
         curl -LRs "https://github.com/xo/usql/releases/download/v$version/$filename.tar.bz2" -o "$archive"
         tar -xf "./$archive"
-        sudo mv "$exe" "$1" -f
+        sudo mv "$exe" "/usr/local/bin/usql" -f
         cleanup $archive $exe
     else
         local archive="usql.tar.bz2"
@@ -36,22 +35,19 @@ install() {
         cleanup $archive $exe
         curl -LRs "https://github.com/xo/usql/releases/download/v$version/$filename.zip" -o "$archive"
         unzip "./$archive"
-        mv usql.exe "$1" -f
+        mv usql.exe "/usr/local/bin/usql" -f
         cleanup $archive $exe
     fi
 }
 
 update() {
-    local app_path="$1"
-    local version="$2"
+    local version="$1"
 
-    install $app_path $version
+    install $version
 }
 
 get_installed_version() {
-    local app=$1
-
-    $1 --version | rg version | awk '{print $3}' || echo
+    usql --version 2>/dev/null | awk '{print $2}' || echo
 }
 
 get_latest_version() {
@@ -59,7 +55,5 @@ get_latest_version() {
 }
 
 uninstall() {
-    local app_path="$1"
-
-    ask_sudo rm "$app_path"
+    sudo rm "/usr/local/bin/usql" || echo
 }
