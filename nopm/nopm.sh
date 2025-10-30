@@ -19,13 +19,18 @@ checkout() {
 
 install() {
     local version="$1"
+    local os=$(get_os)
 
     rm ./nopm -f || echo
     fetch
     checkout "$version"
     cp ./nopm_repo/src/nopm.sh ./nopm
     chmod u+x ./nopm
-    sudo mv nopm "/usr/local/bin/nopm" -f
+    if [[ "$os" == "linux" ]]; then
+        sudo mv nopm "/usr/local/bin/nopm" -f
+    else
+        mv nopm "/c/tools/nopm" -f
+    fi
 }
 
 update() {
@@ -46,5 +51,10 @@ get_latest_version() {
 }
 
 uninstall() {
-    sudo rm "/usr/local/bin/nopm" || echo
+    local os=$(get_os)
+    if [[ "$os" == "linux" ]]; then
+        sudo rm "/usr/local/bin/nopm" || echo
+    else
+        rm -rf "/c/tools/nopm" || echo
+    fi
 }
