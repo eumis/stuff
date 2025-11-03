@@ -3,12 +3,15 @@ local M = {}
 ---@class TerminalState
 ---@field buf number
 ---@field win number
+---@field init_command (string|string[])?
 
+---@param init_command (string|string[])?
 ---@return TerminalState
-function M.new_state()
+function M.new_state(init_command)
     return {
         buf = -1,
-        win = -1
+        win = -1,
+        init_command = init_command,
     }
 end
 
@@ -30,6 +33,10 @@ function M.toggle_terminal_window(win_config, state)
     state.win = vim.api.nvim_open_win(state.buf, true, win_config)
     if vim.bo[state.buf].buftype ~= "terminal" then
         vim.cmd.terminal()
+        if state.init_command ~= nil then
+            local channel = vim.bo[state.buf].channel
+            vim.fn.chansend(channel, state.init_command)
+        end
     end
 end
 
@@ -81,6 +88,10 @@ function M.open_terminal(state)
     vim.api.nvim_set_current_buf(state.buf)
     if vim.bo[state.buf].buftype ~= "terminal" then
         vim.cmd.terminal()
+        if state.init_command ~= nil then
+            local channel = vim.bo[state.buf].channel
+            vim.fn.chansend(channel, state.init_command)
+        end
     end
 end
 
