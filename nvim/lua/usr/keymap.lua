@@ -52,6 +52,7 @@ vim.keymap.set("n", '<C-f><C-s>', ':NvimTreeFindFile<CR>')
 -- git
 -- vim.keymap.set("n", "<space>gs", function() require("neogit").open() end, silent_opts)
 vim.keymap.set("n", "<space>gs", function() require("usr.git").open() end, silent_opts)
+vim.keymap.set("t", "<C-g>", function() require("usr.git").go_to_file() end, silent_opts)
 -- vim.keymap.set("n", '<space>gs', ':G<CR>')
 vim.keymap.set("n", "<space>ga", function() require("gitsigns").blame() end, silent_opts)
 vim.keymap.set("n", "<space>gb", function() require("gitsigns").blame_line({ full = true }) end, silent_opts)

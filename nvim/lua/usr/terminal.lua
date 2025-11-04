@@ -40,6 +40,13 @@ function M.toggle_terminal_window(win_config, state)
     end
 end
 
+---@param state TerminalState
+function M.close_terminal(state)
+    if vim.api.nvim_win_is_valid(state.win) then
+        vim.api.nvim_win_hide(state.win)
+    end
+end
+
 ---@param state? TerminalState
 function M.float_terminal(state)
     if state == nil then state = M.state end
