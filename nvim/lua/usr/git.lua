@@ -13,20 +13,16 @@ M.open = function()
     vim.cmd("startinsert")
 end
 
+local copy_file_path_key = vim.api.nvim_replace_termcodes('<C-o>', true, false, true)
+
 M.go_to_file = function()
     if state == nil then return end
 
-    local lines = vim.api.nvim_buf_get_lines(state.buf, 1, 2, true)
-    local the_line = lines[1]
+    vim.api.nvim_feedkeys(copy_file_path_key, "t", false)
+    vim.cmd("q")
 
-    local s, e = string.find(the_line, "---git a/")
-    if e == nil then return end
-    local start = e + 1
-
-    s, e = string.find(the_line, " b/", start)
-    local end_ = s - 1
-
-    local path = the_line:sub(start, end_)
+    local path = vim.fn.getreg("*")
+    print(path)
     if vim.loop.fs_stat(path) then
         terminal.close_terminal(state)
         local bufnr = vim.fn.bufnr(path, true)
