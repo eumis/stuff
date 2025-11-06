@@ -20,8 +20,7 @@ M.go_to_file = function()
 
     vim.api.nvim_feedkeys(copy_file_path_key, "t", false)
     vim.cmd("q")
-
-    local path = vim.fn.getreg("*")
+    local path = vim.fn.getreg("+")
     print(path)
     if vim.loop.fs_stat(path) then
         terminal.close_terminal(state)
