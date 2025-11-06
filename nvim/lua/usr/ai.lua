@@ -30,12 +30,14 @@ end
 ---| "opencode"
 ---| "aider"
 ---| "copilot"
+---| "vscode"
 
 ---@type table<assistant, string>
 local assistants = {
     opencode = "opencode",
     aider = "aider",
     copilot = "copilot",
+    vscode = "code"
 }
 
 ---@param assistant assistant
