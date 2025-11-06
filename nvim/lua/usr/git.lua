@@ -19,14 +19,15 @@ M.go_to_file = function()
     if state == nil then return end
 
     vim.api.nvim_feedkeys(copy_file_path_key, "t", false)
-    vim.cmd("q")
-    local path = vim.fn.getreg("+")
-    print(path)
-    if vim.loop.fs_stat(path) then
-        terminal.close_terminal(state)
-        local bufnr = vim.fn.bufnr(path, true)
-        vim.api.nvim_set_current_buf(bufnr)
-    end
+
+    vim.schedule(function()
+        local path = vim.fn.system({ 'xclip', '-selection', 'clipboard', '-o' })
+        if vim.loop.fs_stat(path) then
+            terminal.close_terminal(state)
+            local bufnr = vim.fn.bufnr(path, true)
+            vim.api.nvim_set_current_buf(bufnr)
+        end
+    end)
 end
 
 return M
