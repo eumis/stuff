@@ -89,11 +89,11 @@ return {
     -- theme("mcauley-penney/techbase.nvim"),
     -- theme("thesimonho/kanagawa-paper.nvim"),
     -- theme("scottmckendry/cyberdream.nvim"),
-    theme("Mofiqul/vscode.nvim", {
-        opts = { transparent = true },
-        callback = function()
-            vim.o.background = "dark"
-            vim.cmd.colorscheme("vscode")
-        end
-    })
+    -- theme("Mofiqul/vscode.nvim", {
+    --     opts = { transparent = true },
+    --     callback = function()
+    --         vim.o.background = "dark"
+    --         vim.cmd.colorscheme("vscode")
+    --     end
+    -- })
 }

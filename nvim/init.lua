@@ -26,9 +26,11 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.smartcase = true
 vim.opt.incsearch = true
-vim.opt.nu = true
+vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 15
 vim.opt.guicursor =
 'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
 vim.opt.encoding = 'UTF-8'
@@ -41,6 +43,16 @@ vim.opt.autoread = true
 vim.opt.clipboard:append('unnamedplus')
 vim.opt.termguicolors = true
 vim.opt.guifont = 'CodeNewRoman\\ NF:h9'
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+
+vim.opt.showmatch = true
+
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand('~/.local/state/nvim/undodir')
+
 vim.filetype.add {
     extension = {
         zsh = "sh",
@@ -70,6 +82,19 @@ vim.api.nvim_create_autocmd("User", {
     callback = function()
         require('usr.statusline')
         require("usr.luamd")
+    end
+})
+
+vim.cmd.colorscheme("lunaperche")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+
+local augroup = vim.api.nvim_create_augroup("UserConfig", {})
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = augroup,
+    callback = function()
+        vim.highlight.on_yank()
     end
 })
 
