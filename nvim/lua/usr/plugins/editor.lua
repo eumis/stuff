@@ -22,21 +22,6 @@ return {
             end,
         }
     },
-    -- {
-    --     'lukas-reineke/indent-blankline.nvim',
-    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    --     event = 'BufReadPre',
-    --     main = "ibl",
-    --     opts = {
-    --         scope = {
-    --             show_start = false,
-    --             show_end = false
-    --         }
-    --     },
-    --     init = function()
-    --         vim.opt.list = true
-    --     end
-    -- },
     {
         "windwp/nvim-autopairs",
         event = 'BufReadPre',
@@ -67,13 +52,6 @@ return {
             debounce_delay = 500
         }
     },
-    -- {
-    --     "gregorias/coerce.nvim",
-    --     event = 'BufReadPre',
-    --     opts = {
-    --         default_mode_keymap_prefixes = require('usr.keymap').get_coerce_prefices(),
-    --     },
-    -- },
     {
         "norcalli/nvim-colorizer.lua",
         event = "VeryLazy",
