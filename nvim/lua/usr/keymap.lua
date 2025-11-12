@@ -50,7 +50,6 @@ vim.keymap.set("n", '<C-f><C-f>', ':NvimTreeToggle<CR>')
 vim.keymap.set("n", '<C-f><C-s>', ':NvimTreeFindFile<CR>')
 
 -- git
--- vim.keymap.set("n", "<space>gs", function() require("neogit").open() end, silent_opts)
 vim.keymap.set("n", "<space>gs", function() require("usr.git").open() end, silent_opts)
 vim.keymap.set("t", "<C-g>", function() require("usr.git").go_to_file() end, silent_opts)
 -- vim.keymap.set("n", '<space>gs', ':G<CR>')
@@ -105,12 +104,6 @@ vim.keymap.set("n", '<space>ft', function() require('telescope.builtin').help_ta
 vim.keymap.set("n", '<space>fb', function() require('telescope.builtin').buffers() end, silent_opts)
 vim.keymap.set("n", '<space>fq',
     function() require('telescope.builtin').quickfix({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
-
-vim.keymap.set("n", '<C-g><C-g>', function() require('harpoon.ui').toggle_quick_menu() end, silent_opts)
-vim.keymap.set("n", '<C-g><C-n>', function() require('harpoon.ui').nav_next() end, silent_opts)
-vim.keymap.set("n", '<C-g><C-b>', function() require('harpoon.ui').nav_prev() end, silent_opts)
-vim.keymap.set("n", '<C-g><C-a>', function() require('harpoon.mark').add_file() end, silent_opts)
--- vim.keymap.set("n", '<C-c>', function() require('harpoon.mark').clear_all() end, silent_opts)
 
 -- snippets
 -- vim.keymap.set({ "i", "s" }, "<C-l>", function() require('luasnip').jump(1) end, silent_opts)

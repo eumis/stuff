@@ -96,31 +96,5 @@ return {
             }
             require("telescope").load_extension("fzf")
         end
-    },
-    {
-        "ThePrimeagen/harpoon",
-        lazy = true,
-        event = "VeryLazy",
-        -- branch = "harpoon2",
-        -- enabled = false,
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("harpoon").setup {
-                menu = {
-                    width = vim.api.nvim_win_get_width(0) - 20,
-                }
-            }
-        end
-        -- config = function()
-        --     local harpoon = require("harpoon")
-        --     harpoon:setup({
-        --         settings = {
-        --             save_on_toggle = true,
-        --             sync_on_ui_close = true
-        --         }
-        --     })
-        --     vim.keymap.set("n", "<C-g><C-a>", function() harpoon:list():add() end)
-        --     vim.keymap.set("n", "<C-g><C-g>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-        -- end
     }
 }
