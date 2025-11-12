@@ -10,6 +10,7 @@ M.open = function()
         state = terminal.new_state({ "lazygit", "" })
     end
     terminal.float_terminal(state)
+    vim.cmd("normal! 0")
     vim.cmd("startinsert")
 end
 
