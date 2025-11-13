@@ -1,6 +1,11 @@
 return {
     { "nvim-lua/plenary.nvim", lazy = false },
-    { "eumis/tasks.nvim",      branch = "dev", lazy = true },
+    {
+        "eumis/tasks.nvim",
+        branch = "dev",
+        lazy = true,
+        config = function() require("tasks").setup({ sort = "recent" }) end
+    },
     {
         "eumis/wdconfig.nvim",
         branch = "dev",

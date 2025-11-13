@@ -44,6 +44,7 @@ vim.api.nvim_create_user_command('Term', function() require('usr.terminal').floa
 
 -- tasks
 vim.keymap.set("n", "<C-t><C-r>", function() require("tasks").toggle_list() end)
+vim.keymap.set("n", '<space>ft', function() require("telescope").extensions.tasks.all() end, silent_opts)
 
 -- nvim tree
 vim.keymap.set("n", '<C-f><C-f>', ':NvimTreeToggle<CR>')
@@ -96,11 +97,11 @@ vim.keymap.set("n", '<space>fm', function() require "usr.marks".list_marks() end
 
 -- navigation
 vim.keymap.set("n", '<space>ff', function() require('telescope.builtin').find_files() end, silent_opts)
-vim.keymap.set("n", '<space>fh',
+vim.keymap.set("n", '<space>fi',
     function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end, silent_opts)
 vim.keymap.set("n", '<space>fr', function() require('telescope.builtin').oldfiles({ only_cwd = true }) end, silent_opts)
 vim.keymap.set("n", '<space>fs', function() require('telescope.builtin').live_grep() end, silent_opts)
-vim.keymap.set("n", '<space>ft', function() require('telescope.builtin').help_tags() end, silent_opts)
+vim.keymap.set("n", '<space>fh', function() require('telescope.builtin').help_tags() end, silent_opts)
 vim.keymap.set("n", '<space>fb', function() require('telescope.builtin').buffers() end, silent_opts)
 vim.keymap.set("n", '<space>fq',
     function() require('telescope.builtin').quickfix({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
