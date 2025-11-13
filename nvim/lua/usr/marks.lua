@@ -16,14 +16,34 @@ M.open_mark = function(mark)
     end
 end
 
-M.list_marks = function()
+---@returns {mark: string, path: string}[]
+M.get_marks = function()
     local files = {}
-    for _, path in pairs(state.marks) do
-        table.insert(files, path)
+    for mark, path in pairs(state.marks) do
+        table.insert(files, { mark = mark, path = path })
     end
+    return files
+end
+
+local generate_new_finder = function()
+    return require("telescope.finders").new_table({
+        results = M.get_marks(),
+        entry_maker = function(entry)
+            local line = entry.mark .. " - " .. entry.path
+            return {
+                value = entry,
+                ordinal = line,
+                display = line,
+                filename = entry.path,
+            }
+        end,
+    })
+end
+
+M.list_marks = function()
     require("telescope.pickers").new({}, {
         prompt_title = "Marks",
-        finder = require("telescope.finders").new_table { results = files },
+        finder = generate_new_finder(),
         sorter = require("telescope.config").values.generic_sorter({}),
         previewer = require("telescope.config").values.grep_previewer({}),
     }):find()
