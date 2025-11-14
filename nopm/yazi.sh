@@ -10,6 +10,8 @@ install() {
     local version="$1"
     local package_name="yazi-$(get_architecture)-unknown-linux-musl"
 
+    sudo rm -f "/usr/local/bin/yazi" || echo
+    sudo rm -f "/usr/local/bin/ya" || echo
     rm -rf "./$package_name" || echo
     curl -LRs "https://github.com/sxyazi/yazi/releases/download/v$version/$package_name.zip" -o yazi.zip
     unzip yazi.zip
