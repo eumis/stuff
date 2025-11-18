@@ -15,20 +15,21 @@ config.font_size = 11
 
 local shells = nil
 if string.find(wezterm.target_triple, "windows") then
+    config.default_domain = "WSL:Ubuntu-24.04"
     shells = {
+        { key = 'n', args = 'C:\\Windows\\System32\\wsl.exe -d Ubuntu-24.04' },
         { key = 'g', args = 'C:\\Program Files\\Git\\bin\\bash.exe' },
-        { key = 'n', args = 'wsl -d Ubuntu-24.04' },
     }
     config.font_size = 9
-    config.window_background_gradient = {
-        orientation = 'Vertical',
-        colors = {
-            '#0f0c29',
-            '#282c34'
-        },
-        interpolation = 'Linear',
-        blend = 'Rgb'
-    }
+    -- config.window_background_gradient = {
+    --     orientation = 'Vertical',
+    --     colors = {
+    --         '#0f0c29',
+    --         '#282c34'
+    --     },
+    --     interpolation = 'Linear',
+    --     blend = 'Rgb'
+    -- }
 else
     shells = {
         { key = 'n', args = '/usr/bin/fish' },

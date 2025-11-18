@@ -1,15 +1,28 @@
 #!/usr/bin/env bash
 
+cleanup() {
+    rm -f ./lazygit || echo
+    rm -f ./lazygit.tar.gz || echo
+    rm -f ./lazygit.zip || echo
+}
+
 install() {
     local version="$1"
     local os=$(get_os)
     local arch=$(get_architecture)
 
-    rm -f ./lazygit || echo
-    curl -LRs "https://github.com/jesseduffield/lazygit/releases/download/v$version/lazygit_${version}_${os}_${arch}.tar.gz" -o lazygit.tar.gz
-    tar xf lazygit.tar.gz lazygit
-    chmod u+x ./lazygit
-    sudo mv lazygit "/usr/local/bin/lazygit" -f
+    cleanup
+    if [[ $os == "linux" ]]; then
+        curl -LRs "https://github.com/jesseduffield/lazygit/releases/download/v$version/lazygit_${version}_${os}_${arch}.tar.gz" -o lazygit.tar.gz
+        tar xf lazygit.tar.gz lazygit
+        chmod u+x ./lazygit
+        sudo mv lazygit "/usr/local/bin/lazygit" -f
+    else
+        curl -LRs "https://github.com/jesseduffield/lazygit/releases/download/v$version/lazygit_${version}_${os}_${arch}.zip" -o lazygit.zip
+        unzip -o lazygit.zip -d lazygit
+        mv lazygit "/c/tools" -f
+    fi
+    cleanup
 }
 
 update() {
