@@ -17,6 +17,15 @@ local icons = {
     html = ""
 }
 
+---@class Progress
+---@field kind string
+---@field title string
+---@field message string
+---@field percentage integer
+
+---@type table<integer, Progress>
+local lsp_progress = {}
+
 ---@type LineItem
 M.git = {
     name = "git",
@@ -57,6 +66,17 @@ M.copilot = {
     end
 }
 
+---@param client_id integer
+---@param progress {kind: string, title: string, message: string, percentage: integer}
+M.set_lsp_progress = function(client_id, progress)
+    if progress.percentage == 100 or progress.percentage == nil then
+        lsp_progress[client_id] = nil
+    else
+        lsp_progress[client_id] = progress
+    end
+    vim.cmd("redrawstatus")
+end
+
 function _G.sl_lsp_status()
     local buf = vim.api.nvim_get_current_buf()
     local clients = vim.lsp.get_clients({ bufnr = buf })
@@ -64,7 +84,12 @@ function _G.sl_lsp_status()
     local names = {}
     for _, client in ipairs(clients) do
         if client.name ~= "copilot" then -- copilot is not lsp
-            table.insert(names, icons[client.name] or client.name)
+            local status = icons[client.name] or client.name
+            local progress = lsp_progress[client.id]
+            if progress ~= nil and progress.percentage ~= 100 then
+                status = "[" .. status .. " " .. progress.title .. " " .. progress.percentage .. "% ]"
+            end
+            table.insert(names, status)
         end
     end
     return table.concat(names, " ")
@@ -142,18 +167,22 @@ end
 
 M.build_line()
 
-vim.system({ "git", "branch", "--show-current" }, { text = true }, function(obj)
-    if obj.code == 0 then
-        vim.schedule(function()
-            M.git.set_value(string.sub(obj.stdout, 1, -2))
-        end)
-    end
-end)
+M.update_git = function()
+    vim.system({ "git", "branch", "--show-current" }, { text = true }, function(obj)
+        if obj.code == 0 then
+            vim.schedule(function()
+                M.git.set_value(string.sub(obj.stdout, 1, -2))
+            end)
+        end
+    end)
+end
 
 vim.api.nvim_create_autocmd("DiagnosticChanged", {
     callback = function()
         vim.cmd("redrawstatus")
     end
 })
+
+M.update_git()
 
 return M
