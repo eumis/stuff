@@ -50,8 +50,8 @@ vim.opt.incsearch = true
 
 vim.opt.showmatch = true
 
-vim.opt.undofile = true
-vim.opt.undodir = vim.fn.expand('~/.local/state/nvim/undodir')
+-- vim.opt.undofile = true
+-- vim.opt.undodir = vim.fn.expand('~/.local/state/nvim/undodir')
 
 vim.filetype.add {
     extension = {
