@@ -11,7 +11,10 @@ get_file_name() {
     local version="$1"
     local os=$(get_os)
     local arch=$(get_architecture)
-    arch=$(map_architecture "$arch")
+    case "$arch" in
+        aarch64) arch="arm64" ;;
+        x86_64) arch="amd64" ;;
+    esac
 
     echo "usql_static-$version-$os-$arch"
 }

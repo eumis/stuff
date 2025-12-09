@@ -34,6 +34,7 @@ return {
                 "basedpyright",
                 "lemminx",
                 "html",
+                "rust_analyzer"
                 -- "roslyn_ls"
             }
 

@@ -25,6 +25,7 @@ return {
                 "html-lsp",
                 "bash-language-server",
                 "typescript-language-server",
+                "rust-analyzer",
 
                 -- dap
                 "netcoredbg",
