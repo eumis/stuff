@@ -13,6 +13,7 @@ return {
             local cmp = require('cmp')
             cmp.setup({
                 mapping = cmp.mapping.preset.insert(require('usr.keymap').get_cmp_mapping()),
+                preselect = cmp.PreselectMode.None,
                 sources = {
                     { name = 'nvim_lsp_signature_help' },
                     { name = 'lazydev' },
