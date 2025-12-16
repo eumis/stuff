@@ -50,8 +50,12 @@ vim.keymap.set("n", "<C-t><C-r>", function() require("tasks").toggle_list() end)
 vim.keymap.set("n", '<space>ft', function() require("telescope").extensions.tasks.all() end, silent_opts)
 
 -- nvim tree
-vim.keymap.set("n", '<C-f><C-f>', ':NvimTreeToggle<CR>')
-vim.keymap.set("n", '<C-f><C-s>', ':NvimTreeFindFile<CR>')
+-- vim.keymap.set("n", '<C-f><C-f>', ':NvimTreeToggle<CR>')
+-- vim.keymap.set("n", '<C-f><C-s>', ':NvimTreeFindFile<CR>')
+
+-- oil
+vim.keymap.set("n", '<C-f><C-f>', ':Oil .<CR>')
+vim.keymap.set("n", '<C-f><C-s>', ':Oil<CR>')
 
 -- git
 vim.keymap.set("n", "<space>gs", function() require("usr.git").open() end, silent_opts)
