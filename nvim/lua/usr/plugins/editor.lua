@@ -41,21 +41,20 @@ return {
             require('neoscroll').setup({ mappings = { '<C-u>', '<C-d>' } })
         end
     },
-    {
-        "Pocco81/auto-save.nvim",
-        event = 'BufReadPre',
-        opts = {
-            enabled = true,
-            write_all_buffers = false,
-            on_off_commands = true,
-            clean_command_line_interval = 0,
-            debounce_delay = 500
-        }
-    },
+    -- {
+    --     "Pocco81/auto-save.nvim",
+    --     event = 'BufReadPre',
+    --     opts = {
+    --         enabled = true,
+    --         write_all_buffers = false,
+    --         on_off_commands = true,
+    --         clean_command_line_interval = 0,
+    --         debounce_delay = 500
+    --     }
+    -- },
     {
         "norcalli/nvim-colorizer.lua",
         event = "VeryLazy",
-        lazy = true,
         config = function()
             require("colorizer").setup()
         end
