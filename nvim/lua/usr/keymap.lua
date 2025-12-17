@@ -111,7 +111,7 @@ vim.keymap.set("n", "<space>fo",
     end,
     silent_opts)
 
-vim.keymap.set("n", "<space>fi",
+vim.keymap.set("n", "<space>f.",
     function()
         require('telescope.builtin').find_files({
             find_command = { "fdfind", "--type", "f", "--color", "never" },
