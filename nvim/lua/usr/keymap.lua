@@ -97,9 +97,29 @@ end
 vim.keymap.set("n", '<space>fm', function() require "usr.marks".list_marks() end)
 
 -- navigation
-vim.keymap.set("n", '<space>ff', function() require('telescope.builtin').find_files() end, silent_opts)
-vim.keymap.set("n", '<space>fi',
-    function() require('telescope.builtin').find_files({ hidden = true, no_ignore = true }) end, silent_opts)
+vim.keymap.set("n", "<space>ff", function()
+        require('telescope.builtin').find_files({
+            find_command = { "fdfind", "--type", "f", "--color", "never" }
+        })
+    end,
+    silent_opts)
+
+vim.keymap.set("n", "<space>fo",
+    function()
+        require('telescope.builtin').find_files({
+            find_command = { "fdfind", "--type", "d", "--color", "never" } })
+    end,
+    silent_opts)
+
+vim.keymap.set("n", "<space>fi",
+    function()
+        require('telescope.builtin').find_files({
+            find_command = { "fdfind", "--type", "f", "--color", "never" },
+            hidden = true,
+            no_ignore = true
+        })
+    end,
+    silent_opts)
 vim.keymap.set("n", '<space>fr', function() require('telescope.builtin').oldfiles({ only_cwd = true }) end, silent_opts)
 vim.keymap.set("n", '<space>fs', function() require('telescope.builtin').live_grep() end, silent_opts)
 vim.keymap.set("n", '<space>fh', function() require('telescope.builtin').help_tags() end, silent_opts)
