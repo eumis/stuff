@@ -32,6 +32,7 @@ end
 ---| "copilot"
 ---| "vscode"
 ---| "cursor"
+---| "cursorcli"
 
 ---@type table<assistant, string>
 local assistants = {
@@ -40,6 +41,7 @@ local assistants = {
     copilot = "copilot",
     vscode = "code",
     cursor = "cursor",
+    cursorcli = "cursor-agent",
 }
 
 ---@param assistant assistant

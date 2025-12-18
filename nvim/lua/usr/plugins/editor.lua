@@ -22,13 +22,13 @@ return {
             end,
         }
     },
-    {
-        "windwp/nvim-autopairs",
-        event = 'BufReadPre',
-        config = function()
-            require("nvim-autopairs").setup()
-        end
-    },
+    -- {
+    --     "windwp/nvim-autopairs",
+    --     event = 'BufReadPre',
+    --     config = function()
+    --         require("nvim-autopairs").setup()
+    --     end
+    -- },
     {
         "numToStr/Comment.nvim",
         lazy = true,
@@ -41,17 +41,6 @@ return {
             require('neoscroll').setup({ mappings = { '<C-u>', '<C-d>' } })
         end
     },
-    -- {
-    --     "Pocco81/auto-save.nvim",
-    --     event = 'BufReadPre',
-    --     opts = {
-    --         enabled = true,
-    --         write_all_buffers = false,
-    --         on_off_commands = true,
-    --         clean_command_line_interval = 0,
-    --         debounce_delay = 500
-    --     }
-    -- },
     {
         "norcalli/nvim-colorizer.lua",
         event = "VeryLazy",

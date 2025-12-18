@@ -1,49 +1,4 @@
 return {
-    -- {
-    --     "nvim-tree/nvim-tree.lua",
-    --     lazy = true,
-    --     event = "VeryLazy",
-    --     opts = {
-    --         view = {
-    --             relativenumber = true,
-    --             float = {
-    --                 enable = true,
-    --                 quit_on_focus_loss = true,
-    --                 open_win_config = function()
-    --                     local win_id = vim.api.nvim_get_current_win()
-    --                     local row, col = unpack(vim.api.nvim_win_get_position(win_id))
-    --                     local screen_w = vim.api.nvim_win_get_width(win_id)
-    --                     local screen_h = vim.api.nvim_win_get_height(win_id)
-    --                     local tree_width = 70
-    --                     local center_x = col + (screen_w - tree_width) / 2
-    --                     local center_y = row + 5
-    --                     return {
-    --                         border = "rounded",
-    --                         relative = "editor",
-    --                         row = center_y,
-    --                         col = center_x,
-    --                         width = tree_width,
-    --                         height = screen_h - 10
-    --                     }
-    --                 end
-    --             }
-    --         },
-    --         actions = {
-    --             open_file = {
-    --                 quit_on_open = true,
-    --                 window_picker = {
-    --                     enable = false,
-    --                     picker = "default"
-    --                 }
-    --             }
-    --         },
-    --         on_attach = function(bufnr)
-    --             local api = require "nvim-tree.api"
-    --             api.config.mappings.default_on_attach(bufnr)
-    --             -- vim.keymap.set("n", "<C-t><C-t>", function() require("usr.terminal").float_terminal() end)
-    --         end
-    --     }
-    -- },
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.8",
