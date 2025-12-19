@@ -22,13 +22,13 @@ return {
             end,
         }
     },
-    -- {
-    --     "windwp/nvim-autopairs",
-    --     event = 'BufReadPre',
-    --     config = function()
-    --         require("nvim-autopairs").setup()
-    --     end
-    -- },
+    {
+        "windwp/nvim-autopairs",
+        event = 'BufReadPre',
+        config = function()
+            require("nvim-autopairs").setup()
+        end
+    },
     {
         "numToStr/Comment.nvim",
         lazy = true,
