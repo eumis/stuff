@@ -49,6 +49,7 @@ vim.opt.smartcase = true
 vim.opt.incsearch = true
 
 vim.opt.showmatch = true
+vim.opt.exrc = true
 
 -- vim.opt.undofile = true
 -- vim.opt.undodir = vim.fn.expand('~/.local/state/nvim/undodir')
