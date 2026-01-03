@@ -81,6 +81,13 @@ require('usr.keymap')
 vim.api.nvim_create_autocmd("User", {
     pattern = "VeryLazy",
     callback = function()
+        local Path = require "plenary.path"
+        local home = vim.fn.expand('~')
+        local user_config = Path:new(home, 'data', 'user.lua')
+        if user_config:exists() then
+            dofile(user_config:absolute())
+            vim.notify(user_config.filename .. " is run", vim.log.levels.INFO)
+        end
         require('usr.statusline')
         require("usr.luamd")
         require("usr.autosave")

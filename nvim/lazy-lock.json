@@ -29,6 +29,5 @@
   "tasks.nvim": { "branch": "dev", "commit": "7289789f808249b86c820451f0f669cb7d6bb779" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
-  "vscode.nvim": { "branch": "main", "commit": "aa1102a7e15195c9cca22730b09224a7f7745ba8" },
-  "wdconfig.nvim": { "branch": "dev", "commit": "1055b275fecbb11c3f70dc7f94cea3fe9b35f318" }
+  "vscode.nvim": { "branch": "main", "commit": "aa1102a7e15195c9cca22730b09224a7f7745ba8" }
 }
