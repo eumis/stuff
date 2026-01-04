@@ -12,9 +12,10 @@ install() {
     cp -f kitty.app/share/applications/kitty.desktop "$HOME/.local/share/applications/"
     cp -f kitty.app/share/applications/kitty-open.desktop "$HOME/.local/share/applications/"
     sed -i "s|Icon=kitty|Icon=/opt/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+    sudo rm -rf /opt/kitty.app
     sudo mv kitty.app /opt/
-    sudo ln -s /opt/kitty.app/bin/kitty /usr/local/bin/kitty
-    ln -s "$HOME/stuff/kitty" "$HOME/.config" || echo
+    sudo ln -sf /opt/kitty.app/bin/kitty /usr/local/bin/kitty
+    ln -sf "$HOME/stuff/kitty" "$HOME/.config" || echo
     rm -f ./kitty.txz || echo
     rm -rf ./kitty.app || echo
 }
