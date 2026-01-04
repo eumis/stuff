@@ -1,5 +1,5 @@
 local timers = {}
-local debounce = 500
+local debounce = 200
 local exclude = {
     nofile = 1,
     help = 1,
