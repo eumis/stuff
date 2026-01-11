@@ -6,9 +6,9 @@
     "kernel",
     "wm",
     "terminal",
+    "terminalfont",
     "shell",
     "cpuusage",
-    "memory",
-    "battery"
+    "memory"
   ]
 }

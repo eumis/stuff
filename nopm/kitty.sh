@@ -9,9 +9,9 @@ install() {
     curl -LRs "https://github.com/kovidgoyal/kitty/releases/download/v$version/kitty-$version-x86_64.txz" -o kitty.txz
     mkdir kitty.app
     tar -C kitty.app -xJof kitty.txz
-    cp -f kitty.app/share/applications/kitty.desktop "$HOME/.local/share/applications/"
-    cp -f kitty.app/share/applications/kitty-open.desktop "$HOME/.local/share/applications/"
-    sed -i "s|Icon=kitty|Icon=/opt/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+    sudo cp -f kitty.app/share/applications/kitty.desktop "/usr/share/applications/"
+    sudo cp -f kitty.app/share/applications/kitty-open.desktop "/usr/share/applications/"
+    sudo sed -i "s|Icon=kitty|Icon=/opt/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" /usr/share/applications/kitty*.desktop
     sudo rm -rf /opt/kitty.app
     sudo mv kitty.app /opt/
     sudo ln -sf /opt/kitty.app/bin/kitty /usr/local/bin/kitty

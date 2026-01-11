@@ -13,6 +13,7 @@ install() {
     curl -LRs "https://github.com/neovim/neovim/releases/download/v$version/$(get_file_name)" -o nvim.appimage
     chmod u+x ./nvim.appimage
     sudo mv nvim.appimage "/usr/local/bin/nvim" -f
+    ln -sf ~/stuff/nvim ~/.config
 }
 
 update() {

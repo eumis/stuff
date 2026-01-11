@@ -4,7 +4,7 @@ fetch() {
     if [[ ! -d "./cuplay_repo" ]]; then
         git clone em@homer:git/cuplay cuplay_repo
         cd ./cuplay_repo
-        python3.12 -m venv venv
+        python -m venv venv
         cd ..
     else
         cd ./cuplay_repo
