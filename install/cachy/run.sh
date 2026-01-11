@@ -30,6 +30,12 @@ sudo pacman -S docker docker-compose
 
 nopm install nvim
 
+sudo pacman -S sqlitebrowser
+nopm install usql
+
 # apps
 sudo pacman -S brave-bin
 nopm install cuplay
+nopm install telegram
+nopm install discord
+nopm install yt-dlp
