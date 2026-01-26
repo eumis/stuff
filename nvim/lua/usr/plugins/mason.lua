@@ -26,6 +26,7 @@ return {
                 "bash-language-server",
                 "typescript-language-server",
                 "rust-analyzer",
+                "gopls",
 
                 -- dap
                 "netcoredbg",
