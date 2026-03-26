@@ -6,13 +6,19 @@ cd "$temp_dir"
 
 sudo pacman -Syu
 
-# fonts
-nopm install nerdfonts
-
 # config
 ln -s ~/stuff/nopm ~/.config
 ln -s ~/stuff/fastfetch ~/.config
+ln -sf ~/stuff/nvim ~/.config
 echo 'eval (ssh-agent -c)' >> ~/.config/fish/config.fish
+
+# nopm
+git clone em@homer:git/nopm
+cd nopm/src
+bash nopm.sh install nopm
+
+# fonts
+nopm install nerdfonts
 
 # terminal
 nopm install kitty
@@ -35,7 +41,13 @@ nopm install usql
 
 # apps
 sudo pacman -S brave-bin
+sudo pacman -S cava
 nopm install cuplay
 nopm install telegram
 nopm install discord
 nopm install yt-dlp
+
+sudo pacman -S keepassxc
+
+# https://rust-lang.org/tools/install/
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

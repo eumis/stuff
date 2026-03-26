@@ -5,16 +5,16 @@ install() {
 
     rm -rf ./dysk* || echo
     uninstall
-    curl -LRs "https://github.com/Canop/dysk/archive/refs/tags/v$version.tar.gz" -o dysk.tar.gz
+    curl -LRs "https://github.com/Canop/dysk/archive/refs/tags/v${version}b.tar.gz" -o dysk.tar.gz
     tar xf dysk.tar.gz
-    cd "dysk-$version"
+    cd "dysk-${version}b"
     cargo build --release
     sudo cp -r ./target/release /opt/dysk
     sudo ln -sf /opt/dysk/dysk /usr/local/bin/dysk
 }
 
 update() {
-    local version="$1.ui_updated, True"
+    local version="$1"
 
     install $version
 }
