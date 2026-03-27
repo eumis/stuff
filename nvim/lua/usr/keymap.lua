@@ -100,7 +100,7 @@ vim.keymap.set("n", '<space>fm', function() require "usr.marks".list_marks() end
 -- navigation
 vim.keymap.set("n", "<space>ff", function()
         require('telescope.builtin').find_files({
-            find_command = { "fd", "--type", "f", "--color", "never" }
+            find_command = { "fdfind", "--type", "f", "--color", "never" }
         })
     end,
     silent_opts)
