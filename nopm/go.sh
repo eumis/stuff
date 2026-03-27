@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
 install() {
+    local version="$1"
     uninstall
     rm go.tar.gz || echo
     rm -rf go || echo
 
-    local archive="go.tar.gz"
-    local exe="usql_static"
-    curl -LRs "https://go.dev/dl/go1.25.6.linux-amd64.tar.gz" -o go.tar.gz
+    curl -LRs "https://go.dev/dl/go$version.linux-amd64.tar.gz" -o go.tar.gz
     tar -xzf go.tar.gz
     sudo mv go /opt/
     sudo ln -sf /opt/go/bin/go /usr/local/bin/go
@@ -21,11 +20,11 @@ update() {
 }
 
 get_installed_version() {
-    go version 2>/dev/null | awk '{print $2}' || echo
+    go version 2>/dev/null | awk '{print $3}' | cut -c3- || echo
 }
 
 get_latest_version() {
-    echo
+    git ls-remote --tags https://github.com/golang/go.git | rg "refs/tags/go" | awk '{print $2}' | sed -e 's/refs\/tags\/go//g' | sort -V | tail -n 1
 }
 
 uninstall() {
