@@ -49,6 +49,7 @@ nopm install yt-dlp
 
 sudo pacman -S keepassxc
 sudo pacman -S spotify-launcher
+pacman -S proton-vpn-gtk-app
 
 # https://rust-lang.org/tools/install/
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
