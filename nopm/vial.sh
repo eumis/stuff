@@ -10,6 +10,7 @@ install() {
     sudo cp ~/stuff/install/59-vial.rules /etc/udev/rules.d/ -f
     sudo udevadm control --reload-rules
     sudo udevadm trigger
+    echo $version > "$temp_dir/vial_version.txt"
 }
 
 update() {
@@ -19,7 +20,7 @@ update() {
 }
 
 get_installed_version() {
-    vial --version 2>/dev/null || echo
+    cat "$temp_dir/vial_version.txt" 2>/dev/null || echo
 }
 
 get_latest_version() {
