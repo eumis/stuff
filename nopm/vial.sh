@@ -29,4 +29,5 @@ get_latest_version() {
 
 uninstall() {
     sudo rm "/usr/local/bin/vial" || echo
+    rm -f "$temp_dir/vial_version.txt" || echo
 }
