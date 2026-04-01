@@ -28,14 +28,15 @@ return {
                 "ts_ls",
                 "marksman",
                 "bashls",
-                "omnisharp",
+                -- "omnisharp",
                 "jsonls",
                 "lua_ls",
                 "basedpyright",
                 "lemminx",
                 "html",
                 "rust_analyzer",
-                "gopls"
+                "gopls",
+                "csharp_ls",
                 -- "roslyn_ls"
             }
 
