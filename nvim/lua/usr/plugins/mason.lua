@@ -17,8 +17,9 @@ return {
                 -- lsp
                 "lua-language-server",
                 "basedpyright",
-                "omnisharp",
+                -- "omnisharp",
                 -- {"omnisharp", version = 'v1.39.11'},
+                "csharp-language-server",
                 "lemminx",
                 "json-lsp",
                 "marksman",
