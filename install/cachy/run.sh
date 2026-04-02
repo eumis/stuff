@@ -59,3 +59,9 @@ nopm install go
 # gaming
 sudo pacman -S cachyos-gaming-meta
 sudo pacman -S steam
+
+# virtualbox
+sudo pacman -S virtualbox
+sudo pacman -S virtualbox-guest-utils
+sudo pacman -S virtualbox-guest-iso
+sudo pacman -S virtualbox-host-dkms
