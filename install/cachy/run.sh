@@ -40,13 +40,14 @@ sudo pacman -S sqlitebrowser
 nopm install usql
 
 # apps
-sudo pacman -S brave-bin
-sudo pacman -S cava
 nopm install cuplay
 nopm install telegram
 nopm install discord
 nopm install yt-dlp
 
+sudo pacman -S brave-bin
+sudo pacman -S chromium
+sudo pacman -S cava
 sudo pacman -S keepassxc
 sudo pacman -S spotify-launcher
 sudo pacman -S proton-vpn-gtk-app
