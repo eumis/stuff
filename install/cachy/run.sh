@@ -44,6 +44,7 @@ nopm install cuplay
 nopm install telegram
 # nopm install discord
 nopm install yt-dlp
+nopm install vial
 
 sudo pacman -S brave-bin --noconfirm
 # sudo pacman -S chromium --noconfirm
