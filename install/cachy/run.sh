@@ -53,6 +53,7 @@ sudo pacman -S keepassxc --noconfirm
 sudo pacman -S spotify-launcher --noconfirm
 sudo pacman -S proton-vpn-gtk-app --noconfirm
 sudo pacman -S libreoffice-still --noconfirm
+sudo pacman -S wlsunset --noconfirm
 
 # https://rust-lang.org/tools/install/
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
