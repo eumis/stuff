@@ -61,7 +61,8 @@ vim.keymap.set("n", '<C-f><C-s>', ':Oil<CR>')
 vim.keymap.set("n", "<space>gs", function() require("usr.git").open() end, silent_opts)
 vim.keymap.set("t", "<C-g>", function() require("usr.git").go_to_file() end, silent_opts)
 vim.keymap.set("n", "<space>gb", "<cmd>BlameToggle<cr>", silent_opts)
-vim.keymap.set("n", "<space>gd", "<cmd>DiffviewOpen main<cr>", silent_opts)
+vim.keymap.set("n", "<space>gm", "<cmd>DiffviewOpen main<cr>", silent_opts)
+vim.keymap.set("n", "<space>gd", "<cmd>DiffviewOpen<cr>", silent_opts)
 
 function M.get_diffview_keymaps()
     local close_map = { "n", '<C-q>', '<Cmd>DiffviewClose<CR>', { silent = true } }
