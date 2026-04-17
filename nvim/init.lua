@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -106,6 +105,20 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank()
     end
 })
+
+vim.api.nvim_create_user_command("Ais", function(opts)
+    local provider = opts.fargs[1]
+    if provider ~= nil then
+        require("usr.ai").use_suggestions(provider);
+    end
+end, { nargs = 1 })
+
+vim.api.nvim_create_user_command("Aic", function(opts)
+    local provider = opts.fargs[1]
+    if provider ~= nil then
+        require("usr.ai").use_assistant(provider);
+    end
+end, { nargs = 1 })
 
 -- Setup lazy.nvim
 require("lazy").setup({
