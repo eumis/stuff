@@ -38,6 +38,7 @@ return {
                 "gopls",
                 "csharp_ls",
                 -- "roslyn_ls"
+                "slint_lsp",
             }
 
             vim.lsp.config("*", {
