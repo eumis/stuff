@@ -8,3 +8,6 @@ echo '    IdentityFile ~/.ssh/github' >> ~/.ssh/config
 cat ~/.ssh/github.pub
 
 echo 'eval "$(ssh-agent)"' >> ~/.bashrc
+
+# set -l agent_output (ssh-agent -c)
+# eval $agent_output >/dev/null
