@@ -4,10 +4,10 @@ return {
             "nvim-treesitter/nvim-treesitter",
             build = ":TSUpdate",
             event = "VeryLazy",
-            branch = "master",
+            branch = "main",
             config = function()
                 require "nvim-treesitter.install".compilers = { "zig", "gcc", "clang" }
-                require "nvim-treesitter.configs".setup {
+                require "nvim-treesitter".setup {
                     ensure_installed = require("usr.treesitter"),
                     sync_install = false,
                     auto_install = false,
