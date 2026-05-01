@@ -8,7 +8,7 @@ return {
             config = function()
                 require "nvim-treesitter.install".compilers = { "zig", "gcc", "clang" }
                 require "nvim-treesitter".setup {
-                    ensure_installed = require("usr.treesitter"),
+                    -- ensure_installed = require("usr.treesitter"),
                     sync_install = false,
                     auto_install = false,
                     modules = {},
@@ -19,6 +19,7 @@ return {
                         additional_vim_regex_highlighting = false,
                     }
                 }
+                require "nvim-treesitter".install(require "usr.treesitter")
                 vim.treesitter.language.register("markdown", "luamarkdown")
             end,
         }
