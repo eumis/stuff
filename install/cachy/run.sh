@@ -70,3 +70,7 @@ sudo pacman -S virtualbox --noconfirm
 sudo pacman -S virtualbox-guest-utils --noconfirm
 sudo pacman -S virtualbox-guest-iso --noconfirm
 # sudo usermod -a -G vboxusers $USER
+#
+
+# runtimes
+sudo pacman -S jre-openjdk
