@@ -22,6 +22,7 @@ nopm install nerdfonts
 
 # terminal
 nopm install kitty
+sudo pacman -S kitty-terminfo --noconfirm
 
 sudo pacman -S zoxide --noconfirm
 echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
@@ -67,4 +68,5 @@ sudo pacman -S steam --noconfirm
 sudo pacman -S virtualbox --noconfirm
 sudo pacman -S virtualbox-guest-utils --noconfirm
 sudo pacman -S virtualbox-guest-iso --noconfirm
-sudo pacman -S virtualbox-host-dkms --noconfirm
+sudo pacman -S virtualbox-host-modules-arch --noconfirm
+# sudo pacman -S virtualbox-host-dkms --noconfirm
