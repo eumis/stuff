@@ -7,19 +7,19 @@ return {
             branch = "main",
             config = function()
                 require "nvim-treesitter.install".compilers = { "zig", "gcc", "clang" }
-                require "nvim-treesitter".setup {
-                    -- ensure_installed = require("usr.treesitter"),
-                    sync_install = false,
-                    auto_install = false,
-                    modules = {},
-                    ignore_install = {},
-                    highlight = {
-                        enable = true,
-                        disable = {},
-                        additional_vim_regex_highlighting = false,
-                    }
-                }
-                require "nvim-treesitter".install(require "usr.treesitter")
+                -- require "nvim-treesitter".setup {
+                --     -- ensure_installed = require("usr.treesitter"),
+                --     sync_install = false,
+                --     auto_install = false,
+                --     modules = {},
+                --     ignore_install = {},
+                --     highlight = {
+                --         enable = true,
+                --         disable = {},
+                --         additional_vim_regex_highlighting = false,
+                --     }
+                -- }
+                require "nvim-treesitter".install(require "usr.parsers")
                 vim.treesitter.language.register("markdown", "luamarkdown")
             end,
         }
