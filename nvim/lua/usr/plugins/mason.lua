@@ -28,6 +28,7 @@ return {
                 "typescript-language-server",
                 "rust-analyzer",
                 "gopls",
+                "slint-lsp",
 
                 -- dap
                 "netcoredbg",
