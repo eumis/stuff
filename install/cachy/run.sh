@@ -69,4 +69,4 @@ sudo pacman -S virtualbox-host-dkms --noconfirm
 sudo pacman -S virtualbox --noconfirm
 sudo pacman -S virtualbox-guest-utils --noconfirm
 sudo pacman -S virtualbox-guest-iso --noconfirm
-# sudo pacman -S virtualbox-host-modules-arch --noconfirm
+# sudo usermod -aG vboxusers $USER
