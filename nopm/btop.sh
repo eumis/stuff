@@ -13,8 +13,8 @@ install() {
 
     cleanup
     if [[ $os == "linux" ]]; then
-        curl -LRs "https://github.com/aristocratos/btop/releases/download/v$version/btop-$arch-linux-musl.tbz" -o btop.tbz
-        tar -xf btop.tbz
+        curl -LRs "https://github.com/aristocratos/btop/releases/download/v$version/btop-$arch-unknown-linux-musl.tar.gz" -o btop.tar.gz
+        tar -xf btop.tar.gz
         sudo cp btop/bin/btop "/usr/local/bin/btop" -f
     else
         curl -LRs "https://github.com/aristocratos/btop4win/releases/download/v$version/btop4win-LHM-x64.zip" -o "btop.zip"
