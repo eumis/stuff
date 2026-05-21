@@ -29,7 +29,24 @@ local function theme(plugin, opts)
 end
 
 return {
-    "kyazdani42/nvim-web-devicons",
+    {
+        "kyazdani42/nvim-web-devicons",
+        lazy = false,
+        opts = {
+            override = {
+                luamarkdown = {
+                    icon = "󰽛",
+                    name = "luamarkdown"
+                }
+            },
+            override_by_extension = {
+                ["luamd"] = {
+                    icon = "󰽛",
+                    name = "luamarkdown"
+                }
+            }
+        }
+    },
     -- theme("rebelot/kanagawa.nvim", {colorscheme = "kanagawa-dragon", opts = {} }),
     -- theme("rebelot/kanagawa.nvim", {colorscheme = "kanagawa-wave", opts = {} }),
     -- theme("EdenEast/nightfox.nvim", {colorscheme = "nightfox", opts = {} }),
@@ -44,13 +61,12 @@ return {
     -- theme("alligator/accent.vim", {
     --     callback = function()
     --         vim.cmd([[
-    --             let g:accent_colour = "yellow"
+    --             let g:accent_colour = "green"
     --             source ~/.local/share/nvim/lazy/accent.vim/colors/accent.vim
     --         ]])
     --     end
     -- }),
     -- theme("davidosomething/vim-colors-meh", { colorscheme = "meh" }),
-    -- theme("axvr/photon.vim"),
     -- theme("kvrohit/rasmus.nvim", {
     --     callback = function()
     --         vim.cmd([[
@@ -61,25 +77,7 @@ return {
     --     end
     -- }),
     -- theme("AlexvZyl/nordic.nvim", { callback = function() require("nordic").load() end }),
-    -- theme("cocopon/iceberg.vim"),
-    -- {
-    --     "kyazdani42/nvim-web-devicons",
-    --     lazy = false,
-    --     opts = {
-    --         override = {
-    --             luamarkdown = {
-    --                 icon = "󰽛",
-    --                 name = "luamarkdown"
-    --             }
-    --         },
-    --         override_by_extension = {
-    --             ["luamd"] = {
-    --                 icon = "󰽛",
-    --                 name = "luamarkdown"
-    --             }
-    --         }
-    --     }
-    -- },
+    theme("cocopon/iceberg.vim"),
     -- theme("catppuccin/nvim", {
     --     callback = function()
     --         require "catppuccin".setup()
