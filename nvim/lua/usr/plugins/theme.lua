@@ -47,6 +47,7 @@ return {
             }
         }
     },
+    -- theme("oskarnurm/koda.nvim", {colorscheme = "koda-moss", opts = {} }),
     -- theme("rebelot/kanagawa.nvim", {colorscheme = "kanagawa-dragon", opts = {} }),
     -- theme("rebelot/kanagawa.nvim", {colorscheme = "kanagawa-wave", opts = {} }),
     -- theme("EdenEast/nightfox.nvim", {colorscheme = "nightfox", opts = {} }),
@@ -77,7 +78,7 @@ return {
     --     end
     -- }),
     -- theme("AlexvZyl/nordic.nvim", { callback = function() require("nordic").load() end }),
-    theme("cocopon/iceberg.vim"),
+    -- theme("cocopon/iceberg.vim"),
     -- theme("catppuccin/nvim", {
     --     callback = function()
     --         require "catppuccin".setup()
@@ -85,7 +86,7 @@ return {
     --     end
     -- })
     -- theme("mcauley-penney/techbase.nvim"),
-    -- theme("thesimonho/kanagawa-paper.nvim"),
+    theme("thesimonho/kanagawa-paper.nvim"),
     -- theme("scottmckendry/cyberdream.nvim"),
     -- theme("Mofiqul/vscode.nvim", {
     --     opts = { transparent = true },
