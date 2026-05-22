@@ -19,8 +19,7 @@ return {
                     severity = {
                         min = vim.diagnostic.severity.WARN
                     }
-                },
-                update_in_insert = true
+                }
             })
 
             local servers = {
@@ -33,7 +32,6 @@ return {
                 "lua_ls",
                 "basedpyright",
                 "lemminx",
-                "html",
                 "rust_analyzer",
                 "gopls",
                 "csharp_ls",

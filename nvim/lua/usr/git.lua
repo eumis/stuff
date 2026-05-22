@@ -23,7 +23,7 @@ M.go_to_file = function()
 
     vim.schedule(function()
         local path = vim.fn.system({ 'xclip', '-selection', 'clipboard', '-o' })
-        if vim.loop.fs_stat(path) then
+        if vim.uv.fs_stat(path) then
             terminal.close_terminal(state)
             local bufnr = vim.fn.bufnr(path, true)
             vim.api.nvim_set_current_buf(bufnr)

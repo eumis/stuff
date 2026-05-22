@@ -41,7 +41,7 @@ vim.opt.shortmess:append('c')
 vim.opt.autoread = true
 vim.opt.clipboard:append('unnamedplus')
 vim.opt.termguicolors = true
-vim.opt.guifont = 'CodeNewRoman\\ NF:h9'
+vim.opt.guifont = 'CodeNewRoman NF:h9'
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -66,8 +66,8 @@ vim.filetype.add {
     },
 }
 
-vim.cmd('filetype plugin indent on')
-vim.cmd('syntax')
+-- vim.cmd('filetype plugin indent on')
+-- vim.cmd('syntax')
 vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.langmap =
 "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
