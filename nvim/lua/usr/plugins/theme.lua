@@ -31,7 +31,8 @@ end
 return {
     {
         "kyazdani42/nvim-web-devicons",
-        lazy = false,
+        lazy = true,
+        event = "VeryLazy",
         opts = {
             override = {
                 luamarkdown = {
