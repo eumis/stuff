@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-get_file_name() {
-    arch=$(get_architecture)
-    [[ "$arch" == "aarch64" ]] && arch="arm64"
-    echo "nvim-linux-$arch.appimage"
-}
-
 install() {
     local version="$1"
     local package_name="yazi-$(get_architecture)-unknown-linux-musl"
