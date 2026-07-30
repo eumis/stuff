@@ -34,6 +34,7 @@ sudo pacman -S yazi --noconfirm
 sudo pacman -S lazygit --noconfirm
 sudo pacman -S wl-clipboard --noconfirm
 sudo pacman -S docker docker-compose --noconfirm
+sudo systemctl enable docker
 
 nopm install nvim
 
