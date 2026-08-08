@@ -94,7 +94,7 @@ vim.api.nvim_create_autocmd("User", {
     end
 })
 
--- vim.cmd.colorscheme("habamax")
+vim.cmd.colorscheme("catppuccin")
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
@@ -129,7 +129,7 @@ require("lazy").setup({
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
-    install = { colorscheme = { "habamax" } },
+    install = { colorscheme = { "catppuccin" } },
     -- automatically check for plugin updates
     checker = { enabled = false },
     change_detection = { enabled = false }

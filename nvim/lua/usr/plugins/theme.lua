@@ -87,7 +87,7 @@ return {
     --     end
     -- })
     -- theme("mcauley-penney/techbase.nvim"),
-    theme("thesimonho/kanagawa-paper.nvim"),
+    -- theme("thesimonho/kanagawa-paper.nvim"),
     -- theme("scottmckendry/cyberdream.nvim"),
     -- theme("Mofiqul/vscode.nvim", {
     --     opts = { transparent = true },
