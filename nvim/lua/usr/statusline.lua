@@ -15,7 +15,9 @@ local icons = {
     basedpyright = "",
     marksman = "",
     ts_ls = "",
-    html = ""
+    html = "",
+    rust_analyzer = "R",
+    slint_lsp = "S",
 }
 
 ---@class Progress
