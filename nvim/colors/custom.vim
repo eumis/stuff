@@ -1,8 +1,6 @@
 hi clear
 let g:colors_name = 'custom'
 
-" #f9e2af - main yellow color
-
 let s:t_Co = has('gui_running') ? 16777216 : str2nr(&t_Co)
 let s:tgc = has('termguicolors') && &termguicolors
 
