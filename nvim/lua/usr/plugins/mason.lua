@@ -35,6 +35,7 @@ return {
 
                 -- tools
                 "prettier",
+                "rumdl",
                 -- "yapf",
                 "black",
                 "isort"
