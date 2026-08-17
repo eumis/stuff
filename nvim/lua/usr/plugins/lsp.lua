@@ -25,8 +25,9 @@ return {
             local servers = {
                 "html",
                 "ts_ls",
-                "marksman",
+                -- "marksman",
                 "bashls",
+                "rumdl",
                 -- "omnisharp",
                 "jsonls",
                 "lua_ls",
