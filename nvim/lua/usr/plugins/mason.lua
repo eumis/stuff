@@ -21,7 +21,7 @@ return {
                 -- {"omnisharp", version = 'v1.39.11'},
                 "csharp-language-server",
                 "lemminx",
-                "json-lsp",
+                -- "json-lsp",
                 "marksman",
                 "html-lsp",
                 "bash-language-server",

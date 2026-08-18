@@ -29,7 +29,7 @@ return {
                 "bashls",
                 "rumdl",
                 -- "omnisharp",
-                "jsonls",
+                -- "jsonls",
                 "lua_ls",
                 "basedpyright",
                 "lemminx",
