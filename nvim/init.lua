@@ -130,6 +130,10 @@ vim.api.nvim_create_user_command("Aic", function(opts)
     end
 end, { nargs = 1 })
 
+vim.api.nvim_create_user_command("JsonToLua", function()
+    require("usr.jtl").convert_selection()
+end, { range = true, desc = "Replace selected JSON with a Lua table" })
+
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
