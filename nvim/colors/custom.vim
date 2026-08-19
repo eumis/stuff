@@ -40,7 +40,7 @@ hi CurSearch guifg=#cdd6f4 guibg=#89556b guisp=NONE gui=NONE ctermfg=189 ctermbg
 hi Cursor guifg=#1e1e2e guibg=#f5e0dc guisp=NONE gui=NONE ctermfg=233 ctermbg=224 cterm=NONE term=reverse
 hi CursorColumn guifg=NONE guibg=#181825 guisp=NONE gui=NONE ctermfg=NONE ctermbg=232 cterm=NONE term=NONE
 hi CursorIM guifg=#1e1e2e guibg=#cba6f7 guisp=NONE gui=NONE ctermfg=233 ctermbg=183 cterm=NONE term=NONE
-hi CursorLine guifg=NONE guibg=#2a2b3c guisp=NONE gui=NONE ctermfg=NONE ctermbg=236 cterm=NONE term=underline
+hi CursorLine guifg=NONE guibg=#45475a guisp=NONE gui=NONE ctermfg=NONE ctermbg=236 cterm=NONE term=underline
 hi CursorLineNr guifg=#b4befe guibg=NONE guisp=NONE gui=NONE ctermfg=147 ctermbg=NONE cterm=NONE term=bold
 hi Delimiter guifg=#9399b2 guibg=NONE guisp=NONE gui=NONE ctermfg=103 ctermbg=NONE cterm=NONE term=NONE
 hi DiffAdd guifg=NONE guibg=#364143 guisp=NONE gui=NONE ctermfg=NONE ctermbg=22 cterm=NONE term=reverse
