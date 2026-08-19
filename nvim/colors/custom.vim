@@ -60,7 +60,7 @@ hi Include guifg=#cba6f7 guibg=NONE guisp=NONE gui=NONE ctermfg=183 ctermbg=NONE
 hi Italic guifg=NONE guibg=NONE guisp=NONE gui=italic ctermfg=NONE ctermbg=NONE cterm=italic term=italic
 hi Keyword guifg=#cba6f7 guibg=NONE guisp=NONE gui=NONE ctermfg=183 ctermbg=NONE cterm=NONE term=NONE
 hi Label guifg=#74c7ec guibg=NONE guisp=NONE gui=NONE ctermfg=117 ctermbg=NONE cterm=NONE term=NONE
-hi LineNr guifg=#45475a guibg=NONE guisp=NONE gui=NONE ctermfg=240 ctermbg=NONE cterm=NONE term=NONE
+hi LineNr guifg=#6c7086 guibg=NONE guisp=NONE gui=NONE ctermfg=240 ctermbg=NONE cterm=NONE term=NONE
 hi Macro guifg=#cba6f7 guibg=NONE guisp=NONE gui=NONE ctermfg=183 ctermbg=NONE cterm=NONE term=NONE
 hi MatchParen guifg=#fab387 guibg=NONE guisp=NONE gui=bold ctermfg=216 ctermbg=NONE cterm=bold term=bold,underline
 hi ModeMsg guifg=#cdd6f4 guibg=NONE guisp=NONE gui=bold ctermfg=189 ctermbg=NONE cterm=bold term=bold
