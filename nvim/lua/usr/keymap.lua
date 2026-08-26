@@ -16,8 +16,9 @@ vim.keymap.set("n", '<space>qa', '<cmd>:qa<cr>')
 vim.keymap.set("n", '<space>qn', '<cmd>:qa!<cr>')
 
 --tabs
-vim.keymap.set("n", "<C-n>", ":tabnext<CR>")
-vim.keymap.set("n", "<C-p>", ":tabprevious<CR>")
+vim.keymap.set("n", "<space>nt", ":tabnew<CR>")
+vim.keymap.set("n", "<space>t", ":tabnext<CR>")
+vim.keymap.set("n", "<space>T", ":tabprevious<CR>")
 
 -- windows
 vim.keymap.set("n", '<C-h>', ':wincmd h<CR>')
@@ -128,6 +129,9 @@ vim.keymap.set("n", '<space>fh', function() require('telescope.builtin').help_ta
 vim.keymap.set("n", '<space>fb', function() require('telescope.builtin').buffers() end, silent_opts)
 vim.keymap.set("n", '<space>fq',
     function() require('telescope.builtin').quickfix({ fname_width = 200, symbol_width = 60 }) end, silent_opts)
+
+vim.keymap.set("n", "<C-n>", ":cnext<CR>")
+vim.keymap.set("n", "<C-p>", ":cprev<CR>")
 
 -- snippets
 -- vim.keymap.set({ "i", "s" }, "<C-l>", function() require('luasnip').jump(1) end, silent_opts)
