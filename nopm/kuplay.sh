@@ -40,12 +40,14 @@ install() {
 
     if [[ "$os" == "linux" ]]; then
         sudo mv target/release/kuplay-gui "/usr/local/bin/kuplay" -f
+        sudo cp crates/kuplay-gui/assets/kuplay.png "/usr/share/icons/" -f
         echo "[Desktop Entry]
 Version=$version
 Name=kuplay
 GenericName=Media player
 Exec=kuplay
 TryExec=kuplay
+Icon=/usr/share/icons/kuplay.png
 Terminal=false
 Type=Application
 Categories=Audio;Player;
