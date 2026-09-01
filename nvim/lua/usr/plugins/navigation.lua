@@ -68,7 +68,7 @@ return {
                 show_hidden = true,
             },
             keymaps = {
-                ["<C-p>"] = { "actions.preview", opts = { horizontal = true, split = "belowright" } }
+                ["<C-p>"] = { "actions.preview", opts = { horizontal = false, split = "belowright" } }
             }
         },
         lazy = false,
