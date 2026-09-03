@@ -29,6 +29,7 @@ return {
                 "rust-analyzer",
                 "gopls",
                 "slint-lsp",
+                "shuck",
 
                 -- dap
                 "netcoredbg",
