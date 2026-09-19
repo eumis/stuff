@@ -3,9 +3,20 @@
 install() {
 	local version="$1"
 
-	rm -f ./nvim.appimage || echo
+	rm -f ./bosidian.appimage || echo
 	curl -LRs "https://github.com/obsidianmd/obsidian-releases/releases/download/v$version/Obsidian-$version.AppImage" -o obsidian.appimage
 	sudo install -m 755 obsidian.appimage "/usr/local/bin/obsidian"
+
+	echo "[Desktop Entry]
+Version=$version
+Name=obsidian
+GenericName=Note taking
+Exec=obsidian
+TryExec=obsidian
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=Notes;" | sudo tee "/usr/share/applications/obsidian.desktop" >/dev/null
 }
 
 update() {
