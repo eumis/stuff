@@ -30,4 +30,28 @@ M.dotnet = function(config)
     end
 end
 
+---@class RustDebugConfig
+---@field name string
+---@field program string | fun(): string
+---@field cwd string
+---@field args string[]
+
+---@param config RustDebugConfig | RustDebugConfig[]
+M.rust = function(config)
+    config = config[1] == nil and { config } or config
+
+    local dap_configs = require("dap").configurations.rust
+    for _, cfg in ipairs(config) do
+        table.insert(dap_configs, {
+            type = "codelldb",
+            name = cfg.name,
+            request = "launch",
+            program = cfg.program,
+            args = cfg.args,
+            cwd = cfg.cwd,
+            stopOnEntry = false,
+        })
+    end
+end
+
 return M

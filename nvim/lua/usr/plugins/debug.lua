@@ -41,7 +41,6 @@ return {
                 command = "netcoredbg",
                 args = { "--interpreter=vscode" }
             }
-
             require("dap").configurations.cs = {}
             -- table.insert(require("dap").configurations.cs, {
             --     type = "coreclr",
@@ -56,6 +55,12 @@ return {
             --         ["DOTNET_ENVIRONMENT"] = "Development",
             --     },
             -- })
+
+            dap.adapters.codelldb = {
+                type = "executable",
+                command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+            }
+            require("dap").configurations.rust = {}
 
             local dapui = require("dapui")
             dapui.setup()

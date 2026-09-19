@@ -33,6 +33,7 @@ return {
 
                 -- dap
                 "netcoredbg",
+                "codelldb",
 
                 -- tools
                 "prettier",
