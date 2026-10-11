@@ -148,6 +148,11 @@ hi markdownLinkText guifg=#89b4fa guibg=NONE guisp=NONE gui=underline ctermfg=11
 hi qfFileName guifg=#89b4fa guibg=NONE guisp=NONE gui=NONE ctermfg=111 ctermbg=NONE cterm=NONE term=NONE
 hi qfLineNr guifg=#f9e2af guibg=NONE guisp=NONE gui=NONE ctermfg=222 ctermbg=NONE cterm=NONE term=NONE
 
+hi Normal guibg=NONE ctermbg=NONE
+hi NormalFloat guibg=NONE
+hi NormalNC guibg=NONE
+hi SignColumn guibg=NONE
+
 if s:tgc || s:t_Co >= 256
   if s:tgc
     hi QuickFixLine cterm=NONE
