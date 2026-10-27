@@ -1,0 +1,4 @@
+template: github
+source: https://github.com/vial-kb/vial-gui
+description: GUI and a QMK fork for configuring your keyboard in real time
+cleanup: echo "cleanup"

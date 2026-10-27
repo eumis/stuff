@@ -1,0 +1,9 @@
+description: messenger
+load: |
+  curl -LRs "https://telegram.org/dl/desktop/linux" -o telegram.tar.xz
+  tar -xf telegram.tar.xz
+  sudo cp ./Telegram/Telegram /usr/local/bin/telegram
+prepare: |
+  tar -xf telegram.tar.xz
+install: |
+  install ./Telegram/Telegram $install_dir/telegram

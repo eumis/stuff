@@ -1,0 +1,22 @@
+template: github
+source: https://github.com/kovidgoyal/kitty
+description: A fast, featureful, GPU based terminal emulator
+load: |
+  curl -LRs "https://github.com/kovidgoyal/kitty/releases/download/v$version/kitty-$version-$arch.txz" -o kitty.txz
+prepare: |
+  mkdir kitty.app
+  tar -C kitty.app -xJof kitty.txz
+  sed -i "s|Icon=kitty|Icon=$opt_dir/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" kitty.app/share/applications/kitty*.desktop
+install: |
+  rm -rf $opt_dir/kitty.app
+  cp -f kitty.app/share/applications/kitty.desktop "$apps_dir"
+  cp -f kitty.app/share/applications/kitty-open.desktop "$apps_dir"
+  mv kitty.app $opt_dir/
+  ln -sf $opt_dir/kitty.app/bin/kitty $install_dir/kitty
+  ln -sf "$HOME/stuff/kitty" "$HOME/.config" || echo
+uninstall: |
+  rm -rf $opt_dir/kitty.app
+  rm -f $install_dir/kitty
+  rm -f $apps_dir/kitty.desktop
+  rm -f $apps_dir/kitty-open.desktop
+  rm -f "$HOME/.config/kitty" || echo

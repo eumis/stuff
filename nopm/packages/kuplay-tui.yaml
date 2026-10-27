@@ -1,0 +1,14 @@
+exe: kuplay
+template: git
+source: em@homer:git/kuplay
+description: custom super player
+prepare: |
+  cd ./repo/crates/kuplay-tui
+  cargo build --release
+install: |
+  install -m 755 ./repo/target/release/kuplay-tui "$install_dir/kuplay"
+cleanup: |
+  if [[  -d "./repo" ]]; then
+    cd ./repo
+    cargo clean
+  fi

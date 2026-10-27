@@ -1,0 +1,4 @@
+template: github
+source: https://github.com/yt-dlp/yt-dlp
+description: A feature-rich command-line audio/video downloader
+cleanup: echo "cleanup"

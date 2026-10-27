@@ -1,0 +1,10 @@
+template: github
+source: https://github.com/helge17/tuxguitar
+description: Open source guitar tablature editor
+install: |
+  cp -r "content/$(ls ./content -1 | head -n 1)" $opt_dir/tuxguitar
+  ln -sf $opt_dir/tuxguitar/tuxguitar.sh $install_dir/tuxguitar
+uninstall: |
+  rm -rf $opt_dir/tuxguitar
+  rm -f $install_dir/tuxguitar
+cleanup: echo "cleanup"

@@ -1,0 +1,4 @@
+template: github
+description: a high quality, visual, open source sqlite database browser
+source: https://github.com/sqlitebrowser/sqlitebrowser
+cleanup: echo "cleanup"

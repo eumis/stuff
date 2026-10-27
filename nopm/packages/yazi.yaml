@@ -1,0 +1,12 @@
+template: github
+source: https://github.com/sxyazi/yazi
+description: Blazing fast terminal file manager written in Rust, based on async I/O
+install: |
+  cp -rf "$(fd -i yazi -t d)" $opt_dir/yazi
+  ln -s $opt_dir/yazi/ya $install_dir/ya
+  ln -s $opt_dir/yazi/yazi $install_dir/yazi
+uninstall: |
+  rm -f $install_dir/ya
+  rm -f $install_dir/yazi
+  rm -rf $opt_dir/yazi
+cleanup: echo "cleanup"

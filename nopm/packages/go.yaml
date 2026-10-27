@@ -1,0 +1,17 @@
+template: git
+source: https://github.com/golang/go.git
+description: The Go programming language
+version: go version
+latest: git ls-remote --tags https://github.com/golang/go.git | rg "refs/tags/go" | awk '{print $2}' | sed -e 's/refs\/tags\/go//g' | sort -V | tail -n 1
+load: |
+  echo "https://go.dev/dl/go$version.linux-$alt_arch.tar.gz"
+  curl -LRs "https://go.dev/dl/go$version.linux-$alt_arch.tar.gz" -o go.tar.gz
+prepare: tar -xzf go.tar.gz
+install: |
+  mv go $opt_dir/
+  ln -sf $opt_dir/go/bin/go $install_dir/go
+  ln -sf $opt_dir/go/bin/gofmt $install_dir/gofmt
+uninstall: |
+  rm -f $install_dir/go
+  rm -f $install_dir/gofmt
+  rm -rf $opt_dir/go

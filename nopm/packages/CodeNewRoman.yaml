@@ -1,0 +1,10 @@
+template: github
+source: https://github.com/ryanoasis/nerd-fonts
+description: CodeNewRoman nerd font
+load: curl -LRs "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/CodeNewRoman.tar.xz" -o CodeNewRoman.tar.xz
+prepare: |
+  mkdir CodeNewRoman || echo
+  tar xf CodeNewRoman.tar.xz --directory CodeNewRoman
+install: cp -r CodeNewRoman $fonts_dir/
+uninstall: rm -rf "$fonts_dir/CodeNewRoman"
+cleanup: echo "cleanup"

@@ -1,0 +1,6 @@
+template: github
+description: A monitor of resources
+source: 
+  linux: https://github.com/aristocratos/btop 
+  windows: https://github.com/aristocratos/btop4win
+cleanup: echo "cleanup"

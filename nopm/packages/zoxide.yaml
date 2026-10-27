@@ -1,0 +1,4 @@
+template: github
+source: https://github.com/ajeetdsouza/zoxide
+description: A smarter cd command. Supports all major shells
+cleanup: echo "cleanup"

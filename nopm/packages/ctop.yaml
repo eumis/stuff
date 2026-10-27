@@ -1,0 +1,4 @@
+template: github
+description: A monitor of docker containers
+source: https://github.com/bcicen/ctop
+cleanup: echo "cleanup"

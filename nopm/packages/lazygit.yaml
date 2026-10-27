@@ -1,0 +1,4 @@
+template: github
+description: simple terminal UI for git commands
+source: https://github.com/jesseduffield/lazygit
+cleanup: echo "cleanup"

@@ -1,0 +1,4 @@
+template: github
+source: https://github.com/AlexanderGrooff/mermaid-ascii
+description: generate mermaid diagrams from markdown
+cleanup: echo "cleanup"

@@ -1,0 +1,6 @@
+exe: nvim
+template: github
+description: neovim text editor
+source: https://github.com/neovim/neovim
+install-hook: ln -sf $HOME/stuff/nvim $HOME/.config
+uninstall-hook: rm -f $HOME/.config/nvim

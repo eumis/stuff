@@ -1,0 +1,9 @@
+install_dir: /usr/local/bin
+opt_dir: /opt
+apps_dir: /usr/share/applications
+fonts_dir: /usr/share/fonts
+sudo_install: true
+pre: |
+  if [[ $args =~ 'nopm'|'kuplay'|'ruf' ]]; then
+    ssh-add ~/.ssh/github
+  fi

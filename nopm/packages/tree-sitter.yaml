@@ -1,0 +1,13 @@
+template: git
+source: https://github.com/tree-sitter/tree-sitter
+description: 
+prepare: |
+  cd ./repo
+  cargo build --release
+install: |
+  install -m 755 ./repo/target/release/tree-sitter "$install_dir/tree-sitter"
+cleanup: |
+  if [[  -d "./repo" ]]; then
+    cd ./repo
+    cargo clean
+  fi

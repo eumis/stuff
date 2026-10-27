@@ -1,0 +1,15 @@
+template: github
+description: notes app
+source: https://github.com/obsidianmd/obsidian-releases
+install-hook: |
+  echo "[Desktop Entry]
+  Version=$version
+  Name=obsidian
+  GenericName=Notes
+  Exec=obsidian
+  TryExec=obsidian
+  Icon=obsidian
+  Terminal=false
+  Type=Application
+  Categories=Utility;
+  Keywords=Notes;" | sudo tee "$apps_dir/obsidian.desktop" >/dev/null

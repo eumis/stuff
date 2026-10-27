@@ -1,0 +1,26 @@
+exe: kuplay-gui
+template: git
+source: em@homer:git/kuplay
+description: custom super player
+prepare: |
+  cd ./repo/crates/kuplay-gui
+  cargo build --release
+install: |
+  install -m 755 ./repo/target/release/kuplay-gui "$install_dir/kuplay-gui"
+  cp ./repo/crates/kuplay-gui/assets/kuplay.png "/usr/share/icons/" -f
+  echo "[Desktop Entry]
+  Version=$version
+  Name=kuplay
+  GenericName=Media player
+  Exec=kuplay
+  TryExec=kuplay
+  Icon=/usr/share/icons/kuplay.png
+  Terminal=false
+  Type=Application
+  Categories=Audio;Player;
+  Keywords=Player;Audio;" | tee "$apps_dir/kuplay.desktop" > /dev/null
+cleanup: |
+  if [[  -d "./repo" ]]; then
+    cd ./repo
+    cargo clean
+  fi

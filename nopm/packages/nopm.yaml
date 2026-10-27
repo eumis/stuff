@@ -1,0 +1,15 @@
+exe: nopm
+template: git
+source: em@homer:git/rpm
+description: custom package manager
+prepare: |
+  cd ./repo
+  cargo build --release
+install: |
+  echo "install dir is $install_dir"
+  install -m 755 ./repo/target/release/nopm "$install_dir/nopm"
+cleanup: |
+  if [[  -d "./repo" ]]; then
+    cd ./repo
+    cargo clean
+  fi
