@@ -149,7 +149,7 @@ hi qfFileName guifg=#89b4fa guibg=NONE guisp=NONE gui=NONE ctermfg=111 ctermbg=N
 hi qfLineNr guifg=#f9e2af guibg=NONE guisp=NONE gui=NONE ctermfg=222 ctermbg=NONE cterm=NONE term=NONE
 
 hi Normal guibg=NONE ctermbg=NONE
-hi NormalFloat guibg=NONE
+" hi NormalFloat guibg=NONE
 hi NormalNC guibg=NONE
 hi SignColumn guibg=NONE
 
