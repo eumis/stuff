@@ -8,6 +8,8 @@ prepare: |
 install: |
   echo "install dir is $install_dir"
   install -m 755 ./repo/target/release/nopm "$install_dir/nopm"
+  ln -sf $HOME/stuff/nopm $HOME/.config
+uninstall_hook: rm -f $HOME/.config/nopm
 cleanup: |
   if [[  -d "./repo" ]]; then
     cd ./repo
