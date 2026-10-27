@@ -3,7 +3,8 @@ opt_dir: /opt
 apps_dir: /usr/share/applications
 fonts_dir: /usr/share/fonts
 sudo_install: true
+shell: /usr/bin/bash
 pre: |
-  if [[ $args =~ 'nopm'|'kuplay'|'ruf' ]]; then
+  if [[ $args =~ 'nopm'|'kuplay'|'ruf' || $args == "check" ]]; then
     ssh-add ~/.ssh/github
   fi
