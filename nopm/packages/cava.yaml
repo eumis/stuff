@@ -1,0 +1,5 @@
+template: github
+description: Cross-platform Audio Visualizer
+pass: ["windows"]
+source: https://github.com/karlstav/cava
+install: cp -f ./content/filCavaExe $install_dir/cava.exe

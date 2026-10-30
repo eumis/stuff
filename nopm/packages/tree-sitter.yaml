@@ -1,11 +1,12 @@
 template: git
+description: An incremental parsing system for programming tools
 source: https://github.com/tree-sitter/tree-sitter
-description: 
 prepare: |
   cd ./repo
   cargo build --release
-install: |
-  install -m 755 ./repo/target/release/tree-sitter "$install_dir/tree-sitter"
+install:
+  linux: install -m 755 ./repo/target/release/tree-sitter "$install_dir/tree-sitter"
+  windows: cp -f ./repo/target/release/tree-sitter.exe "$install_dir/"
 cleanup: |
   if [[  -d "./repo" ]]; then
     cd ./repo

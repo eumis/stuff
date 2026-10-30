@@ -1,9 +1,15 @@
-install_dir: /usr/local/bin
-opt_dir: /opt
+install_dir:
+  linux: /usr/local/bin
+  windows: C:\\tools
+opt_dir:
+  linux: /opt
+  windows: C:\\tools
 apps_dir: /usr/share/applications
 fonts_dir: /usr/share/fonts
 sudo_install: true
-shell: /usr/bin/bash
+shell:
+  linux: /usr/bin/bash
+  windows: C:\\Program Files\\Git\\bin\\bash.exe
 pre: |
   if [[ $args =~ 'nopm'|'kuplay'|'ruf' || $args == "check" ]]; then
     ssh-add ~/.ssh/github

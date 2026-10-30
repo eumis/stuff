@@ -1,4 +1,25 @@
 template: github
-source: https://github.com/vial-kb/vial-gui
 description: GUI and a QMK fork for configuring your keyboard in real time
-cleanup: echo "cleanup"
+source: https://github.com/vial-kb/vial-gui
+version: cat $version_path
+load:
+  windows: curl -LRs https://github.com/vial-kb/vial-gui/releases/download/v$version/Vial-v$version-portable.zip -o vial.zip
+prepare:
+  windows: unzip -o ./vial.zip -d ./content
+install:
+  windows: |
+    cp -r ./content/Vial $opt_dir/vial
+    export SHORTCUT="$(cygpath -w $install_dir/vial.lnk)"
+    export TARGET="$(cygpath -w $opt_dir/Vial.exe)"
+    powershell.exe -NoProfile -Command '
+      $shell = New-Object -ComObject WScript.Shell
+      $shortcut = $shell.CreateShortcut($env:SHORTCUT)
+      $shortcut.TargetPath = $env:TARGET
+      $shortcut.Save()
+    '
+install_hook: echo $version > $version_path
+uninstall:
+  windows: |
+    rm -rf $opt_dir/vial
+    rm -f $install_dir/vial.lnk
+uninstall_hook: rm $version_path
