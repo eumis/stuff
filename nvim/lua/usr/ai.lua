@@ -7,30 +7,25 @@ local M = {}
 ---| "supermaven"
 
 ---@param provider suggestion_provider?
-function M.use_suggestions(provider)
-    vim.api.nvim_create_autocmd("VimEnter", {
-        callback = function()
-            vim.schedule(function()
-                ---@type string?
-                if provider == "copilot" then
-                    require("copilot")
-                elseif provider == "supermaven" then
-                    require("supermaven-nvim")
-                    local binary = require("supermaven-nvim.binary.binary_handler")
-                    ---@diagnostic disable-next-line: unused-local, duplicate-set-field
-                    binary.open_popup = function(self, message, include_free)
-                        print("free supermaven started")
-                    end
-                    local api = require("supermaven-nvim.api")
-                    api.use_free_version()
-                else
-                    return
-                end
-                require("usr.statusline").copilot.set_value(provider)
-            end)
-        end,
-        once = true
-    })
+function M.use_completion(provider)
+    vim.schedule(function()
+        ---@type string?
+        if provider == "copilot" then
+            require("copilot")
+        elseif provider == "supermaven" then
+            require("supermaven-nvim")
+            local binary = require("supermaven-nvim.binary.binary_handler")
+            ---@diagnostic disable-next-line: unused-local, duplicate-set-field
+            binary.open_popup = function(self, message, include_free)
+                print("free supermaven started")
+            end
+            local api = require("supermaven-nvim.api")
+            api.use_free_version()
+        else
+            return
+        end
+        require("usr.statusline").copilot.set_value(provider)
+    end)
 end
 
 ---@alias assistant
@@ -53,22 +48,24 @@ local assistants = {
 
 ---@param assistant assistant
 ---@param cmd_args? string
-function M.use_assistant(assistant, cmd_args)
-    if assistants[assistant] ~= nil then
-        local cmd = cmd_args ~= nil and assistants[assistant] .. " " .. cmd_args or assistants[assistant]
-        local state = terminal.new_state({ cmd, "" })
-        vim.keymap.set("n", "<space>af", function()
-            terminal.float_terminal(state)
-        end)
+function M.use_agent(assistant, cmd_args)
+    vim.schedule(function()
+        if assistants[assistant] ~= nil then
+            local cmd = cmd_args ~= nil and assistants[assistant] .. " " .. cmd_args or assistants[assistant]
+            local state = terminal.new_state({ cmd, "" })
+            vim.keymap.set("n", "<space>af", function()
+                terminal.float_terminal(state)
+            end)
 
-        vim.keymap.set("n", "<space>ai", function()
-            terminal.split_terminal(state)
-        end)
+            vim.keymap.set("n", "<space>ai", function()
+                terminal.split_terminal(state)
+            end)
 
-        vim.keymap.set("n", "<space>ao", function()
-            terminal.open_terminal(state)
-        end)
-    end
+            vim.keymap.set("n", "<space>ao", function()
+                terminal.open_terminal(state)
+            end)
+        end
+    end)
 end
 
 return M

@@ -116,17 +116,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end
 })
 
-vim.api.nvim_create_user_command("Ais", function(opts)
+vim.api.nvim_create_user_command("Aic", function(opts)
     local provider = opts.fargs[1]
     if provider ~= nil then
         require("usr.ai").use_suggestions(provider);
     end
 end, { nargs = 1 })
 
-vim.api.nvim_create_user_command("Aic", function(opts)
+vim.api.nvim_create_user_command("Aia", function(opts)
     local provider = opts.fargs[1]
     if provider ~= nil then
-        require("usr.ai").use_assistant(provider);
+        require("usr.ai").use_agent(provider);
     end
 end, { nargs = 1 })
 
