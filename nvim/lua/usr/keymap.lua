@@ -271,10 +271,7 @@ vim.keymap.set("n", 'H', vim.lsp.buf.signature_help, silent_opts)
 vim.keymap.set("n", '<space>rn', vim.lsp.buf.rename, silent_opts)
 vim.keymap.set("n", '<space>rr', vim.lsp.buf.code_action, silent_opts)
 vim.keymap.set("v", '<space>rr', function() vim.lsp.buf.range_code_action({}) end, silent_opts)
-vim.keymap.set("n", '<space>e', function() vim.lsp.buf.format({ async = true }) end, silent_opts)
-vim.keymap.set("v", '<space>e',
-    function() vim.lsp.buf.format({ async = true, range = { vim.api.nvim_buf_get_mark(0, "<"), vim.api.nvim_buf_get_mark(0, ">") } }) end,
-    silent_opts)
+vim.keymap.set({ "n", "v" }, '<space>e', function() vim.lsp.buf.format({ async = true }) end, silent_opts)
 
 -- diagnostic
 vim.keymap.set("n", '<space>fd',
