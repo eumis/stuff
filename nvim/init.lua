@@ -31,8 +31,6 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
-vim.opt.smartcase = true
-vim.opt.incsearch = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
@@ -58,8 +56,12 @@ vim.opt.incsearch = true
 vim.opt.showmatch = true
 vim.opt.exrc = true
 
--- vim.opt.undofile = true
--- vim.opt.undodir = vim.fn.expand('~/.local/state/nvim/undodir')
+vim.opt.undofile = true
+
+vim.opt.timeoutlen = 300
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.inccommand = "split"
 
 vim.filetype.add {
     extension = {

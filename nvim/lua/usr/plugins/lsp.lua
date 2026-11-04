@@ -55,9 +55,9 @@ return {
                             --diagnosticMode = "workspace",
                             enableTypeIgnoreComments = true,
                             typeCheckingMode = "standard", -- standard, strict, all, off, basic
+                            strictParameterNoneValue = false,
+                            autoImportCompletions = true,
                             diagnosticSeverityOverrides = {
-                                strictParameterNoneValue = false,
-                                autoImportCompletions = true,
                                 reportOptionalSubscript = "warning",
                                 reportOptionalMemberAccess = "warning",
                                 reportOptionalIterable = "warning",
