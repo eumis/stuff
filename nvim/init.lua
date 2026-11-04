@@ -119,7 +119,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_user_command("Aic", function(opts)
     local provider = opts.fargs[1]
     if provider ~= nil then
-        require("usr.ai").use_suggestions(provider);
+        require("usr.ai").use_completion(provider);
     end
 end, { nargs = 1 })
 
