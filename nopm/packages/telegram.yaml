@@ -1,4 +1,7 @@
 description: messenger
+pass: ["arch"]
+version: echo '+'
+latest: echo '+'
 load: |
   curl -LRs "https://telegram.org/dl/desktop/linux" -o telegram.tar.xz
   tar -xf telegram.tar.xz

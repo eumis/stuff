@@ -1,6 +1,7 @@
 template: git
-source: https://github.com/golang/go.git
 description: The Go programming language
+skip: ["windows"]
+source: https://github.com/golang/go.git
 version: go version
 latest: git ls-remote --tags https://github.com/golang/go.git | rg "refs/tags/go" | awk '{print $2}' | sed -e 's/refs\/tags\/go//g' | sort -V | tail -n 1
 load: |

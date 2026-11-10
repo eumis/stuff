@@ -1,4 +1,5 @@
 template: github
-source: https://github.com/AlexanderGrooff/mermaid-ascii
 description: generate mermaid diagrams from markdown
+skip: ["windows"]
+source: https://github.com/AlexanderGrooff/mermaid-ascii
 cleanup: echo "cleanup"

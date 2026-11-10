@@ -1,4 +1,4 @@
 template: github
 description: A monitor of docker containers
+skip: ["arch"]
 source: https://github.com/bcicen/ctop
-cleanup: echo "cleanup"

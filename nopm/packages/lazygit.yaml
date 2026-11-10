@@ -1,4 +1,5 @@
 template: github
 description: simple terminal UI for git commands
+skip: ["arch"]
 source: https://github.com/jesseduffield/lazygit
 cleanup: echo "cleanup"

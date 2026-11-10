@@ -1,6 +1,7 @@
 template: github
-source: https://github.com/kovidgoyal/kitty
 description: A fast, featureful, GPU based terminal emulator
+skip: ["windows", "arch"]
+source: https://github.com/kovidgoyal/kitty
 load: |
   curl -LRs "https://github.com/kovidgoyal/kitty/releases/download/v$version/kitty-$version-$arch.txz" -o kitty.txz
 prepare: |

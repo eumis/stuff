@@ -1,3 +1,4 @@
 template: github
 description: music notation software
+skip: ["windows"]
 source: https://github.com/musescore/MuseScore

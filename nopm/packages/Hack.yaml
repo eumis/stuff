@@ -1,10 +1,13 @@
 template: github
-source: https://github.com/ryanoasis/nerd-fonts
 description: Hack nerd font
+pass: ["linux"]
+source: https://github.com/ryanoasis/nerd-fonts
+version: cat $version_path
 load: curl -LRs "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/Hack.tar.xz" -o Hack.tar.xz
 prepare: |
   mkdir Hack || echo
   tar xf Hack.tar.xz --directory Hack
 install: cp -r Hack $fonts_dir/
+install_hook: echo $version > $version_path
 uninstall: rm -rf "$fonts_dir/Hack"
-cleanup: echo "cleanup"
+uninstall_hook: rm $version_path

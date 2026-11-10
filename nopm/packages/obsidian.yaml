@@ -1,6 +1,8 @@
 template: github
 description: notes app
+skip: ["windows"]
 source: https://github.com/obsidianmd/obsidian-releases
+version: cat $version_path
 install_hook: |
   echo "[Desktop Entry]
   Version=$version
@@ -8,8 +10,12 @@ install_hook: |
   GenericName=Notes
   Exec=obsidian
   TryExec=obsidian
-  Icon=obsidian
+  Icon=$install_dir/obsidian
   Terminal=false
   Type=Application
   Categories=Utility;
   Keywords=Notes;" | tee "$apps_dir/obsidian.desktop" >/dev/null
+  echo $version > $version_path
+uninstall_hook: |
+  rm $apps_dir/obsidian.desktop
+  rm $version_path

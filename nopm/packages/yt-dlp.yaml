@@ -1,4 +1,5 @@
 template: github
-source: https://github.com/yt-dlp/yt-dlp
 description: A feature-rich command-line audio/video downloader
+skip: ["windows", "arch"]
+source: https://github.com/yt-dlp/yt-dlp
 cleanup: echo "cleanup"

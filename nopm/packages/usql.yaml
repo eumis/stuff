@@ -1,4 +1,3 @@
 template: github
-source: https://github.com/xo/usql
 description: universal command-line interface for SQL databases
-cleanup: echo "cleanup"
+source: https://github.com/xo/usql

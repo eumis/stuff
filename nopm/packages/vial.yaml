@@ -17,7 +17,19 @@ install:
       $shortcut.TargetPath = $env:TARGET
       $shortcut.Save()
     '
-install_hook: echo $version > $version_path
+install_hook: |
+  echo "[Desktop Entry]
+  Version=$version
+  Name=vial
+  GenericName=keyboard
+  Exec=vial
+  TryExec=vial
+  Icon=$install_dir/vial
+  Terminal=false
+  Type=Application
+  Categories=Utility;
+  Keywords=keyboard;" | tee "$apps_dir/vial.desktop" >/dev/null
+  echo $version > $version_path
 uninstall:
   windows: |
     rm -rf $opt_dir/vial
