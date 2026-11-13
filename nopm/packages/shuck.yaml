@@ -1,0 +1,3 @@
+template: github
+description: shell linter/formatter/LSP server
+source: https://github.com/ewhauser/shuck

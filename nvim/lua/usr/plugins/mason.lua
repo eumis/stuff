@@ -19,17 +19,17 @@ return {
                 "basedpyright",
                 -- "omnisharp",
                 -- {"omnisharp", version = 'v1.39.11'},
-                "csharp-language-server",
-                "lemminx",
+                -- "csharp-language-server",
+                -- "lemminx",
                 -- "json-lsp",
-                "marksman",
-                "html-lsp",
-                "bash-language-server",
-                "typescript-language-server",
-                "rust-analyzer",
+                -- "marksman",
+                -- "html-lsp",
+                -- "bash-language-server",
+                -- "typescript-language-server",
+                -- "rust-analyzer",
                 "gopls",
                 "slint-lsp",
-                "shuck",
+                -- "shuck",
 
                 -- dap
                 "netcoredbg",
@@ -37,7 +37,7 @@ return {
 
                 -- tools
                 "prettier",
-                "rumdl",
+                -- "rumdl",
                 -- "yapf",
                 "black",
                 "isort"

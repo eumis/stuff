@@ -1,0 +1,4 @@
+template: github
+description: Markdown linter and formatter written in Rust
+skip: ["arch"]
+source: https://github.com/rvben/rumdl

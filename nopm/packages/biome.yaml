@@ -1,0 +1,4 @@
+template: github
+description: web toolchain
+source: https://github.com/biomejs/biome
+version_tag: echo "@biomejs/biome@$version"

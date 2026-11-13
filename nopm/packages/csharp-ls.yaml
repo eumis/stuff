@@ -1,0 +1,5 @@
+template: github
+description: shell linter/formatter/LSP server
+latest: git ls-remote --tags https://github.com/razzmatazz/csharp-language-server | rg "refs/tags" | awk '{print $2}' | sed -e 's/refs\/tags\///g' | sort -V | tail -n 1
+install: dotnet tool install csharp-ls --tool-path $install_dir
+uninstall: dotnet tool uninstall csharp-ls --tool-path $install_dir
