@@ -1,5 +1,4 @@
-local ext = vim.fn.expand("%:e")
-vim.keymap.set("n", "yP", function() require("oil.actions").yank_entry() end)
+vim.keymap.set("n", "yP", function() require("oil.actions").yank_entry.callback() end)
 vim.keymap.set("n", "yp", function()
     local oil = require("oil");
     local entry = oil.get_cursor_entry();

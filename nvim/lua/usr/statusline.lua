@@ -16,6 +16,7 @@ local icons = {
     marksman = "",
     ts_ls = "",
     html = "",
+    superhtml = "",
     rust_analyzer = "R",
     slint_lsp = "S",
 }
@@ -183,6 +184,12 @@ end
 vim.api.nvim_create_autocmd("DiagnosticChanged", {
     callback = function()
         vim.cmd("redrawstatus")
+    end
+})
+
+vim.api.nvim_create_autocmd("LspProgress", {
+    callback = function(args)
+        M.set_lsp_progress(args.data.client_id, args.data.params.value)
     end
 })
 

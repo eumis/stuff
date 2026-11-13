@@ -101,6 +101,7 @@ vim.api.nvim_create_autocmd("User", {
         require('usr.statusline')
         require("usr.luamd")
         require("usr.autosave")
+        require("usr.lsp")
     end
 })
 
