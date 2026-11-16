@@ -1,0 +1,4 @@
+template: github
+description: cat for markdown
+source: https://github.com/BIRSAx2/mdcat
+version_tag: echo "mdcat-$version"
